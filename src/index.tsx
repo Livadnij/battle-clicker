@@ -5,9 +5,16 @@ import App from './App';
 import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "./api/client";
 
+declare global {
+    interface Window {
+        Telegram: any;
+    }
+}
+
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
 );
+
 root.render(
     <React.StrictMode>
         <QueryClientProvider client={queryClient}>
