@@ -1,10 +1,21 @@
 import React, { useState } from "react";
 import Layout from "../components/layout/Layout";
 import FightLogic from "../components/battlePage/logic/FightLogic";
-import Main from "../components/layout/Main";
 import { BattleLogType, ScoreType } from "@/components/types/types";
 import RadioGroup from "../components/battlePage/RadioGroup";
 import BattleLog from "../components/battlePage/BattleLog";
+
+const egg = `
+  █████▒ ██▓  ▄████  ██░ ██ ▄▄▄█████▓    ▄████▄   ██▓     █    ██  ▄▄▄▄   
+▓██   ▒ ▓██▒ ██▒ ▀█▒▓██░ ██▒▓  ██▒ ▓▒   ▒██▀ ▀█  ▓██▒     ██  ▓██▒▓█████▄ 
+▒████ ░ ▒██▒▒██░▄▄▄░▒██▀▀██░▒ ▓██░ ▒░   ▒▓█    ▄ ▒██░    ▓██  ▒██░▒██▒ ▄██
+░▓█▒  ░ ░██░░▓█  ██▓░▓█ ░██ ░ ▓██▓ ░    ▒▓▓▄ ▄██▒▒██░    ▓▓█  ░██░▒██░█▀  
+░▒█░    ░██░░▒▓███▀▒░▓█▒░██▓  ▒██▒ ░    ▒ ▓███▀ ░░██████▒▒▒█████▓ ░▓█  ▀█▓
+ ▒ ░    ░▓   ░▒   ▒  ▒ ░░▒░▒  ▒ ░░      ░ ░▒ ▒  ░░ ▒░▓  ░░▒▓▒ ▒ ▒ ░▒▓███▀▒
+ ░       ▒ ░  ░   ░  ▒ ░▒░ ░    ░         ░  ▒   ░ ░ ▒  ░░░▒░ ░ ░ ▒░▒   ░ 
+ ░ ░     ▒ ░░ ░   ░  ░  ░░ ░  ░         ░          ░ ░    ░░░ ░ ░  ░    ░ 
+         ░        ░  ░  ░  ░            ░ ░          ░  ░   ░      ░      
+                                        ░                               ░ `;
 
 const userName =
   window.Telegram?.WebApp.initDataUnsafe?.user?.username || "User";
@@ -31,6 +42,8 @@ const botNameArray = [
 ];
 
 const randomizeBotsName = () => {
+  console.log(`${egg}
+  v0.1.3`);
   const randomNum = Math.floor(Math.random() * botNameArray.length);
   return botNameArray[randomNum];
 };
