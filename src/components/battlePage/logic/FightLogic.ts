@@ -11,6 +11,7 @@ export type FightLogicType = {
   score: ScoreType;
   setScore: React.Dispatch<React.SetStateAction<ScoreType>>;
   //
+  botSurrender?: boolean;
   numberOfBodyParts?: number;
   maxScore?: number;
   timeoutDelay?: number;
@@ -29,11 +30,20 @@ export default function FightLogic({
   score,
   setScore,
   //
+  botSurrender = true,
   numberOfBodyParts = 3,
   maxScore = 3,
   timeoutDelay = 1500,
 }: FightLogicType) {
-  const randomNum = Math.floor(Math.random() * numberOfBodyParts);
+  const getRandomFromRemaining = () => {
+    const options = [0, 1, 2].filter((num) => num !== userChoise);
+    return options[Math.floor(Math.random() * options.length)];
+  };
+
+  const randomNum =
+    score.botScore === maxScore - 1 && botSurrender
+      ? getRandomFromRemaining()
+      : Math.floor(Math.random() * numberOfBodyParts);
 
   const date = new Date();
   const hours = String(date.getHours()).padStart(2, "0");
@@ -61,32 +71,26 @@ export default function FightLogic({
   };
 
   setTimeout(() => {
-    if (userChoise === null) {
-      console.log(1);
-      return;
-    }
-    if (score.botScore === maxScore - 1) {
-      //if its players turn and bot has 1 point left to win he must lose automatically
-      setScore((prev) => {
-        return { ...prev, userScore: prev.userScore + 1 };
-      });
-      handleNextTurn();
-    } else if (turn && userChoise !== randomNum) {
+    if (turn && userChoise !== randomNum) {
+      //if its users turn and he hits unarmored part of the bots body
       setScore((prev) => {
         return { ...prev, userScore: prev.userScore + 1 };
       });
       handleNextTurn();
     } else if (turn && userChoise === randomNum) {
+      //if its users turn and he hits armored part of the bots body
       handleNextTurn();
     } else if (!turn && userChoise !== randomNum) {
+      //if its bots turn and he hits unarmored part of the users body
       setScore((prev) => {
         return { ...prev, botScore: prev.botScore + 1 };
       });
       handleNextTurn();
     } else if (!turn && userChoise === randomNum) {
+      //if its bots turn and he hits armored part of the users body
       handleNextTurn();
     } else {
-      console.log("failed");
+      console.log("fight logic failed");
     }
   }, timeoutDelay);
   return "";
