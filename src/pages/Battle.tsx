@@ -15,7 +15,9 @@ const egg = `
  ░       ▒ ░  ░   ░  ▒ ░▒░ ░    ░         ░  ▒   ░ ░ ▒  ░░░▒░ ░ ░ ▒░▒   ░ 
  ░ ░     ▒ ░░ ░   ░  ░  ░░ ░  ░         ░          ░ ░    ░░░ ░ ░  ░    ░ 
          ░        ░  ░  ░  ░            ░ ░          ░  ░   ░      ░      
-                                        ░                               ░ `;
+                                                                        `;
+console.log(`${egg}
+                                        ░                         v0.1.3░`);
 
 const userName =
   window.Telegram?.WebApp.initDataUnsafe?.user?.username || "User";
@@ -42,8 +44,6 @@ const botNameArray = [
 ];
 
 const randomizeBotsName = () => {
-  console.log(`${egg}
-  v0.1.3`);
   const randomNum = Math.floor(Math.random() * botNameArray.length);
   return botNameArray[randomNum];
 };

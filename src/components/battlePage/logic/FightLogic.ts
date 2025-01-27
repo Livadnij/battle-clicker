@@ -42,7 +42,9 @@ export default function FightLogic({
 
   const randomNum =
     score.botScore === maxScore - 1 && botSurrender
-      ? getRandomFromRemaining()
+      ? turn
+        ? getRandomFromRemaining()
+        : userChoise
       : Math.floor(Math.random() * numberOfBodyParts);
 
   const date = new Date();
@@ -50,13 +52,15 @@ export default function FightLogic({
   const minutes = String(date.getMinutes()).padStart(2, "0");
   const time = `${hours}:${minutes}`;
 
+  console.log(randomNum, userChoise);
+
   const logTemplate = () =>
     `${turn ? userName : botName} hits ${!turn ? userName : botName} in the ${
       turn
         ? userChoise !== null
           ? areas[userChoise]
           : areas[3]
-        : areas[randomNum]
+        : areas[randomNum !== null ? randomNum : 3]
     }
     ${
       userChoise === randomNum
