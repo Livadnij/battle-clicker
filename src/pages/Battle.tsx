@@ -17,7 +17,7 @@ const egg = `
          ░        ░  ░  ░  ░            ░ ░          ░  ░   ░      ░      
                                                                         `;
 console.log(`${egg}
-                                        ░                         v0.1.3░`);
+                                        ░                         v0.1.4░`);
 
 const userName =
   window.Telegram?.WebApp.initDataUnsafe?.user?.username || "User";
