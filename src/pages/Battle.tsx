@@ -74,31 +74,31 @@ const BattlePage: React.FC = () => {
   return (
     <Layout>
       {/* <Header>Enjoy the battle!</Header> */}
-      <Main>
-        <div>Welcome {userName}!</div>
-        <h2>SCORE</h2>
-        <h3>{`${userName} : ${score.userScore} points`}</h3>
-        <h3>{`${botName} : ${score.botScore} points`}</h3>
-        <BattleLog logArray={log} />
-        {score.botScore === 3 || score.userScore === 3 ? (
-          <>
-            <h2>{`${score.botScore === 3 ? botName : userName} WON`}</h2>
-            <span>{`Another fight?`}</span>
-            <button onClick={restartGame}>yes!</button>
-          </>
-        ) : (
-          <>
-            <RadioGroup
-              userChoise={userChoise}
-              setUserChoise={setUserChoise}
-              text={radioGroupText}
-            />
-            <button onClick={attackHandler}>
-              {turn ? "Attack!" : "Block!"}{" "}
-            </button>
-          </>
-        )}
-      </Main>
+      {/* <Main> */}
+      <div>Welcome {userName}!</div>
+      <h2>SCORE</h2>
+      <h3>{`${userName} : ${score.userScore} points`}</h3>
+      <h3>{`${botName} : ${score.botScore} points`}</h3>
+      <BattleLog logArray={log} />
+      {score.botScore === 3 || score.userScore === 3 ? (
+        <>
+          <h2>{`${score.botScore === 3 ? botName : userName} WON`}</h2>
+          <span>{`Another fight?`}</span>
+          <button onClick={restartGame}>yes!</button>
+        </>
+      ) : (
+        <>
+          <RadioGroup
+            userChoise={userChoise}
+            setUserChoise={setUserChoise}
+            text={radioGroupText}
+          />
+          <button onClick={attackHandler}>
+            {turn ? "Attack!" : "Block!"}{" "}
+          </button>
+        </>
+      )}
+      {/* </Main> */}
       {/* <Footer>Yor score:</Footer> */}
     </Layout>
   );
