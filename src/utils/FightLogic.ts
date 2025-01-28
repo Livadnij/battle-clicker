@@ -1,4 +1,4 @@
-import { BattleLogType, ScoreType } from "@/components/types/types";
+import { BattleLogType, ScoreType } from "../components/types/types";
 
 export type FightLogicType = {
   setUserChoise: React.Dispatch<React.SetStateAction<number | null>>;
@@ -19,7 +19,7 @@ export type FightLogicType = {
 
 const areas: string[] = ["head", "body", "legs", "null"];
 
-export default function FightLogic({
+export default function fightLogic({
   setUserChoise,
   userName,
   botName,

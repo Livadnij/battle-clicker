@@ -1,0 +1,16 @@
+{
+  "botNames": [
+    "Hemingway",
+    "William Shatner",
+    "Palahniuk",
+    "મહાત્મા",
+    "Lincoln",
+    "Boss",
+    "Dad"
+  ],
+  "fightOptions": [
+    { "title": "head", "value": 0 },
+    { "title": "chest", "value": 1 },
+    { "title": "legs", "value": 2 }
+  ]
+}
