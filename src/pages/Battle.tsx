@@ -4,6 +4,7 @@ import FightLogic from "../components/battlePage/logic/FightLogic";
 import { BattleLogType, ScoreType } from "@/components/types/types";
 import RadioGroup from "../components/battlePage/RadioGroup";
 import BattleLog from "../components/battlePage/BattleLog";
+import posthog from "posthog-js";
 
 const egg = `
   █████▒ ██▓  ▄████  ██░ ██ ▄▄▄█████▓    ▄████▄   ██▓     █    ██  ▄▄▄▄   
@@ -56,6 +57,9 @@ const BattlePage: React.FC = () => {
   const [botName, setBotName] = useState<string>(randomizeBotsName());
 
   const attackHandler = () => {
+    posthog.capture('attack', {
+      opponent: botName
+    })
     FightLogic({
       setUserChoise,
       userName,
