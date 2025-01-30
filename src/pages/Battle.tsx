@@ -13,9 +13,8 @@ import { ScoreInterface } from "../components/battlePage/ScoreInterface";
 
 showEgg();
 
-const telegram = window.Telegram?.WebApp || null;
-const userColorScheme = telegram?.colorScheme;
-const userName = telegram?.initDataUnsafe?.user?.username || "User";
+const tg = window.Telegram?.WebApp || null;
+const userName = tg?.initDataUnsafe?.user?.username || "User";
 const scoreDefaultValue = { botScore: 0, userScore: 0 };
 const logDefaultValue = [{ time: getCurrentTime(), log: "Fight Started" }];
 
@@ -27,14 +26,7 @@ const BattlePage: React.FC = () => {
   const [botName, setBotName] = useState<string>(getRandomBotName());
 
   useEffect(() => {
-    const userTheme =
-      userColorScheme === "dark"
-        ? "colorSchemeDark"
-        : "colorSchemeLight" || "colorSchemeLight";
-
-    import(`../styles/${userTheme}.scss`);
-
-    telegram.ready();
+    tg.ready();
   }, []);
 
   const fightOptions = settings.fightOptions;
