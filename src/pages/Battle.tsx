@@ -10,15 +10,16 @@ import settings from "../settings/settings.json";
 import { BattleInterface } from "../components/battlePage/BattleInterface";
 import { ResultInterface } from "../components/battlePage/ResultInterface";
 import { ScoreInterface } from "../components/battlePage/ScoreInterface";
+import { useTelegram } from "hooks/useTelegram";
 
 showEgg();
 
-const tg = window.Telegram?.WebApp || null;
-const userName = tg?.initDataUnsafe?.user?.username || "User";
 const scoreDefaultValue = { botScore: 0, userScore: 0 };
 const logDefaultValue = [{ time: getCurrentTime(), log: "Fight Started" }];
 
 const BattlePage: React.FC = () => {
+  const { tg, user, onToggleButton } = useTelegram();
+
   const [score, setScore] = useState<ScoreType>(scoreDefaultValue);
   const [userChoise, setUserChoise] = useState<number | null>(null);
   const [log, setLog] = useState<BattleLogType[]>(logDefaultValue);
@@ -27,6 +28,7 @@ const BattlePage: React.FC = () => {
 
   useEffect(() => {
     tg.ready();
+    onToggleButton;
   }, []);
 
   const fightOptions = settings.fightOptions;
@@ -50,7 +52,7 @@ const BattlePage: React.FC = () => {
   const attackHandler = () => {
     fightLogic({
       setUserChoise,
-      userName,
+      userName: user.username || "user",
       botName,
       score,
       setScore,
@@ -67,13 +69,17 @@ const BattlePage: React.FC = () => {
       {/* <Main> */}
       {/* </Main> */}
       {/* <Footer>Yor score:</Footer> */}
-      <div>Welcome {userName}!</div>
-      <ScoreInterface userName={userName} botName={botName} score={score} />
+      <div>Welcome {user.username}!</div>
+      <ScoreInterface
+        userName={user.username}
+        botName={botName}
+        score={score}
+      />
       <BattleLog logArray={log} />
       {isResult ? (
         <ResultInterface
           botName={botName}
-          userName={userName}
+          userName={user.username}
           score={score}
           restartGame={restartGame}
         />
