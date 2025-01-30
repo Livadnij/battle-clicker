@@ -28,7 +28,7 @@ const BattlePage: React.FC = () => {
 
   useEffect(() => {
     tg.ready();
-    onToggleButton;
+    onToggleButton();
   }, []);
 
   const fightOptions = settings.fightOptions;
