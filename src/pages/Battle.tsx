@@ -15,7 +15,6 @@ showEgg();
 
 const telegram = window.Telegram?.WebApp || null;
 const userColorScheme = telegram?.colorScheme;
-console.log(userColorScheme);
 const userName = telegram?.initDataUnsafe?.user?.username || "User";
 const scoreDefaultValue = { botScore: 0, userScore: 0 };
 const logDefaultValue = [{ time: getCurrentTime(), log: "Fight Started" }];
@@ -29,9 +28,11 @@ const BattlePage: React.FC = () => {
 
   useEffect(() => {
     const userTheme =
-      userColorScheme === "dark" ? "colorSchemeDark" : "colorSchemeLight";
+      userColorScheme === "dark"
+        ? "colorSchemeDark"
+        : "colorSchemeLight" || "colorSchemeLight";
 
-    import(`./styles/${userTheme}.scss`);
+    import(`../styles/${userTheme}.scss`);
 
     telegram.ready();
   }, []);
