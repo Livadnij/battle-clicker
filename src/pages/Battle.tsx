@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import Layout from "../components/layout/Layout";
 import { BattleLogType, ScoreType } from "../components/types/types";
 import BattleLog from "../components/battlePage/BattleLog";
@@ -15,7 +15,6 @@ showEgg();
 
 const telegram = window.Telegram?.WebApp || null;
 const userColorScheme = telegram?.colorScheme;
-console.log(userColorScheme);
 const userName = telegram?.initDataUnsafe?.user?.username || "User";
 const scoreDefaultValue = { botScore: 0, userScore: 0 };
 const logDefaultValue = [{ time: getCurrentTime(), log: "Fight Started" }];
@@ -26,6 +25,17 @@ const BattlePage: React.FC = () => {
   const [log, setLog] = useState<BattleLogType[]>(logDefaultValue);
   const [turn, setTurn] = useState<boolean>(true);
   const [botName, setBotName] = useState<string>(getRandomBotName());
+
+  useEffect(() => {
+    const userTheme =
+      userColorScheme === "dark"
+        ? "colorSchemeDark"
+        : "colorSchemeLight" || "colorSchemeLight";
+
+    import(`../styles/${userTheme}.scss`);
+
+    telegram.ready();
+  }, []);
 
   const fightOptions = settings.fightOptions;
 
