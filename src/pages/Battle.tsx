@@ -10,6 +10,8 @@ import settings from "../settings/settings.json";
 import { BattleInterface } from "../components/battlePage/BattleInterface";
 import { ResultInterface } from "../components/battlePage/ResultInterface";
 import { ScoreInterface } from "../components/battlePage/ScoreInterface";
+import { sendEvent } from "../utils/analytics";
+import { ANALYTICS_EVENTS } from "../constants/analytics";
 
 showEgg()
 
@@ -37,6 +39,7 @@ const BattlePage: React.FC = () => {
         setLog(logDefaultValue);
         setUserChoise(null);
         setTurn(true);
+        sendEvent(ANALYTICS_EVENTS.GAME_RESTART);
     };
 
     const attackHandler = () => {
@@ -45,9 +48,9 @@ const BattlePage: React.FC = () => {
             userName,
             botName,
             score,
-            setScore,
             userChoise,
             turn,
+            setScore,
             setLog,
             setTurn,
         });

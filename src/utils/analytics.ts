@@ -9,3 +9,7 @@ export const initAnalytics = () => {
         }
     )
 }
+
+export const sendEvent = (event: string, payload?: Record<string, any>) => {
+    posthog.capture(event, payload)
+}
