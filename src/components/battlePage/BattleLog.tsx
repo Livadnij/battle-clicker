@@ -7,11 +7,14 @@ type BattleLogProps = {
 
 const BattleLog: FC<BattleLogProps> = ({ logArray }) => {
   return (
-    <ul>
-      {logArray?.map((data, index) => {
-        return <li key={index}>{`${data.time} - ${data.log}`}</li>;
-      })}
-    </ul>
+    <>
+      <h3> Battle log :</h3>
+      <ul>
+        {logArray?.map((data, index) => {
+          return <li key={index}>{`${data.time} - ${data.log}`}</li>;
+        })}
+      </ul>
+    </>
   );
 };
 
