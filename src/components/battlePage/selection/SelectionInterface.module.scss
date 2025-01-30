@@ -1,0 +1,45 @@
+.selection-container {
+  padding: 0 20px;
+  width: 100%;
+}
+
+.input-container {
+  padding-top: 5px;
+  display: flex; /* Use flexbox for layout */
+  flex-direction: row; /* Arrange items vertically */
+  gap: 50px; /* Spacing between items */
+  justify-content: center;
+}
+
+.input-wrapper {
+  display: flex;
+  flex-direction: column; /* Label below input */
+  align-items: center; /* Center horizontally */
+  cursor: pointer; /* Make label clickable */
+}
+
+.radio-input {
+  appearance: none; /* Remove default radio button appearance */
+  width: 50px;
+  height: 50px;
+  border: 3px solid #ccc; /* Border styles */
+  border-radius: 5px; /* Optional: Rounded corners */
+  position: relative; /* For positioning the 'X' */
+  cursor: pointer; /* Make it clear it's clickable */
+  outline: none;
+}
+
+.radio-input:checked::before {
+  content: "×"; /* X character */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -56%);
+  font-size: 100px; /* Adjust X size */
+  color: white;
+}
+
+.radio-label {
+  margin-top: 5px; /* Space between input and label */
+  text-align: center; /* Center label text */
+}

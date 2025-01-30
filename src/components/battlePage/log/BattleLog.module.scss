@@ -1,0 +1,19 @@
+.log-container {
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+}
+
+.log {
+  border: 2px solid rgb(255, 255, 255);
+  height: 30vh;
+  padding: 10px;
+  overflow: auto;
+  scroll-behavior: smooth;
+}
+
+ul {
+  padding-left: 20px;
+}

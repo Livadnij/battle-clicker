@@ -3,3 +3,9 @@
   font-weight: 500;
   font-style: normal;
 }
+
+html,
+body {
+  height: 100%;
+  margin: 0; /* Important: Remove default margins */
+}
