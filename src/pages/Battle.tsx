@@ -14,8 +14,8 @@ import { ScoreInterface } from "../components/battlePage/ScoreInterface";
 showEgg();
 
 const telegram = window.Telegram?.WebApp || null;
-const userTheme = telegram?.themeParams;
-console.log(userTheme);
+const userColorScheme = telegram?.colorScheme;
+console.log(userColorScheme);
 const userName = telegram?.initDataUnsafe?.user?.username || "User";
 const scoreDefaultValue = { botScore: 0, userScore: 0 };
 const logDefaultValue = [{ time: getCurrentTime(), log: "Fight Started" }];
