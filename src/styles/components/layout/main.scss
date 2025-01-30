@@ -3,18 +3,3 @@
   height: 65vh;
   width: 100vw;
 }
-
-ul {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  max-width: 100%; /* Prevents UL from expanding beyond screen */
-  word-wrap: break-word; /* Breaks words if they are too long */
-}
-
-li {
-  word-wrap: break-word; /* Prevents overflow for each list item */
-  overflow-wrap: break-word; /* Same as word-wrap but newer standard */
-  white-space: normal; /* Allows text to wrap within the container */
-  max-width: 100%; /* Prevents items from going outside the screen */
-}

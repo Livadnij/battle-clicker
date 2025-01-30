@@ -11,16 +11,15 @@
 // setting for light and dark schemes
 
 * {
-  background-color: var(--bg-color);
-  color: var(--text-color);
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
 .layout {
-  position: fixed;
-  background-color: white;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  position: sticky;
   width: 100vw;
   height: 100vh;
 

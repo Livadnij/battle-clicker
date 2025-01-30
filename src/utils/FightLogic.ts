@@ -2,7 +2,7 @@ import { BattleLogType, ScoreType } from "../components/types/types";
 
 export type FightLogicType = {
   setUserChoise: React.Dispatch<React.SetStateAction<number | null>>;
-  userName: string;
+  username: string;
   botName: string;
   setTurn: React.Dispatch<React.SetStateAction<boolean>>;
   setLog: React.Dispatch<React.SetStateAction<BattleLogType[]>>;
@@ -21,7 +21,7 @@ const areas: string[] = ["head", "body", "legs", "null"];
 
 export default function fightLogic({
   setUserChoise,
-  userName,
+  username,
   botName,
   setTurn,
   setLog,
@@ -55,7 +55,7 @@ export default function fightLogic({
   console.log(randomNum, userChoise);
 
   const logTemplate = () =>
-    `${turn ? userName : botName} hits ${!turn ? userName : botName} in the ${
+    `${turn ? username : botName} hits ${!turn ? username : botName} in the ${
       turn
         ? userChoise !== null
           ? areas[userChoise]
@@ -64,8 +64,8 @@ export default function fightLogic({
     }
     ${
       userChoise === randomNum
-        ? ` but ${!turn ? userName : botName} blocks an attack`
-        : ` but ${!turn ? userName : botName} couldnt block an attack`
+        ? ` but ${!turn ? username : botName} blocks an attack`
+        : ` but ${!turn ? username : botName} couldnt block an attack`
     }`;
 
   const handleNextTurn = () => {

@@ -1,16 +1,18 @@
 import React, { useEffect, useMemo, useState } from "react";
 import Layout from "../components/layout/Layout";
 import { BattleLogType, ScoreType } from "../components/types/types";
-import BattleLog from "../components/battlePage/BattleLog";
+import BattleLog from "../components/battlePage/log/BattleLog";
 import fightLogic from "../utils/FightLogic";
 import { getRandomBotName } from "../hooks/getRandomBotName";
 import { getCurrentTime } from "../hooks/getCurrentTime";
 import { showEgg } from "../utils/Easters";
 import settings from "../settings/settings.json";
-import { BattleInterface } from "../components/battlePage/BattleInterface";
+import { BattleInterface } from "../components/battlePage/selection/SelectionInterface";
 import { ResultInterface } from "../components/battlePage/ResultInterface";
-import { ScoreInterface } from "../components/battlePage/ScoreInterface";
+import { ScoreInterface } from "../components/battlePage/score/ScoreInterface";
 import { useTelegram } from "hooks/useTelegram";
+import "../styles/battle.scss";
+import MainButton from "components/mainButton/MainButton";
 
 showEgg();
 
@@ -18,7 +20,7 @@ const scoreDefaultValue = { botScore: 0, userScore: 0 };
 const logDefaultValue = [{ time: getCurrentTime(), log: "Fight Started" }];
 
 const BattlePage: React.FC = () => {
-  const { tg, user, onToggleButton } = useTelegram();
+  const { tg, username, onToggleButton } = useTelegram();
 
   const [score, setScore] = useState<ScoreType>(scoreDefaultValue);
   const [userChoise, setUserChoise] = useState<number | null>(null);
@@ -52,7 +54,7 @@ const BattlePage: React.FC = () => {
   const attackHandler = () => {
     fightLogic({
       setUserChoise,
-      userName: user.username || "user",
+      username,
       botName,
       score,
       setScore,
@@ -69,30 +71,31 @@ const BattlePage: React.FC = () => {
       {/* <Main> */}
       {/* </Main> */}
       {/* <Footer>Yor score:</Footer> */}
-      <div>Welcome {user.username}!</div>
-      <ScoreInterface
-        userName={user.username}
-        botName={botName}
-        score={score}
-      />
-      <BattleLog logArray={log} />
-      {isResult ? (
-        <ResultInterface
-          botName={botName}
-          userName={user.username}
-          score={score}
-          restartGame={restartGame}
-        />
-      ) : (
-        <BattleInterface
-          turn={turn}
-          title={radioTitle}
-          options={fightOptions}
-          userChoise={userChoise}
-          setUserChoise={setUserChoise}
-          attackHandler={attackHandler}
-        />
-      )}
+      <div className="battle-container">
+        <h3>Welcome {username}!</h3>
+        <ScoreInterface userName={username} botName={botName} score={score} />
+        <BattleLog logArray={log} />
+        {isResult ? (
+          <ResultInterface
+            botName={botName}
+            userName={username}
+            score={score}
+            restartGame={restartGame}
+          />
+        ) : (
+          <BattleInterface
+            turn={turn}
+            title={radioTitle}
+            options={fightOptions}
+            userChoise={userChoise}
+            setUserChoise={setUserChoise}
+            attackHandler={attackHandler}
+          />
+        )}
+        <MainButton onClick={attackHandler}>
+          {turn ? "Attack!" : "Block!"}
+        </MainButton>
+      </div>
     </Layout>
   );
 };
