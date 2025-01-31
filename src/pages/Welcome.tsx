@@ -28,10 +28,10 @@ const WelcomePage: React.FC = () => {
       console.log("redirect to home");
       console.log(fetchedUser);
       setUser(fetchedUser);
-      // navigate("/home");
+      navigate("/home");
     } else {
       console.log("redirect to register");
-      // navigate("/register");
+      navigate("/register");
     }
   };
 
@@ -40,7 +40,7 @@ const WelcomePage: React.FC = () => {
   if (alreadyLogined.user) {
     console.log(alreadyLogined);
     console.log("redirect to home");
-    // navigate("/home");
+    navigate("/home");
   }
 
   return (
