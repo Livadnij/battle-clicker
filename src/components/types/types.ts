@@ -4,3 +4,10 @@ export type ScoreType = {
 };
 
 export type BattleLogType = { time: string; log: string };
+
+export type UserType = {
+  balance: number;
+  fights_quantity: number;
+  user_id: string;
+  username: string;
+};
