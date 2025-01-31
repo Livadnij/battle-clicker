@@ -18,7 +18,7 @@ const WelcomePage: React.FC = () => {
     setLoading(true);
     let fetchedUser;
     try {
-      fetchedUser = await getUserById("users", tg_user.id);
+      fetchedUser = await getUserById("users", `${tg_user.id}`);
     } catch (error) {
       console.log("Failed to fetch user data");
     } finally {

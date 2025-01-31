@@ -16,11 +16,10 @@ const RegisterPage: FC<RegisterPageType> = ({}) => {
   const { setUser } = useUser();
 
   const defaultUser = {
-    id: "",
+    id: tg_user?.id,
     username: "Monkey",
     balance: 0,
     fights_quantity: 0,
-    user_id: tg_user?.id,
   };
 
   const [userData, setUserData] = useState<UserType>(defaultUser);
@@ -31,7 +30,7 @@ const RegisterPage: FC<RegisterPageType> = ({}) => {
     setLoading(true);
     let fetchedUser;
     try {
-      fetchedUser = await getUserById("users", tg_user.id);
+      fetchedUser = await getUserById("users", `${tg_user.id}`);
     } catch (error) {
       console.log("Failed to fetch user data");
     } finally {

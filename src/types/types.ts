@@ -9,7 +9,6 @@ export type UserType = {
   id: string;
   balance: number;
   fights_quantity: number;
-  user_id: string;
   username: string;
 };
 
