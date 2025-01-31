@@ -77,6 +77,8 @@ export const getUserById = async (collectionName: string, docId: string) => {
     const docRef = doc(db, collectionName, docId);
     const docSnap = await getDoc(docRef);
 
+    console.log(docSnap);
+
     if (docSnap.exists()) {
       return { id: docSnap.id, ...docSnap.data() };
     } else {
