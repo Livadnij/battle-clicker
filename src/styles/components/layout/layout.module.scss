@@ -5,6 +5,9 @@
 }
 
 .layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   position: relative;
   background-color: #000000;
   color: #ffffff;
@@ -12,13 +15,13 @@
   width: 100vw;
   height: 100vh;
 
-  h1 {
-    padding-bottom: 30px;
-  }
-
   @media (min-width: 500px) {
     display: none;
   }
+}
+
+.children {
+  height: 100%;
 }
 
 .layout-element-one {

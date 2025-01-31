@@ -2,12 +2,7 @@ import React, { FC } from "react";
 
 import styles from "./MainButton.module.scss";
 import buttonImage from "../../assets/buttons/MainButton.svg";
-
-type MainButtonType = {
-  children?: React.ReactNode;
-  onClick?: () => void;
-  type?: "button" | "submit" | "reset";
-};
+import { MainButtonType } from "types/types";
 
 const MainButton: FC<MainButtonType> = ({
   children,

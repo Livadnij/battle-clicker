@@ -1,4 +1,4 @@
-import { UserType } from "components/types/types";
+import { UserType } from "types/types";
 import { createContext, useState, ReactNode, useContext } from "react";
 
 interface UserContextType {
@@ -11,7 +11,6 @@ const UserContext = createContext<UserContextType | undefined>(undefined);
 
 export const UserProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<UserType | null>(null);
-
   const logout = () => {
     setUser(null);
   };

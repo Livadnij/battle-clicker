@@ -10,13 +10,14 @@ import {
 } from "firebase/firestore";
 import { getFirestore } from "firebase/firestore";
 import firebaseApp from "./firebaseConfig";
+import { UserType } from "types/types";
 
 const db: Firestore = getFirestore(firebaseApp);
 
 /**
  * Add a document to a Firestore collection
  */
-export const addDocument = async (collectionName: string, data: object) => {
+export const addUser = async (collectionName: string, data: object) => {
   try {
     const docRef = await addDoc(collection(db, collectionName), data);
     return docRef.id;
@@ -77,10 +78,8 @@ export const getUserById = async (collectionName: string, docId: string) => {
     const docRef = doc(db, collectionName, docId);
     const docSnap = await getDoc(docRef);
 
-    console.log(docSnap);
-
     if (docSnap.exists()) {
-      return { id: docSnap.id, ...docSnap.data() };
+      return { id: docSnap.id, ...docSnap.data() } as UserType;
     } else {
       console.error("No such document!");
       return null;

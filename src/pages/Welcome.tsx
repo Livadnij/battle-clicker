@@ -1,9 +1,8 @@
 import Layout from "components/layout/Layout";
-import MainButton from "components/mainButton/MainButton";
 import { useTelegram } from "hooks/useTelegram";
 import React, { useState } from "react";
 
-import "../styles/welcome.scss";
+import styles from "../styles/welcome.module.scss";
 import { getUserById } from "../firebase/firebaseFirestore";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "hooks/UserContext";
@@ -13,42 +12,44 @@ const WelcomePage: React.FC = () => {
   const { setUser } = useUser();
 
   const [loading, setLoading] = useState<boolean>(false);
-  const { user } = useTelegram();
+  const { tg_user } = useTelegram();
 
   const fetchUser = async () => {
     setLoading(true);
     let fetchedUser;
     try {
-      fetchedUser = await getUserById("users", user.id);
-      console.log(fetchedUser);
+      fetchedUser = await getUserById("users", tg_user.id);
     } catch (error) {
       console.log("Failed to fetch user data");
     } finally {
       setLoading(false);
     }
     if (fetchedUser) {
+      console.log("redirect to home");
       console.log(fetchedUser);
-      // setUser(fetchedUser);
+      setUser(fetchedUser);
       // navigate("/home");
     } else {
+      console.log("redirect to register");
       // navigate("/register");
     }
   };
 
-  const handleButtonClick = () => {
-    fetchUser();
-  };
+  const alreadyLogined = useUser();
+
+  if (alreadyLogined.user) {
+    console.log(alreadyLogined);
+    console.log("redirect to home");
+    // navigate("/home");
+  }
 
   return (
-    <Layout>
-      <div>
+    <Layout buttonTitle={loading ? "LOADING" : "START"} onClick={fetchUser}>
+      <div className={styles["welcome-container"]}>
         <h1>JOIN FIGHT CLUB</h1>
         <h2>EARN REAL CASH</h2>
         <h2>NO BS</h2>
       </div>
-      <MainButton onClick={handleButtonClick}>
-        {loading ? "LOADING" : "START"}
-      </MainButton>
     </Layout>
   );
 };

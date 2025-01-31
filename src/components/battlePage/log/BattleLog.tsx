@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { BattleLogType } from "../../types/types";
+import { BattleLogType } from "../../../types/types";
 
 import style from "./BattleLog.module.scss";
 

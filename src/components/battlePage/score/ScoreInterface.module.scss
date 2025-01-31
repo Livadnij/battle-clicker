@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
   & h1 {
     font-weight: 800;
     font-size: 70px;
@@ -14,6 +15,7 @@
 }
 
 .score {
+  flex-direction: row;
   width: 100%;
   gap: 10px;
 }
@@ -33,5 +35,5 @@
 
 .score-colon {
   width: 4%;
-  justify-content: center;
+  justify-content: start;
 }

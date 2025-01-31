@@ -1,4 +1,4 @@
-import { BattleLogType, ScoreType } from "../components/types/types";
+import { BattleLogType, ScoreType } from "../types/types";
 
 export type FightLogicType = {
   setUserChoise: React.Dispatch<React.SetStateAction<number | null>>;

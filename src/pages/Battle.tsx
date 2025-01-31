@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import Layout from "../components/layout/Layout";
-import { BattleLogType, ScoreType } from "../components/types/types";
+import { BattleLogType, ScoreType } from "../types/types";
 import BattleLog from "../components/battlePage/log/BattleLog";
 import fightLogic from "../utils/FightLogic";
 import { getRandomBotName } from "../hooks/getRandomBotName";
@@ -11,8 +11,7 @@ import { BattleInterface } from "../components/battlePage/selection/SelectionInt
 import { ResultInterface } from "../components/battlePage/ResultInterface";
 import { ScoreInterface } from "../components/battlePage/score/ScoreInterface";
 import { useTelegram } from "hooks/useTelegram";
-import "../styles/battle.scss";
-import MainButton from "components/mainButton/MainButton";
+import styles from "../styles/battle.module.scss";
 
 showEgg();
 
@@ -20,7 +19,7 @@ const scoreDefaultValue = { botScore: 0, userScore: 0 };
 const logDefaultValue = [{ time: getCurrentTime(), log: "Fight Started" }];
 
 const BattlePage: React.FC = () => {
-  const { tg, username, onToggleButton } = useTelegram();
+  const { tg, tg_username } = useTelegram();
 
   const [score, setScore] = useState<ScoreType>(scoreDefaultValue);
   const [userChoise, setUserChoise] = useState<number | null>(null);
@@ -30,7 +29,6 @@ const BattlePage: React.FC = () => {
 
   useEffect(() => {
     tg.ready();
-    // onToggleButton();
   }, []);
 
   const fightOptions = settings.fightOptions;
@@ -54,7 +52,7 @@ const BattlePage: React.FC = () => {
   const attackHandler = () => {
     fightLogic({
       setUserChoise,
-      username,
+      username: tg_username,
       botName,
       score,
       setScore,
@@ -66,19 +64,18 @@ const BattlePage: React.FC = () => {
   };
 
   return (
-    <Layout>
-      {/* <Header>Enjoy the battle!</Header> */}
-      {/* <Main> */}
-      {/* </Main> */}
-      {/* <Footer>Yor score:</Footer> */}
-      <div className="battle-container">
-        <h3>Welcome {username}!</h3>
-        <ScoreInterface userName={username} botName={botName} score={score} />
+    <Layout buttonTitle={turn ? "Attack!" : "Block!"} onClick={attackHandler}>
+      <div className={styles["battle-container"]}>
+        <ScoreInterface
+          userName={tg_username}
+          botName={botName}
+          score={score}
+        />
         <BattleLog logArray={log} />
         {isResult ? (
           <ResultInterface
             botName={botName}
-            userName={username}
+            userName={tg_username}
             score={score}
             restartGame={restartGame}
           />
@@ -92,9 +89,6 @@ const BattlePage: React.FC = () => {
             attackHandler={attackHandler}
           />
         )}
-        <MainButton onClick={attackHandler}>
-          {turn ? "Attack!" : "Block!"}
-        </MainButton>
       </div>
     </Layout>
   );
