@@ -1,6 +1,6 @@
 import Layout from "components/layout/Layout";
 import { useTelegram } from "hooks/useTelegram";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import styles from "../styles/welcome.module.scss";
 import { getUserById } from "../firebase/firebaseFirestore";
@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { useUser } from "hooks/UserContext";
 
 const WelcomePage: React.FC = () => {
+  const { tg } = useTelegram();
   const navigate = useNavigate();
   const { setUser } = useUser();
 
@@ -34,6 +35,10 @@ const WelcomePage: React.FC = () => {
       navigate("/register");
     }
   };
+
+  useEffect(() => {
+    tg.ready();
+  }, []);
 
   const alreadyLogined = useUser();
 

@@ -48,11 +48,12 @@ export const getUsers = async (collectionName: string) => {
  * Update a document in a Firestore collection
  */
 export const updateUser = async (
+  userID: string,
   collectionName: string,
   updatedUser: UserType
 ) => {
   try {
-    const docRef = doc(db, collectionName, `${updatedUser.id}`);
+    const docRef = doc(db, collectionName, userID);
     await updateDoc(docRef, updatedUser);
   } catch (error) {
     console.error("Error updating document:", error);

@@ -1,6 +1,8 @@
-import { BattleLogType, ScoreType } from "../types/types";
+import { updateUser } from "../firebase/firebaseFirestore";
+import { BattleLogType, ScoreType, UserType } from "../types/types";
 
 export type FightLogicType = {
+  user: UserType;
   setUserChoise: React.Dispatch<React.SetStateAction<number | null>>;
   username: string;
   botName: string;
@@ -20,6 +22,7 @@ export type FightLogicType = {
 const areas: string[] = ["head", "body", "legs", "null"];
 
 export default function fightLogic({
+  user,
   setUserChoise,
   username,
   botName,
@@ -74,8 +77,26 @@ export default function fightLogic({
     setUserChoise(null);
   };
 
+  const increaseNumberOfFights = async () => {
+    try {
+      await updateUser(user?.id.toString()!, "users", {
+        ...user!,
+        fights_quantity: user?.fights_quantity! + 1,
+      });
+    } catch (error) {
+      console.log("Failed to fetch user data");
+    }
+  };
+
   setTimeout(() => {
-    if (turn && userChoise !== randomNum) {
+    if (turn && score.userScore === maxScore - 1 && userChoise !== randomNum) {
+      // user wins
+      setScore((prev) => {
+        return { ...prev, userScore: prev.userScore + 1 };
+      });
+
+      handleNextTurn();
+    } else if (turn && userChoise !== randomNum) {
       //if its users turn and he hits unarmored part of the bots body
       setScore((prev) => {
         return { ...prev, userScore: prev.userScore + 1 };
