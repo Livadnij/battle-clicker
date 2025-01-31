@@ -75,10 +75,8 @@ export const deleteUser = async (collectionName: string, docId: string) => {
  */
 export const getUserById = async (collectionName: string, docId: string) => {
   try {
-    console.log(collectionName, docId, db);
     const docRef = doc(db, collectionName, docId);
     const docSnap = await getDoc(docRef);
-
     if (docSnap.exists()) {
       return { id: docSnap.id, ...docSnap.data() } as UserType;
     } else {
