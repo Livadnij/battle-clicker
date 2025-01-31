@@ -95,7 +95,15 @@ export default function fightLogic({
   };
 
   setTimeout(() => {
-    if (turn && score.userScore === maxScore - 1 && userChoise !== randomNum) {
+    if (!turn && score.botScore === maxScore - 1 && userChoise !== randomNum) {
+      // bot wins
+      increaseNumberOfFights();
+      handleNextTurn();
+    } else if (
+      turn &&
+      score.userScore === maxScore - 1 &&
+      userChoise !== randomNum
+    ) {
       // user wins
       setScore((prev) => {
         return { ...prev, userScore: prev.userScore + 1 };

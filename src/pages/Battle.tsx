@@ -101,7 +101,13 @@ const BattlePage: React.FC = () => {
           //   restartGame={restartGame}
           // />
           <div className={styles["result-container"]}>
-            <h1>{`${user?.username ? user.username : tg_username} Won`}</h1>
+            <h1>{`${
+              score.userScore === 3
+                ? user?.username
+                  ? user.username
+                  : tg_username
+                : botName
+            } Won`}</h1>
           </div>
         ) : (
           <BattleInterface
