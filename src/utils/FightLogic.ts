@@ -3,6 +3,7 @@ import { BattleLogType, ScoreType, UserType } from "../types/types";
 
 export type FightLogicType = {
   user: UserType;
+  setUser: (user: UserType | null) => void;
   setUserChoise: React.Dispatch<React.SetStateAction<number | null>>;
   username: string;
   botName: string;
@@ -23,6 +24,7 @@ const areas: string[] = ["head", "body", "legs", "null"];
 
 export default function fightLogic({
   user,
+  setUser,
   setUserChoise,
   username,
   botName,
@@ -86,6 +88,10 @@ export default function fightLogic({
     } catch (error) {
       console.log("Failed to fetch user data");
     }
+    setUser({
+      ...user!,
+      fights_quantity: user?.fights_quantity! + 1,
+    });
   };
 
   setTimeout(() => {
@@ -94,7 +100,7 @@ export default function fightLogic({
       setScore((prev) => {
         return { ...prev, userScore: prev.userScore + 1 };
       });
-
+      increaseNumberOfFights();
       handleNextTurn();
     } else if (turn && userChoise !== randomNum) {
       //if its users turn and he hits unarmored part of the bots body

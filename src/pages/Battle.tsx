@@ -8,7 +8,6 @@ import { getCurrentTime } from "../hooks/getCurrentTime";
 import { showEgg } from "../utils/Easters";
 import settings from "../settings/settings.json";
 import { BattleInterface } from "../components/battlePage/selection/SelectionInterface";
-import { ResultInterface } from "../components/battlePage/result/ResultInterface";
 import { ScoreInterface } from "../components/battlePage/score/ScoreInterface";
 import { useTelegram } from "hooks/useTelegram";
 import styles from "../styles/battle.module.scss";
@@ -22,7 +21,7 @@ const logDefaultValue = [{ time: getCurrentTime(), log: "Fight Started" }];
 
 const BattlePage: React.FC = () => {
   const navigate = useNavigate();
-  const { user } = useUser();
+  const { user, setUser } = useUser();
   const { tg_username } = useTelegram();
 
   const [score, setScore] = useState<ScoreType>(scoreDefaultValue);
@@ -51,6 +50,7 @@ const BattlePage: React.FC = () => {
 
   const attackHandler = () => {
     fightLogic({
+      setUser,
       user: user!,
       setUserChoise,
       username: user?.username ? user.username : tg_username,
