@@ -16,7 +16,7 @@ const RegisterPage: FC<RegisterPageType> = ({}) => {
   const { setUser } = useUser();
 
   const defaultUser = {
-    id: tg_user?.id,
+    id: tg_user?.id.toString(),
     username: "Monkey",
     balance: 0,
     fights_quantity: 0,
@@ -40,7 +40,7 @@ const RegisterPage: FC<RegisterPageType> = ({}) => {
       navigate("/");
     } else {
       try {
-        await addUser("users", userData);
+        await addUser("users", userData, userData.id);
       } catch (error) {
         console.log("Failed to fetch user data");
       } finally {

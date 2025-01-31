@@ -7,6 +7,7 @@ import {
   updateDoc,
   deleteDoc,
   Firestore,
+  setDoc,
 } from "firebase/firestore";
 import { getFirestore } from "firebase/firestore";
 import firebaseApp from "./firebaseConfig";
@@ -17,13 +18,13 @@ const db: Firestore = getFirestore(firebaseApp);
 /**
  * Add a document to a Firestore collection
  */
-export const addUser = async (collectionName: string, user: UserType) => {
+export const addUser = async (
+  collectionName: string,
+  user: UserType,
+  userID: string
+) => {
   try {
-    const docRef = await addDoc(
-      collection(db, collectionName, `${user.id}`),
-      user
-    );
-    return docRef.id;
+    await setDoc(doc(db, collectionName, userID), user);
   } catch (error) {
     console.error("Error adding document:", error);
     throw error;
