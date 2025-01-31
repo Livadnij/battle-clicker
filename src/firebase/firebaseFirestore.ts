@@ -17,9 +17,12 @@ const db: Firestore = getFirestore(firebaseApp);
 /**
  * Add a document to a Firestore collection
  */
-export const addUser = async (collectionName: string, data: object) => {
+export const addUser = async (collectionName: string, user: UserType) => {
   try {
-    const docRef = await addDoc(collection(db, collectionName), data);
+    const docRef = await addDoc(
+      collection(db, collectionName, `${user.id}`),
+      user
+    );
     return docRef.id;
   } catch (error) {
     console.error("Error adding document:", error);
@@ -45,12 +48,11 @@ export const getUsers = async (collectionName: string) => {
  */
 export const updateUser = async (
   collectionName: string,
-  docId: string,
-  updatedData: object
+  updatedUser: UserType
 ) => {
   try {
-    const docRef = doc(db, collectionName, docId);
-    await updateDoc(docRef, updatedData);
+    const docRef = doc(db, collectionName, `${updatedUser.id}`);
+    await updateDoc(docRef, updatedUser);
   } catch (error) {
     console.error("Error updating document:", error);
     throw error;
@@ -60,9 +62,9 @@ export const updateUser = async (
 /**
  * Delete a document from a Firestore collection
  */
-export const deleteUser = async (collectionName: string, docId: string) => {
+export const deleteUser = async (collectionName: string, userID: string) => {
   try {
-    const docRef = doc(db, collectionName, docId);
+    const docRef = doc(db, collectionName, userID);
     await deleteDoc(docRef);
   } catch (error) {
     console.error("Error deleting document:", error);
@@ -73,9 +75,9 @@ export const deleteUser = async (collectionName: string, docId: string) => {
 /**
  * Get a single document from Firestore by ID
  */
-export const getUserById = async (collectionName: string, docId: string) => {
+export const getUserById = async (collectionName: string, userID: string) => {
   try {
-    const docRef = doc(db, collectionName, docId);
+    const docRef = doc(db, collectionName, userID);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
       return { id: docSnap.id, ...docSnap.data() } as UserType;
