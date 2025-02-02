@@ -12,7 +12,8 @@ import { ScoreInterface } from "../components/battlePage/score/ScoreInterface";
 import { useTelegram } from "hooks/useTelegram";
 import styles from "../styles/battle.module.scss";
 import { useUser } from "hooks/UserContext";
-import { useNavigate } from "react-router";
+import { ResultInterface } from "components/battlePage/result/ResultInterface";
+import { useNavigation } from "hooks/useNavigation";
 
 showEgg();
 
@@ -20,7 +21,7 @@ const scoreDefaultValue = { botScore: 0, userScore: 0 };
 const logDefaultValue = [{ time: getCurrentTime(), log: "Fight Started" }];
 
 const BattlePage: React.FC = () => {
-  const navigate = useNavigate();
+  const { goHome } = useNavigation();
   const { user, setUser } = useUser();
   const { tg_username } = useTelegram();
 
@@ -81,7 +82,7 @@ const BattlePage: React.FC = () => {
       onClick={
         score.botScore === 3 || score.userScore === 3
           ? () => {
-              navigate(`/home`);
+              goHome();
             }
           : attackHandler
       }
@@ -94,21 +95,7 @@ const BattlePage: React.FC = () => {
         />
         <BattleLog logArray={log} />
         {isResult ? (
-          // <ResultInterface
-          //   botName={botName}
-          //   userName={tg_username}
-          //   score={score}
-          //   restartGame={restartGame}
-          // />
-          <div className={styles["result-container"]}>
-            <h1>{`${
-              score.userScore === 3
-                ? user?.username
-                  ? user.username
-                  : tg_username
-                : botName
-            } Won`}</h1>
-          </div>
+          <ResultInterface botName={botName} score={score} />
         ) : (
           <BattleInterface
             turn={turn}

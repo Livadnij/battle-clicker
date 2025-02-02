@@ -4,12 +4,13 @@ import React, { useEffect, useState } from "react";
 
 import styles from "../styles/welcome.module.scss";
 import { getUserById } from "../firebase/firebaseFirestore";
-import { useNavigate } from "react-router-dom";
+
 import { useUser } from "hooks/UserContext";
+import { useNavigation } from "hooks/useNavigation";
 
 const WelcomePage: React.FC = () => {
   const { tg } = useTelegram();
-  const navigate = useNavigate();
+  const { goHome, goRegister } = useNavigation();
   const { setUser } = useUser();
 
   const [loading, setLoading] = useState<boolean>(false);
@@ -29,10 +30,10 @@ const WelcomePage: React.FC = () => {
       console.log("redirect to home");
       console.log(fetchedUser);
       setUser(fetchedUser);
-      navigate("/home");
+      goHome();
     } else {
       console.log("redirect to register");
-      navigate("/register");
+      goRegister();
     }
   };
 
@@ -45,7 +46,7 @@ const WelcomePage: React.FC = () => {
   if (alreadyLogined.user) {
     console.log(alreadyLogined);
     console.log("redirect to home");
-    navigate("/home");
+    goHome();
   }
 
   return (

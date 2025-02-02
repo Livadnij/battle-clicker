@@ -1,24 +1,25 @@
-import Layout from "components/layout/Layout";
-import { useUser } from "hooks/UserContext";
 import React from "react";
-import { useNavigate } from "react-router-dom";
 
+import { useUser } from "hooks/UserContext";
+import { useNavigation } from "hooks/useNavigation";
+
+import Layout from "components/layout/Layout";
 import styles from "../styles/home.module.scss";
 
 const HomePage: React.FC = () => {
-  const navigate = useNavigate();
+  const { goIndex, goFight } = useNavigation();
   const { user } = useUser();
   console.log(user);
 
   if (!user?.id) {
-    navigate("/");
+    goIndex();
   }
 
   return (
     <Layout
       buttonTitle="start fight"
       onClick={() => {
-        navigate("/battle");
+        goFight();
       }}
     >
       <div className={styles["home-container"]}>

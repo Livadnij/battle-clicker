@@ -4,14 +4,14 @@ import styles from "../styles/register.module.scss";
 import TextInputField from "components/textInput/TextInputField";
 import { useTelegram } from "hooks/useTelegram";
 import { addUser, getUserById } from "../firebase/firebaseFirestore";
-import { useNavigate } from "react-router";
 import { UserType } from "types/types";
 import { useUser } from "hooks/UserContext";
+import { useNavigation } from "hooks/useNavigation";
 
 type RegisterPageType = {};
 
 const RegisterPage: FC<RegisterPageType> = ({}) => {
-  const navigate = useNavigate();
+  const { goHome, goIndex } = useNavigation();
   const { tg_user } = useTelegram();
   const { setUser } = useUser();
 
@@ -37,7 +37,7 @@ const RegisterPage: FC<RegisterPageType> = ({}) => {
       setLoading(false);
     }
     if (fetchedUser) {
-      navigate("/");
+      goIndex();
     } else {
       try {
         await addUser("users", userData, userData.id);
@@ -47,7 +47,7 @@ const RegisterPage: FC<RegisterPageType> = ({}) => {
         setLoading(false);
       }
       setUser(userData);
-      navigate("/home");
+      goHome();
     }
   };
 
