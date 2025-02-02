@@ -12,5 +12,6 @@
     { "title": "head", "value": 0 },
     { "title": "chest", "value": 1 },
     { "title": "legs", "value": 2 }
-  ]
+  ],
+  "fightPrice": 100
 }

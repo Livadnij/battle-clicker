@@ -6,6 +6,7 @@ import BattlePage from "./pages/Battle";
 import HomePage from "./pages/Home";
 import { UserProvider } from "hooks/UserContext";
 import RegisterPage from "pages/Register";
+import DepositPage from "pages/Deposit";
 
 const App: React.FC = () => (
   <BrowserRouter>
@@ -15,6 +16,7 @@ const App: React.FC = () => (
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/battle" element={<BattlePage />} />
+        <Route path="/deposit" element={<DepositPage />} />
       </Routes>
     </UserProvider>
   </BrowserRouter>

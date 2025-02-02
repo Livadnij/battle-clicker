@@ -11,7 +11,7 @@ import { useNavigation } from "hooks/useNavigation";
 type RegisterPageType = {};
 
 const RegisterPage: FC<RegisterPageType> = ({}) => {
-  const { goHome, goIndex } = useNavigation();
+  const { goDeposit, goIndex } = useNavigation();
   const { tg_user } = useTelegram();
   const { setUser } = useUser();
 
@@ -22,11 +22,11 @@ const RegisterPage: FC<RegisterPageType> = ({}) => {
     fights_quantity: 0,
   };
 
-  const [userData, setUserData] = useState<UserType>(defaultUser);
+  const [value, setValue] = useState<string>(defaultUser.username);
   const [loading, setLoading] = useState<boolean>(false);
 
   const handleSubmitUser = async () => {
-    if (userData.username.length < 3 || !tg_user?.id) return;
+    if (value.length < 3 || !tg_user?.id) return;
     setLoading(true);
     let fetchedUser;
     try {
@@ -40,14 +40,18 @@ const RegisterPage: FC<RegisterPageType> = ({}) => {
       goIndex();
     } else {
       try {
-        await addUser("users", userData, userData.id);
+        await addUser(
+          "users",
+          { ...defaultUser, username: value },
+          defaultUser.id
+        );
       } catch (error) {
         console.log("Failed to fetch user data");
       } finally {
         setLoading(false);
       }
-      setUser(userData);
-      goHome();
+      setUser({ ...defaultUser, username: value });
+      goDeposit();
     }
   };
 
@@ -61,10 +65,9 @@ const RegisterPage: FC<RegisterPageType> = ({}) => {
           WHAT WAS YOUR <br /> NAME AGAIN?
         </h2>
         <TextInputField
-          name={"username"}
           limitations={[3, 12]}
-          value={userData.username}
-          setValue={setUserData}
+          value={value}
+          setValue={setValue}
         />
       </div>
     </Layout>

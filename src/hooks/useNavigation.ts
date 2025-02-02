@@ -19,11 +19,16 @@ export function useNavigation() {
     navigate("/register");
   };
 
+  const goDeposit = () => {
+    navigate("/deposit");
+  };
+
   return {
     navigate,
     goIndex,
     goHome,
     goFight,
     goRegister,
+    goDeposit,
   };
 }

@@ -4,26 +4,23 @@ import layoutElementOne from "../../assets/layout/Vector2841.svg";
 import { UserType } from "types/types";
 
 type TextInputFieldType = {
-  name: string;
   value: string;
-  setValue: React.Dispatch<React.SetStateAction<UserType>>;
+  setValue: React.Dispatch<React.SetStateAction<string>>;
   limitations: [number, number];
 };
 
 const TextInputField: FC<TextInputFieldType> = ({
-  name,
   value,
   setValue,
   limitations,
 }) => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue((prev) => ({ ...prev, [name]: e.target.value }));
+    setValue(e.target.value);
   };
 
   return (
     <div className={styles["input-container"]}>
       <input
-        name={name}
         value={value}
         onChange={handleInputChange}
         type="text"
