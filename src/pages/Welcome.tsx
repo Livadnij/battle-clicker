@@ -14,7 +14,7 @@ const WelcomePage: React.FC = () => {
   const { setUser } = useUser();
 
   const [loading, setLoading] = useState<boolean>(false);
-  const [userId, setUserId] = useState(null);
+  const [userId, setUserId] = useState<string>("");
 
   const fetchUser = async () => {
     setLoading(true);
@@ -22,7 +22,8 @@ const WelcomePage: React.FC = () => {
     try {
       fetchedUser = await getUserById(
         "users",
-        tg_user ? tg_user.id.toString() : userId
+        // tg_user ? tg_user.id.toString() :
+        userId!
       );
     } catch (error) {
       console.log("Failed to fetch user data");
@@ -45,9 +46,11 @@ const WelcomePage: React.FC = () => {
 
     const urlParams = new URLSearchParams(window.location.search);
     const userId = urlParams.get("userId");
+    console.log(userId);
     if (userId) {
       const parsedData = JSON.parse(decodeURIComponent(userId));
-      setUserId(parsedData);
+      console.log(parsedData);
+      setUserId(parsedData.toString());
       console.log("User Data:", parsedData); // { userId, chatId }
     }
   }, []);
