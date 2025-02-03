@@ -14,12 +14,16 @@ const WelcomePage: React.FC = () => {
   const { setUser } = useUser();
 
   const [loading, setLoading] = useState<boolean>(false);
+  const [userId, setUserId] = useState(null);
 
   const fetchUser = async () => {
     setLoading(true);
     let fetchedUser;
     try {
-      fetchedUser = await getUserById("users", tg_user.id.toString());
+      fetchedUser = await getUserById(
+        "users",
+        tg_user ? tg_user.id.toString() : userId
+      );
     } catch (error) {
       console.log("Failed to fetch user data");
     } finally {
@@ -38,6 +42,14 @@ const WelcomePage: React.FC = () => {
 
   useEffect(() => {
     tg.ready();
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const userId = urlParams.get("userId");
+    if (userId) {
+      const parsedData = JSON.parse(decodeURIComponent(userId));
+      setUserId(parsedData);
+      console.log("User Data:", parsedData); // { userId, chatId }
+    }
   }, []);
 
   const alreadyLogined = useUser();
@@ -52,7 +64,6 @@ const WelcomePage: React.FC = () => {
     <Layout buttonTitle={loading ? "LOADING" : "START"} onClick={fetchUser}>
       <div className={styles["welcome-container"]}>
         <h1>JOIN FIGHT CLUB</h1>
-        <h2>{tg_user.username}</h2>
         <h2>EARN REAL CASH</h2>
         <h2>NO BS</h2>
       </div>
