@@ -1,5 +1,4 @@
 import React, { FC, useState } from "react";
-
 import Layout from "components/layout/Layout";
 import { useUser } from "hooks/UserContext";
 import settings from "../settings/settings.json";
@@ -18,33 +17,26 @@ const DepositPage: FC<DepositPageType> = ({}) => {
 
   const handleDeposit = () => {
     if (tg) {
-      tg.showPopup(
+      const amount = parseInt(value, 10);
+      if (amount <= 0) return alert("Enter a valid amount");
+
+      tg.openInvoice(
         {
-          title: "Buy Fights",
-          message: `Confirm purchase for ${value} Stars?`,
-          buttons: [
-            { id: "buy", text: "Buy", type: "default" },
-            { id: "cancel", text: "Cancel", type: "cancel" },
-          ],
+          start_param: "buy_fights",
+          currency: "XTR",
+          prices: [{ label: "Fight", amount: amount * 100 }], // Adjust if needed
+          description: `Buying ${amount} fights`,
+          payload: `fight_purchase_${amount}`,
         },
-        (buttonId: string) => {
-          if (buttonId === "buy") {
-            tg.openInvoice({ start_param: "buy_fights" }, (status: any) => {
-              console.log(`status: ${status}`);
-            });
-          }
+        (status: any) => {
+          console.log(`Payment status: ${status}`);
         }
       );
     }
   };
 
   return (
-    <Layout
-      buttonTitle="Deposit"
-      onClick={() => {
-        handleDeposit();
-      }}
-    >
+    <Layout buttonTitle="Deposit" onClick={handleDeposit}>
       <div className={styles["deposit-container"]}>
         <h2>{`Balance : ${user?.balance} stars`}</h2>
         <h3>{`To enter fight you need ${fightPrice} stars`}</h3>
