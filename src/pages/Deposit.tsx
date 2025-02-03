@@ -17,12 +17,12 @@ const DepositPage: FC<DepositPageType> = ({}) => {
 
   const handleDeposit = () => {
     if (tg) {
-      console.log(tg);
       const amount = parseInt(value, 10);
       if (amount <= 0) return alert("Enter a valid amount");
+
+      const data = { action: "buy", value: amount };
+      tg.sendData(JSON.stringify(data));
     }
-    const data = { action: "buy", item: "premium_subscription" };
-    tg.sendData(JSON.stringify(data));
   };
 
   return (
