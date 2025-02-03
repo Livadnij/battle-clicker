@@ -30,7 +30,7 @@ const DepositPage: FC<DepositPageType> = ({}) => {
         (buttonId: string) => {
           if (buttonId === "buy") {
             tg.openInvoice({ start_param: "buy_fights" }, (status: any) => {
-              console.log(status);
+              console.log(`status: ${status}`);
             });
           }
         }

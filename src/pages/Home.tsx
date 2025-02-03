@@ -8,7 +8,7 @@ import styles from "../styles/home.module.scss";
 import settings from "../settings/settings.json";
 
 const HomePage: React.FC = () => {
-  const { goIndex, goFight } = useNavigation();
+  const { goIndex, goFight, goDeposit } = useNavigation();
   const { user } = useUser();
 
   const fightPrice = settings.fightPrice;
@@ -22,7 +22,7 @@ const HomePage: React.FC = () => {
     <Layout
       buttonTitle={enoughForFight ? "start fight" : "deposit"}
       onClick={() => {
-        goFight();
+        enoughForFight ? goFight() : goDeposit();
       }}
     >
       <div className={styles["home-container"]}>
@@ -32,9 +32,9 @@ const HomePage: React.FC = () => {
         }`}</h2>
         <h2>{`Balance : ${user?.balance} stars`}</h2>
         <h4>{`You ${
-          enoughForFight ? "" : "dont "
-        }have enough stars to start a fight ${
-          enoughForFight ? "" : "<br/> Please Deposit"
+          enoughForFight ? "" : `dont `
+        }have enough stars to start a fight. ${
+          enoughForFight ? "" : ` Please Deposit`
         }`}</h4>
       </div>
     </Layout>
