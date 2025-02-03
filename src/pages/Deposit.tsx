@@ -20,20 +20,9 @@ const DepositPage: FC<DepositPageType> = ({}) => {
       console.log(tg);
       const amount = parseInt(value, 10);
       if (amount <= 0) return alert("Enter a valid amount");
-
-      tg.openInvoice(
-        {
-          start_param: "buy_fights",
-          currency: "XTR",
-          prices: [{ label: "Fight", amount: amount * 100 }], // Adjust if needed
-          description: `Buying ${amount} fights`,
-          payload: `fight_purchase_${amount}`,
-        },
-        (status: any) => {
-          console.log(`Payment status: ${status}`);
-        }
-      );
     }
+    const data = { action: "buy", item: "premium_subscription" };
+    tg.sendData(JSON.stringify(data));
   };
 
   return (
