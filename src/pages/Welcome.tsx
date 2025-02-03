@@ -9,12 +9,11 @@ import { useUser } from "hooks/UserContext";
 import { useNavigation } from "hooks/useNavigation";
 
 const WelcomePage: React.FC = () => {
-  const { tg } = useTelegram();
+  const { tg, tg_user } = useTelegram();
   const { goHome, goRegister } = useNavigation();
   const { setUser } = useUser();
 
   const [loading, setLoading] = useState<boolean>(false);
-  const { tg_user } = useTelegram();
 
   const fetchUser = async () => {
     setLoading(true);
@@ -53,6 +52,7 @@ const WelcomePage: React.FC = () => {
     <Layout buttonTitle={loading ? "LOADING" : "START"} onClick={fetchUser}>
       <div className={styles["welcome-container"]}>
         <h1>JOIN FIGHT CLUB</h1>
+        <h2>{tg_user.username}</h2>
         <h2>EARN REAL CASH</h2>
         <h2>NO BS</h2>
       </div>
