@@ -12,15 +12,19 @@ type ResultInterfaceProps = {
 export function ResultInterface({ botName, score }: ResultInterfaceProps) {
   const { tg_username } = useTelegram();
   const { user } = useUser();
+
+  const userWin = score.userScore === 3;
+
   return (
     <div className={styles["result-container"]}>
       <h1>{`${
-        score.userScore === 3
-          ? user?.username
-            ? user.username
-            : tg_username
-          : botName
+        userWin ? (user?.username ? user.username : tg_username) : botName
       } Won`}</h1>
+      <h2>
+        {userWin
+          ? `You recieved 100 Stars from ${botName}`
+          : `You lost 100 Stars`}
+      </h2>
     </div>
   );
 }

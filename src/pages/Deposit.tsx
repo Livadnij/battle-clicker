@@ -16,7 +16,11 @@ const DepositPage: FC<DepositPageType> = ({}) => {
   const fightPrice = settings.fightPrice;
 
   const handleDeposit = () => {
-    if (tg) {
+    if (!tg) return;
+    if (value === "dev") {
+      const data = { action: "buy", value: 0 };
+      tg.sendData(JSON.stringify(data));
+    } else {
       const amount = parseInt(value, 10);
       if (amount <= 0) return alert("Enter a valid amount");
 

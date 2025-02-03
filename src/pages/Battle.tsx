@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import Layout from "../components/layout/Layout";
 import { BattleLogType, ScoreType } from "../types/types";
 import BattleLog from "../components/battlePage/log/BattleLog";
@@ -14,6 +14,7 @@ import styles from "../styles/battle.module.scss";
 import { useUser } from "hooks/UserContext";
 import { ResultInterface } from "components/battlePage/result/ResultInterface";
 import { useNavigation } from "hooks/useNavigation";
+import { updateUser } from "../firebase/firebaseFirestore";
 
 showEgg();
 
@@ -24,14 +25,16 @@ const BattlePage: React.FC = () => {
   const { goHome } = useNavigation();
   const { user, setUser } = useUser();
   const { tg_username } = useTelegram();
+  const botName = getRandomBotName();
 
   const [score, setScore] = useState<ScoreType>(scoreDefaultValue);
   const [userChoise, setUserChoise] = useState<number | null>(null);
   const [log, setLog] = useState<BattleLogType[]>(logDefaultValue);
   const [turn, setTurn] = useState<boolean>(true);
-  const [botName, setBotName] = useState<string>(getRandomBotName());
+  const [userBided, setUserBided] = useState<boolean>(false);
 
   const fightOptions = settings.fightOptions;
+  const fightPrice = settings.fightPrice;
 
   const radioTitle = useMemo(() => {
     return turn ? "Pick an area to punch!" : "Pick an area to Block!";
@@ -41,18 +44,8 @@ const BattlePage: React.FC = () => {
     [score]
   );
 
-  const restartGame = () => {
-    setBotName(getRandomBotName());
-    setScore(scoreDefaultValue);
-    setLog(logDefaultValue);
-    setUserChoise(null);
-    setTurn(true);
-  };
-
   const attackHandler = () => {
     fightLogic({
-      setUser,
-      user: user!,
       setUserChoise,
       username: user?.username ? user.username : tg_username,
       botName,
@@ -70,6 +63,65 @@ const BattlePage: React.FC = () => {
     });
   };
 
+  const changeUserData = async (state: string) => {
+    const currentBalance = user?.balance!;
+    const newBalance =
+      state === "win"
+        ? currentBalance + fightPrice
+        : state === "bid"
+        ? currentBalance - fightPrice
+        : state === "loss"
+        ? currentBalance
+        : undefined;
+    const currentFightQuantity = user?.fights_quantity!;
+    const newFightQuantity =
+      state === "win" || state === "loss"
+        ? currentFightQuantity + 1
+        : state === "bid"
+        ? currentFightQuantity
+        : undefined;
+    if (
+      !currentBalance ||
+      !newBalance ||
+      !currentFightQuantity ||
+      !newFightQuantity
+    ) {
+      goHome();
+    }
+    try {
+      await updateUser(user?.id.toString()!, "users", {
+        ...user!,
+        balance: newBalance!,
+        fights_quantity: newFightQuantity!,
+      });
+    } catch (error) {
+      console.log("Failed to fetch user data");
+    }
+    setUser({
+      ...user!,
+      balance: newBalance!,
+      fights_quantity: newFightQuantity!,
+    });
+  };
+
+  useEffect(() => {
+    if (!userBided) {
+      changeUserData("bid");
+      setUserBided((prev) => !prev);
+    }
+  }, []);
+
+  const handleExitFight = () => {
+    if (score.botScore === 3) {
+      changeUserData("loss");
+      goHome();
+    }
+    if (userBided && score.userScore === 3) {
+      changeUserData("win");
+      goHome();
+    }
+  };
+
   return (
     <Layout
       buttonTitle={
@@ -81,9 +133,7 @@ const BattlePage: React.FC = () => {
       }
       onClick={
         score.botScore === 3 || score.userScore === 3
-          ? () => {
-              goHome();
-            }
+          ? handleExitFight
           : attackHandler
       }
     >

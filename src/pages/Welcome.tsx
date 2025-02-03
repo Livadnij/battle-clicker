@@ -43,6 +43,7 @@ const WelcomePage: React.FC = () => {
 
   useEffect(() => {
     tg.ready();
+    tg.expand();
 
     const urlParams = new URLSearchParams(window.location.search);
     const userId = urlParams.get("userId");
