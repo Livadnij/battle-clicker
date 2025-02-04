@@ -17,7 +17,7 @@ const DepositPage: FC<DepositPageType> = ({}) => {
 
   const handleDeposit = () => {
     if (!tg) return;
-    if (value === "dev") {
+    if (value.toLowerCase() === "dev") {
       const data = { action: "buy", value: 0 };
       tg.sendData(JSON.stringify(data));
     } else {
