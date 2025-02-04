@@ -130,10 +130,10 @@ const BattlePage: React.FC = () => {
           : "Block!"
       }
       onClick={
-        userChoise === null
-          ? () => {}
-          : score.botScore === 3 || score.userScore === 3
+        score.botScore === 3 || score.userScore === 3
           ? handleExitFight
+          : userChoise === null
+          ? () => {}
           : attackHandler
       }
     >
