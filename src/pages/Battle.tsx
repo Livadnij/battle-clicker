@@ -65,6 +65,12 @@ const BattlePage: React.FC = () => {
 
   const changeUserBalance = async (state: string) => {
     const currentBalance = user?.balance!;
+    console.log(
+      state,
+      state !== "bid" && state !== "win",
+      currentBalance,
+      fightPrice
+    );
 
     const newBalance =
       state === "win"
@@ -101,14 +107,14 @@ const BattlePage: React.FC = () => {
     }
   }, []);
 
-  const handleExitFight = () => {
+  const handleExitFight = async () => {
     if (score.botScore === 3) {
-      changeUserFightQuantity();
+      await changeUserFightQuantity();
       goHome();
     }
     if (userBided && score.userScore === 3) {
-      changeUserBalance("win");
-      changeUserFightQuantity();
+      await changeUserBalance("win");
+      await changeUserFightQuantity();
       goHome();
     }
   };
