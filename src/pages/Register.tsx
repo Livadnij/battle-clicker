@@ -13,10 +13,10 @@ type RegisterPageType = {};
 const RegisterPage: FC<RegisterPageType> = ({}) => {
   const { goDeposit, goHome } = useNavigation();
   const { tg_user } = useTelegram();
-  const { setUser } = useUser();
+  const { user, setUser } = useUser();
 
   const defaultUser = {
-    id: tg_user?.id.toString(),
+    id: user?.id.toString()!,
     username: "",
     balance: 0,
     fights_quantity: 0,
