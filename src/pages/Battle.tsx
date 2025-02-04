@@ -80,6 +80,13 @@ const BattlePage: React.FC = () => {
         : state === "bid"
         ? currentFightQuantity
         : undefined;
+
+    console.log(
+      currentBalance,
+      newBalance,
+      currentFightQuantity,
+      newFightQuantity
+    );
     if (
       !currentBalance ||
       !newBalance ||
