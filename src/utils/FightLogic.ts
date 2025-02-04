@@ -1,5 +1,6 @@
 import { updateUser } from "../firebase/firebaseFirestore";
 import { BattleLogType, ScoreType, UserType } from "../types/types";
+import { randomizer } from "./Randomizer";
 
 export type FightLogicType = {
   setUserChoise: React.Dispatch<React.SetStateAction<number | null>>;
@@ -15,7 +16,6 @@ export type FightLogicType = {
   botSurrender?: boolean;
   numberOfBodyParts?: number;
   maxScore?: number;
-  timeoutDelay?: number;
 };
 
 const areas: string[] = ["head", "body", "legs", "null"];
@@ -34,7 +34,6 @@ export default function fightLogic({
   botSurrender = true,
   numberOfBodyParts = 3,
   maxScore = 3,
-  timeoutDelay = 1500,
 }: FightLogicType) {
   const getRandomFromRemaining = () => {
     const options = [0, 1, 2].filter((num) => num !== userChoise);
@@ -95,6 +94,6 @@ export default function fightLogic({
     } else {
       console.log("fight logic failed");
     }
-  }, timeoutDelay);
+  }, randomizer(0, 3) * 1000);
   return "";
 }
