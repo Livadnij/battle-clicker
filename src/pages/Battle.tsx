@@ -23,7 +23,7 @@ const logDefaultValue = [{ time: getCurrentTime(), log: "Fight Started" }];
 
 const BattlePage: React.FC = () => {
   const { goHome } = useNavigation();
-  const { user, setUser } = useUser();
+  const { user } = useUser();
   const { tg_username } = useTelegram();
   const [botName, setBotName] = useState(getRandomBotName());
 
@@ -80,10 +80,6 @@ const BattlePage: React.FC = () => {
     } catch (error) {
       console.log("Failed to fetch user data");
     }
-    setUser({
-      ...user!,
-      balance: newBalance!,
-    });
   };
 
   const changeUserFightQuantity = async () => {
@@ -96,10 +92,6 @@ const BattlePage: React.FC = () => {
       "fights_quantity",
       newFightQuantity
     );
-    setUser({
-      ...user!,
-      fights_quantity: newFightQuantity,
-    });
   };
 
   useEffect(() => {

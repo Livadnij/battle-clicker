@@ -20,11 +20,7 @@ const WelcomePage: React.FC = () => {
     setLoading(true);
     let fetchedUser;
     try {
-      fetchedUser = await getUserById(
-        "users",
-        // tg_user ? tg_user.id.toString() :
-        userId!
-      );
+      fetchedUser = await getUserById("users", userId!);
     } catch (error) {
       console.log("Failed to fetch user data");
     } finally {
@@ -32,7 +28,6 @@ const WelcomePage: React.FC = () => {
     }
     if (fetchedUser) {
       console.log("redirect to home");
-      console.log(fetchedUser);
       setUser(fetchedUser);
       goHome();
     } else {
