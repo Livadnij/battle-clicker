@@ -6,7 +6,7 @@ import { useNavigation } from "hooks/useNavigation";
 import Layout from "components/layout/Layout";
 import styles from "../styles/home.module.scss";
 import settings from "../settings/settings.json";
-import { getUserById } from "firebase/firebaseFirestore";
+import { getUserById } from "../firebase/firebaseFirestore";
 
 const HomePage: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
