@@ -9,7 +9,7 @@ import { useTelegram } from "hooks/useTelegram";
 type DepositPageType = {};
 
 const DepositPage: FC<DepositPageType> = ({}) => {
-  const [value, setValue] = useState<string>("0");
+  const [value, setValue] = useState<string>("");
   const { user } = useUser();
   const { tg } = useTelegram();
 
@@ -35,6 +35,7 @@ const DepositPage: FC<DepositPageType> = ({}) => {
         <h2>{`Balance : ${user?.balance} stars`}</h2>
         <h3>{`To enter fight you need ${fightPrice} stars`}</h3>
         <TextInputField
+          placeholder="..."
           value={value}
           setValue={setValue}
           limitations={[0, 10]}

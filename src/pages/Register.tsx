@@ -17,7 +17,7 @@ const RegisterPage: FC<RegisterPageType> = ({}) => {
 
   const defaultUser = {
     id: tg_user?.id.toString(),
-    username: "Monkey",
+    username: "",
     balance: 0,
     fights_quantity: 0,
   };
@@ -65,6 +65,7 @@ const RegisterPage: FC<RegisterPageType> = ({}) => {
           WHAT WAS YOUR <br /> NAME AGAIN?
         </h2>
         <TextInputField
+          placeholder="..."
           limitations={[3, 12]}
           value={value}
           setValue={setValue}
