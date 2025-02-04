@@ -9,7 +9,7 @@ import settings from "../settings/settings.json";
 import { getUserById } from "../firebase/firebaseFirestore";
 
 const HomePage: React.FC = () => {
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
   const { goIndex, goFight, goDeposit } = useNavigation();
   const { user, setUser } = useUser();
 
@@ -21,7 +21,6 @@ const HomePage: React.FC = () => {
   }
 
   const fetchUser = async () => {
-    setLoading(true);
     try {
       const fetchedUser = await getUserById("users", user?.id.toString()!);
       if (fetchedUser) {
