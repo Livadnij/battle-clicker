@@ -14,7 +14,7 @@ import styles from "../styles/battle.module.scss";
 import { useUser } from "hooks/UserContext";
 import { ResultInterface } from "components/battlePage/result/ResultInterface";
 import { useNavigation } from "hooks/useNavigation";
-import { updateUser } from "../firebase/firebaseFirestore";
+import { updateField, updateUser } from "../firebase/firebaseFirestore";
 
 showEgg();
 
@@ -63,68 +63,60 @@ const BattlePage: React.FC = () => {
     });
   };
 
-  const changeUserData = async (state: string) => {
+  const changeUserBalance = async (state: string) => {
     const currentBalance = user?.balance!;
+
     const newBalance =
       state === "win"
         ? currentBalance + fightPrice
         : state === "bid"
         ? currentBalance - fightPrice
-        : state === "loss"
-        ? currentBalance
-        : undefined;
-    const currentFightQuantity = user?.fights_quantity!;
-    const newFightQuantity =
-      state === "win" || state === "loss"
-        ? currentFightQuantity + 1
-        : state === "bid"
-        ? currentFightQuantity
         : undefined;
 
-    console.log(
-      currentBalance,
-      newBalance,
-      currentFightQuantity,
-      newFightQuantity
-    );
-    if (
-      !currentBalance ||
-      newBalance! >= 0 ||
-      !currentFightQuantity ||
-      !newFightQuantity
-    ) {
-      goHome();
-    }
+    if (state !== "bid" && state !== "win") return;
+
     try {
-      await updateUser(user?.id.toString()!, "users", {
-        ...user!,
-        balance: newBalance!,
-        fights_quantity: newFightQuantity!,
-      });
+      await updateField("users", user?.id.toString()!, "balance", newBalance);
     } catch (error) {
       console.log("Failed to fetch user data");
     }
     setUser({
       ...user!,
       balance: newBalance!,
-      fights_quantity: newFightQuantity!,
+    });
+  };
+
+  const changeUserFightQuantity = async () => {
+    const currentFightQuantity = user?.fights_quantity!;
+    const newFightQuantity = currentFightQuantity + 1;
+
+    await updateField(
+      "users",
+      user?.id.toString()!,
+      "fight_quantity",
+      newFightQuantity
+    );
+    setUser({
+      ...user!,
+      fights_quantity: newFightQuantity,
     });
   };
 
   useEffect(() => {
     if (!userBided) {
-      changeUserData("bid");
+      changeUserBalance("bid");
       setUserBided((prev) => !prev);
     }
   }, []);
 
   const handleExitFight = () => {
     if (score.botScore === 3) {
-      changeUserData("loss");
+      changeUserFightQuantity();
       goHome();
     }
     if (userBided && score.userScore === 3) {
-      changeUserData("win");
+      changeUserBalance("win");
+      changeUserFightQuantity();
       goHome();
     }
   };

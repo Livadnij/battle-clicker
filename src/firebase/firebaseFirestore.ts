@@ -1,6 +1,5 @@
 import {
   collection,
-  addDoc,
   getDocs,
   getDoc,
   doc,
@@ -90,5 +89,26 @@ export const getUserById = async (collectionName: string, userID: string) => {
   } catch (error) {
     console.error("Error fetching document:", error);
     throw error;
+  }
+};
+
+/**
+ * Update a field in a Firestore document
+ */
+
+export const updateField = async (
+  collectionName: string,
+  docId: string,
+  fieldName: string,
+  newValue: any
+) => {
+  try {
+    const docRef = doc(db, collectionName, docId);
+    await updateDoc(docRef, {
+      [fieldName]: newValue,
+    });
+    console.log("Document updated successfully!");
+  } catch (error) {
+    console.error("Error updating document:", error);
   }
 };
