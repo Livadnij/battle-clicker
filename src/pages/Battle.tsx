@@ -89,7 +89,7 @@ const BattlePage: React.FC = () => {
     );
     if (
       !currentBalance ||
-      !newBalance ||
+      newBalance! >= 0 ||
       !currentFightQuantity ||
       !newFightQuantity
     ) {
