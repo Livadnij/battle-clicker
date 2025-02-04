@@ -45,9 +45,13 @@ const HomePage: React.FC = () => {
       buttonTitle={
         loading ? "Loading..." : enoughForFight ? "start fight" : "deposit"
       }
-      onClick={() => {
-        loading ? () => {} : enoughForFight ? goFight() : goDeposit();
-      }}
+      onClick={
+        loading
+          ? () => {}
+          : () => {
+              enoughForFight ? goFight() : goDeposit();
+            }
+      }
     >
       <div className={styles["home-container"]}>
         <h1>{user ? user.username : "John doe 2077"}</h1>
