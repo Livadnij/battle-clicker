@@ -25,7 +25,7 @@ const BattlePage: React.FC = () => {
   const { goHome } = useNavigation();
   const { user, setUser } = useUser();
   const { tg_username } = useTelegram();
-  const botName = getRandomBotName();
+  const [botName, setBotName] = useState(getRandomBotName());
 
   const [score, setScore] = useState<ScoreType>(scoreDefaultValue);
   const [userChoise, setUserChoise] = useState<number | null>(null);
@@ -93,7 +93,7 @@ const BattlePage: React.FC = () => {
     await updateField(
       "users",
       user?.id.toString()!,
-      "fight_quantity",
+      "fights_quantity",
       newFightQuantity
     );
     setUser({
