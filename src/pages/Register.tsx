@@ -40,6 +40,7 @@ const RegisterPage: FC<RegisterPageType> = ({}) => {
       goIndex();
     } else {
       try {
+        if (value.length <= 3) return alert("Enter a valid name");
         await addUser(
           "users",
           { ...defaultUser, username: value },
