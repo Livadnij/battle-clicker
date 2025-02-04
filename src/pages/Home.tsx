@@ -32,7 +32,7 @@ const HomePage: React.FC = () => {
     } catch (error) {
       console.log("Failed to fetch user data");
     } finally {
-      setTimeout(() => setLoading(false), 2000);
+      setTimeout(() => setLoading(false), 1000);
     }
   };
 

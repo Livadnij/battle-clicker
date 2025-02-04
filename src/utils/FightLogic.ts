@@ -94,6 +94,6 @@ export default function fightLogic({
     } else {
       console.log("fight logic failed");
     }
-  }, randomizer(0, 3) * 1000);
+  }, randomizer(0.5, 1.5) * 1000);
   return "";
 }
