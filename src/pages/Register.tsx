@@ -1,18 +1,15 @@
 import Layout from "components/layout/Layout";
-import { FC, useEffect, useState } from "react";
+import { FC, useState } from "react";
 import styles from "../styles/register.module.scss";
 import TextInputField from "components/textInput/TextInputField";
-import { useTelegram } from "hooks/useTelegram";
-import { addUser, getUserById } from "../firebase/firebaseFirestore";
-import { UserType } from "types/types";
+import { addUser } from "../firebase/firebaseFirestore";
 import { useUser } from "hooks/UserContext";
 import { useNavigation } from "hooks/useNavigation";
 
 type RegisterPageType = {};
 
 const RegisterPage: FC<RegisterPageType> = ({}) => {
-  const { goDeposit, goHome } = useNavigation();
-  const { tg_user } = useTelegram();
+  const { goDeposit } = useNavigation();
   const { user, setUser } = useUser();
 
   const defaultUser = {
@@ -24,17 +21,17 @@ const RegisterPage: FC<RegisterPageType> = ({}) => {
 
   const [value, setValue] = useState<string>(defaultUser.username);
 
-  const fetchUser = async () => {
-    try {
-      const fetchedUser = await getUserById("users", tg_user.id.toString()!);
-      if (fetchedUser) {
-        setUser(fetchedUser);
-        goHome();
-      }
-    } catch (error) {
-      console.log("Failed to fetch user data");
-    }
-  };
+  // const fetchUser = async () => {
+  //   try {
+  //     const fetchedUser = await getUserById("users", tg_user.id.toString()!);
+  //     if (fetchedUser) {
+  //       setUser(fetchedUser);
+  //       goHome();
+  //     }
+  //   } catch (error) {
+  //     console.log("Failed to fetch user data");
+  //   }
+  // };
 
   const handleSubmitUser = async () => {
     if (value.length <= 3) return alert("Name is too short");
@@ -52,9 +49,9 @@ const RegisterPage: FC<RegisterPageType> = ({}) => {
     goDeposit();
   };
 
-  useEffect(() => {
-    fetchUser();
-  }, []);
+  // useEffect(() => {
+  //   fetchUser();
+  // }, []);
 
   return (
     <Layout buttonTitle={"submit"} onClick={handleSubmitUser}>

@@ -9,7 +9,7 @@ import { useUser } from "hooks/UserContext";
 import { useNavigation } from "hooks/useNavigation";
 
 const WelcomePage: React.FC = () => {
-  const { tg, tg_user } = useTelegram();
+  const { tg } = useTelegram();
   const { goHome, goRegister } = useNavigation();
   const { setUser } = useUser();
 
@@ -20,7 +20,7 @@ const WelcomePage: React.FC = () => {
     setLoading(true);
     let fetchedUser;
     try {
-      fetchedUser = await getUserById("users", userId!);
+      fetchedUser = await getUserById("users", userId.toString()!);
     } catch (error) {
       console.log("Failed to fetch user data");
     } finally {
@@ -48,6 +48,7 @@ const WelcomePage: React.FC = () => {
       console.log(parsedData);
       setUserId(parsedData.toString());
       console.log("User Data:", parsedData); // { userId, chatId }
+      setUser({ id: userId, balance: 0, fights_quantity: 0, username: "" });
     }
   }, []);
 
