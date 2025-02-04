@@ -20,7 +20,7 @@ const WelcomePage: React.FC = () => {
     setLoading(true);
     let fetchedUser;
     try {
-      fetchedUser = await getUserById("users", userId.toString()!);
+      fetchedUser = await getUserById("users", userId!);
     } catch (error) {
       console.log("Failed to fetch user data");
     } finally {
@@ -51,14 +51,6 @@ const WelcomePage: React.FC = () => {
       setUser({ id: userId, balance: 0, fights_quantity: 0, username: "" });
     }
   }, []);
-
-  const alreadyLogined = useUser();
-
-  if (alreadyLogined.user) {
-    console.log(alreadyLogined);
-    console.log("redirect to home");
-    goHome();
-  }
 
   return (
     <Layout buttonTitle={loading ? "LOADING" : "START"} onClick={fetchUser}>
