@@ -53,8 +53,6 @@ export default function fightLogic({
   const minutes = String(date.getMinutes()).padStart(2, "0");
   const time = `${hours}:${minutes}`;
 
-  console.log(randomNum, userChoise);
-
   const logTemplate = () =>
     `${turn ? username : botName} hits ${!turn ? username : botName} in the ${
       turn

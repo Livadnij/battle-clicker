@@ -15,6 +15,7 @@ import { useUser } from "hooks/UserContext";
 import { ResultInterface } from "components/battlePage/result/ResultInterface";
 import { useNavigation } from "hooks/useNavigation";
 import { updateField, updateUser } from "../firebase/firebaseFirestore";
+import { randomizer } from "utils/Randomizer";
 
 showEgg();
 
@@ -30,7 +31,7 @@ const BattlePage: React.FC = () => {
   const [score, setScore] = useState<ScoreType>(scoreDefaultValue);
   const [userChoise, setUserChoise] = useState<number | null>(null);
   const [log, setLog] = useState<BattleLogType[]>(logDefaultValue);
-  const [turn, setTurn] = useState<boolean>(true);
+  const [turn, setTurn] = useState<boolean>(randomizer(0, 1) ? true : false);
   const [userBided, setUserBided] = useState<boolean>(false);
 
   const fightOptions = settings.fightOptions;
@@ -129,7 +130,9 @@ const BattlePage: React.FC = () => {
           : "Block!"
       }
       onClick={
-        score.botScore === 3 || score.userScore === 3
+        userChoise === null
+          ? () => {}
+          : score.botScore === 3 || score.userScore === 3
           ? handleExitFight
           : attackHandler
       }
