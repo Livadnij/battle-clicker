@@ -21,7 +21,7 @@ const DepositPage: FC<DepositPageType> = ({}) => {
   const createInvoice = async () => {
     const currentValue = value;
     try {
-      const response = await axios.post(apiUrl!, {
+      const response = await axios.post(apiUrl! + "/get-invoice", {
         amount: currentValue,
         description: "Deposit stars to get access to paid fights",
         title: "Buy Fights",
