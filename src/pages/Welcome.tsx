@@ -40,8 +40,6 @@ const WelcomePage: React.FC = () => {
     tg.ready();
     tg.expand();
 
-    console.log(tg.initData());
-
     const urlParams = new URLSearchParams(window.location.search);
     const userId = urlParams.get("userId");
     console.log(userId);
