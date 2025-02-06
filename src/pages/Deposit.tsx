@@ -6,7 +6,7 @@ import TextInputField from "components/textInput/TextInputField";
 import styles from "../styles/deposit.module.scss";
 import { useTelegram } from "hooks/useTelegram";
 import axios from "axios";
-import { updateField } from "firebase/firebaseFirestore";
+import { updateField } from "../firebase/firebaseFirestore";
 
 type DepositPageType = {};
 
