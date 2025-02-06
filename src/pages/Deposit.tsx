@@ -28,41 +28,35 @@ const DepositPage: FC<DepositPageType> = ({}) => {
       });
 
       if (response.data.invoiceLink) {
-        // Open Telegram Payment Modal
-        tg.showPopup(
-          {
-            title: "Confirm Your Purchase",
-            message: `Do you want to buy Fight Club fight pass?`,
-            buttons: [
-              {
-                id: "pay",
-                text: `CONFIRM AND PAY ⭐ ${currentValue}`,
-                type: "default",
-              },
-              { id: "cancel", text: "Cancel", type: "destructive" },
-            ],
-          },
-          (buttonId: string) => {
-            if (buttonId === "pay") {
-              // Open the payment link inside Telegram WebApp
-              tg.openInvoice(response.data.invoiceLink, (status: any) => {
-                console.log(status);
-                if (false) {
-                  try {
-                    updateField(
-                      "users",
-                      tg_user.id.toString(),
-                      "balance",
-                      currentValue
-                    );
-                  } catch (error) {
-                    console.error("Failed to update users balance:", error);
-                  }
-                }
-              });
-            }
+        // Open the payment link inside Telegram WebApp
+        tg.openInvoice(response.data.invoiceLink, (invoiceStatus: any) => {
+          console.log("invoice callback:", invoiceStatus);
+          // if (invoiceStatus === "closed") {
+          //   try {
+          //     updateField(
+          //       "users",
+          //       tg_user.id.toString(),
+          //       "balance",
+          //       currentValue
+          //     );
+          //   } catch (error) {
+          //     console.error("Failed to update users balance:", error);
+          //   }
+          // }
+        });
+        tg.onEvent("invoiceClosed", (data: any) => {
+          console.log("tg onEvent (invoiceClosed)", data);
+          try {
+            updateField(
+              "users",
+              tg_user.id.toString(),
+              "balance",
+              currentValue
+            );
+          } catch (error) {
+            console.error("Failed to update users balance:", error);
           }
-        );
+        });
       }
     } catch (error) {
       console.error("Failed to create invoice:", error);
