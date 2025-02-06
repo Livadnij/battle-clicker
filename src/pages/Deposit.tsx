@@ -6,20 +6,23 @@ import TextInputField from "components/textInput/TextInputField";
 import styles from "../styles/deposit.module.scss";
 import { useTelegram } from "hooks/useTelegram";
 import axios from "axios";
+import { updateField } from "firebase/firebaseFirestore";
 
 type DepositPageType = {};
 
 const DepositPage: FC<DepositPageType> = ({}) => {
   const [value, setValue] = useState<string>("");
   const { user } = useUser();
-  const { tg } = useTelegram();
+  const { tg, tg_user } = useTelegram();
 
   const fightPrice = settings.fightPrice;
+  const apiUrl = process.env.REACT_APP_API_URL;
 
   const createInvoice = async () => {
+    const currentValue = value;
     try {
-      const response = await axios.post("http://localhost:3001/get-invoice", {
-        amount: value,
+      const response = await axios.post(apiUrl!, {
+        amount: currentValue,
         description: "Deposit stars to get access to paid fights",
         title: "Buy Fights",
       });
@@ -33,7 +36,7 @@ const DepositPage: FC<DepositPageType> = ({}) => {
             buttons: [
               {
                 id: "pay",
-                text: `CONFIRM AND PAY ⭐ ${value}`,
+                text: `CONFIRM AND PAY ⭐ ${currentValue}`,
                 type: "default",
               },
               { id: "cancel", text: "Cancel", type: "destructive" },
@@ -43,7 +46,19 @@ const DepositPage: FC<DepositPageType> = ({}) => {
             if (buttonId === "pay") {
               // Open the payment link inside Telegram WebApp
               tg.openInvoice(response.data.invoiceLink, (status: any) => {
-                console.log("status:", status);
+                console.log(status);
+                if (false) {
+                  try {
+                    updateField(
+                      "users",
+                      tg_user.id.toString(),
+                      "balance",
+                      currentValue
+                    );
+                  } catch (error) {
+                    console.error("Failed to update users balance:", error);
+                  }
+                }
               });
             }
           }
