@@ -9,7 +9,7 @@ import { useUser } from "hooks/UserContext";
 import { useNavigation } from "hooks/useNavigation";
 
 const WelcomePage: React.FC = () => {
-  const { tg } = useTelegram();
+  const { tg, tg_user } = useTelegram();
   const { goHome, goRegister } = useNavigation();
   const { setUser } = useUser();
 
@@ -39,17 +39,17 @@ const WelcomePage: React.FC = () => {
   useEffect(() => {
     tg.ready();
     tg.expand();
-
-    const urlParams = new URLSearchParams(window.location.search);
-    const userId = urlParams.get("userId");
-    console.log(userId);
-    if (userId) {
-      const parsedData = JSON.parse(decodeURIComponent(userId));
-      console.log(parsedData);
-      setUserId(parsedData.toString());
-      console.log("User Data:", parsedData); // { userId, chatId }
-      setUser({ id: userId, balance: 0, fights_quantity: 0, username: "" });
-    }
+    setUser({ id: tg_user.id, balance: 0, fights_quantity: 0, username: "" });
+    // const urlParams = new URLSearchParams(window.location.search);
+    // const userId = urlParams.get("userId");
+    // console.log(userId);
+    // if (userId) {
+    //   const parsedData = JSON.parse(decodeURIComponent(userId));
+    //   console.log(parsedData);
+    //   setUserId(parsedData.toString());
+    //   console.log("User Data:", parsedData);
+    //   setUser({ id: userId, balance: 0, fights_quantity: 0, username: "" });
+    // }
   }, []);
 
   return (
