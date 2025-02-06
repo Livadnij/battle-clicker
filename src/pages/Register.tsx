@@ -21,18 +21,6 @@ const RegisterPage: FC<RegisterPageType> = ({}) => {
 
   const [value, setValue] = useState<string>(defaultUser.username);
 
-  // const fetchUser = async () => {
-  //   try {
-  //     const fetchedUser = await getUserById("users", tg_user.id.toString()!);
-  //     if (fetchedUser) {
-  //       setUser(fetchedUser);
-  //       goHome();
-  //     }
-  //   } catch (error) {
-  //     console.log("Failed to fetch user data");
-  //   }
-  // };
-
   const handleSubmitUser = async () => {
     if (value.length <= 3) return alert("Name is too short");
     if (value.length > 12) return alert("Name is too long");
@@ -48,10 +36,6 @@ const RegisterPage: FC<RegisterPageType> = ({}) => {
     setUser({ ...defaultUser, username: value });
     goDeposit();
   };
-
-  // useEffect(() => {
-  //   fetchUser();
-  // }, []);
 
   return (
     <Layout buttonTitle={"submit"} onClick={handleSubmitUser}>

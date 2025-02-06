@@ -14,24 +14,27 @@ const WelcomePage: React.FC = () => {
   const { setUser } = useUser();
 
   const [loading, setLoading] = useState<boolean>(false);
-  const [userId, setUserId] = useState<string>("");
 
   const fetchUser = async () => {
     setLoading(true);
     let fetchedUser;
     try {
-      fetchedUser = await getUserById("users", userId!);
+      fetchedUser = await getUserById("users", tg_user.id.toString());
     } catch (error) {
       console.log("Failed to fetch user data");
     } finally {
       setLoading(false);
     }
     if (fetchedUser) {
-      console.log("redirect to home");
       setUser(fetchedUser);
       goHome();
     } else {
-      console.log("redirect to register");
+      setUser({
+        id: tg_user.id.toString(),
+        balance: 0,
+        fights_quantity: 0,
+        username: "",
+      });
       goRegister();
     }
   };
@@ -39,17 +42,6 @@ const WelcomePage: React.FC = () => {
   useEffect(() => {
     tg.ready();
     tg.expand();
-    setUser({ id: tg_user.id, balance: 0, fights_quantity: 0, username: "" });
-    // const urlParams = new URLSearchParams(window.location.search);
-    // const userId = urlParams.get("userId");
-    // console.log(userId);
-    // if (userId) {
-    //   const parsedData = JSON.parse(decodeURIComponent(userId));
-    //   console.log(parsedData);
-    //   setUserId(parsedData.toString());
-    //   console.log("User Data:", parsedData);
-    //   setUser({ id: userId, balance: 0, fights_quantity: 0, username: "" });
-    // }
   }, []);
 
   return (
