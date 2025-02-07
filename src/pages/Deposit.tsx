@@ -33,38 +33,16 @@ const DepositPage: FC<DepositPageType> = ({}) => {
       if (response.data.invoiceLink) {
         // Open the payment link inside Telegram WebApp
         tg.openInvoice(response.data.invoiceLink, (invoiceStatus: any) => {
-          console.log(invoiceStatus, typeof invoiceStatus);
           if (invoiceStatus === "paid") {
-            setUserPaid(true);
+            setTimeout(() => {
+              //Updating user balance takes some time on a backend so to prevent user from seen home screen with old balance we need to set timeout.
+              setUserPaid(true);
+            }, 2000);
           }
-          // if (invoiceStatus === "closed") {
-          //   try {
-          //     updateField(
-          //       "users",
-          //       tg_user.id.toString(),
-          //       "balance",
-          //       currentValue
-          //     );
-          //   } catch (error) {
-          //     console.error("Failed to update users balance:", error);
-          //   }
-          // }
         });
-        tg.onEvent("invoiceClosed", (data: any) => {
-          console.log("tg onEvent (invoiceClosed)", data);
-          // if (data.status === "closed") {
-          //   try {
-          //     updateField(
-          //       "users",
-          //       tg_user.id.toString(),
-          //       "balance",
-          //       currentValue
-          //     );
-          //   } catch (error) {
-          //     console.error("Failed to update users balance:", error);
-          //   }
-          // }
-        });
+        // tg.onEvent("invoiceClosed", (data: any) => {
+        //   console.log("tg onEvent (invoiceClosed)", data);
+        // });
       }
     } catch (error) {
       console.error("Failed to create invoice:", error);
