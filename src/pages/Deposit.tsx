@@ -33,7 +33,7 @@ const DepositPage: FC<DepositPageType> = ({}) => {
       if (response.data.invoiceLink) {
         // Open the payment link inside Telegram WebApp
         tg.openInvoice(response.data.invoiceLink, (invoiceStatus: any) => {
-          console.log("invoice callback:", invoiceStatus);
+          console.log(invoiceStatus, typeof invoiceStatus);
           if (invoiceStatus === "paid") {
             setUserPaid(true);
           }
