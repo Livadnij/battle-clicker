@@ -6,14 +6,17 @@ import TextInputField from "components/textInput/TextInputField";
 import styles from "../styles/deposit.module.scss";
 import { useTelegram } from "hooks/useTelegram";
 import axios from "axios";
-import { updateField } from "../firebase/firebaseFirestore";
+
+import { useNavigation } from "hooks/useNavigation";
 
 type DepositPageType = {};
 
 const DepositPage: FC<DepositPageType> = ({}) => {
   const [value, setValue] = useState<string>("");
+  const [userPaid, setUserPaid] = useState<boolean>(false);
   const { user } = useUser();
   const { tg, tg_user } = useTelegram();
+  const { goHome } = useNavigation();
 
   const fightPrice = settings.fightPrice;
   const apiUrl = process.env.REACT_APP_API_URL;
@@ -31,6 +34,9 @@ const DepositPage: FC<DepositPageType> = ({}) => {
         // Open the payment link inside Telegram WebApp
         tg.openInvoice(response.data.invoiceLink, (invoiceStatus: any) => {
           console.log("invoice callback:", invoiceStatus);
+          if (invoiceStatus === "paid") {
+            setUserPaid(true);
+          }
           // if (invoiceStatus === "closed") {
           //   try {
           //     updateField(
@@ -66,7 +72,10 @@ const DepositPage: FC<DepositPageType> = ({}) => {
   };
 
   return (
-    <Layout buttonTitle="Deposit" onClick={createInvoice}>
+    <Layout
+      buttonTitle={userPaid ? "Home" : "Deposit"}
+      onClick={userPaid ? goHome : createInvoice}
+    >
       <div className={styles["deposit-container"]}>
         <h2>{`Balance : ${user?.balance} stars`}</h2>
         <h3>{`To enter fight you need ${fightPrice} stars`}</h3>
