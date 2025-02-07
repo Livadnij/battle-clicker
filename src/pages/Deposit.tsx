@@ -46,18 +46,18 @@ const DepositPage: FC<DepositPageType> = ({}) => {
         });
         tg.onEvent("invoiceClosed", (data: any) => {
           console.log("tg onEvent (invoiceClosed)", data);
-          if (data.status === "closed") {
-            try {
-              updateField(
-                "users",
-                tg_user.id.toString(),
-                "balance",
-                currentValue
-              );
-            } catch (error) {
-              console.error("Failed to update users balance:", error);
-            }
-          }
+          // if (data.status === "closed") {
+          //   try {
+          //     updateField(
+          //       "users",
+          //       tg_user.id.toString(),
+          //       "balance",
+          //       currentValue
+          //     );
+          //   } catch (error) {
+          //     console.error("Failed to update users balance:", error);
+          //   }
+          // }
         });
       }
     } catch (error) {
