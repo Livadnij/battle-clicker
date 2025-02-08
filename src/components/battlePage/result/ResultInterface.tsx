@@ -3,6 +3,7 @@ import * as React from "react";
 import styles from "./ResultInterface.module.scss";
 import { useTelegram } from "hooks/useTelegram";
 import { useUser } from "context/UserContext";
+import settings from "../../../settings/settings.json";
 
 type ResultInterfaceProps = {
   botName: string;
@@ -14,6 +15,7 @@ export function ResultInterface({ botName, score }: ResultInterfaceProps) {
   const { user } = useUser();
 
   const userWin = score.userScore === 3;
+  const fightPrice = settings.fightPrice;
 
   return (
     <div className={styles["result-container"]}>
@@ -22,8 +24,8 @@ export function ResultInterface({ botName, score }: ResultInterfaceProps) {
       } Won`}</h1>
       <h2>
         {userWin
-          ? `You recieved 100 Stars from ${botName}`
-          : `You lost 100 Stars`}
+          ? `You recieved ${fightPrice} Stars from ${botName}`
+          : `You lost ${fightPrice} Stars to ${botName}`}
       </h2>
     </div>
   );
