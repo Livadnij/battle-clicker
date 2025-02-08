@@ -2,7 +2,7 @@ import * as React from "react";
 
 import styles from "./ResultInterface.module.scss";
 import { useTelegram } from "hooks/useTelegram";
-import { useUser } from "hooks/UserContext";
+import { useUser } from "context/UserContext";
 
 type ResultInterfaceProps = {
   botName: string;

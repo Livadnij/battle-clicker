@@ -3,6 +3,10 @@ export type ScoreType = {
   userScore: number;
 };
 
+export type BodyAreaType = { title: string; value: number };
+
+export type Areas = BodyAreaType[];
+
 export type BattleLogType = { time: string; log: string };
 
 export type UserType = {

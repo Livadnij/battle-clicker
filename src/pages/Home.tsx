@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { useUser } from "hooks/UserContext";
+import { useUser } from "context/UserContext";
 import { useNavigation } from "hooks/useNavigation";
 
 import Layout from "components/layout/Layout";

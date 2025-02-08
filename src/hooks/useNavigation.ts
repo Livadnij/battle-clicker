@@ -12,7 +12,7 @@ export function useNavigation() {
   };
 
   const goFight = () => {
-    navigate("/battle");
+    navigate("/fight");
   };
 
   const goRegister = () => {

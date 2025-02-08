@@ -14,6 +14,7 @@ type TelegramUserUnsafe = {
 };
 
 export function useTelegram() {
+  const userExists = !!tg?.initDataUnsafe?.user;
   const onClose = () => {
     tg.close();
   };
@@ -28,8 +29,8 @@ export function useTelegram() {
 
   return {
     tg,
-    tg_username: tg.initDataUnsafe.user.username || "user",
-    tg_user: tg.initDataUnsafe.user as TelegramUserUnsafe,
+    tg_username: userExists ? tg.initDataUnsafe.user.username : null,
+    tg_user: userExists ? (tg.initDataUnsafe.user as TelegramUserUnsafe) : null,
     onClose,
     onToggleButton,
   };

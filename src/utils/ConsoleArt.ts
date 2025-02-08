@@ -1,4 +1,5 @@
-export const showEgg = () => {
+import settings from "../settings/settings.json";
+export const showConsoleArt = () => {
   const egg = `
   █████▒ ██▓  ▄████  ██░ ██ ▄▄▄█████▓    ▄████▄   ██▓     █    ██  ▄▄▄▄   
 ▓██   ▒ ▓██▒ ██▒ ▀█▒▓██░ ██▒▓  ██▒ ▓▒   ▒██▀ ▀█  ▓██▒     ██  ▓██▒▓█████▄ 
@@ -11,5 +12,5 @@ export const showEgg = () => {
          ░        ░  ░  ░  ░            ░ ░          ░  ░   ░      ░      
                                                                         `;
   console.log(`${egg}
-                                        ░                         v0.2.0░`);
+                                        ░                         ${settings.version}░`);
 };

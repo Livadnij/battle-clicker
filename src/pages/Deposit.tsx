@@ -1,6 +1,6 @@
 import React, { FC, useState } from "react";
 import Layout from "components/layout/Layout";
-import { useUser } from "hooks/UserContext";
+import { useUser } from "context/UserContext";
 import settings from "../settings/settings.json";
 import TextInputField from "components/textInput/TextInputField";
 import styles from "../styles/deposit.module.scss";
@@ -15,7 +15,7 @@ const DepositPage: FC<DepositPageType> = ({}) => {
   const [value, setValue] = useState<string>("");
   const [userPaid, setUserPaid] = useState<boolean>(false);
   const { user } = useUser();
-  const { tg, tg_user } = useTelegram();
+  const { tg } = useTelegram();
   const { goHome } = useNavigation();
 
   const fightPrice = settings.fightPrice;

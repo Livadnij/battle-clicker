@@ -3,7 +3,7 @@ import { FC, useState } from "react";
 import styles from "../styles/register.module.scss";
 import TextInputField from "components/textInput/TextInputField";
 import { addUser } from "../firebase/firebaseFirestore";
-import { useUser } from "hooks/UserContext";
+import { useUser } from "context/UserContext";
 import { useNavigation } from "hooks/useNavigation";
 
 type RegisterPageType = {};

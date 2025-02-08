@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import styles from "../styles/welcome.module.scss";
 import { getUserById } from "../firebase/firebaseFirestore";
 
-import { useUser } from "hooks/UserContext";
+import { useUser } from "context/UserContext";
 import { useNavigation } from "hooks/useNavigation";
 
 const WelcomePage: React.FC = () => {
@@ -16,6 +16,7 @@ const WelcomePage: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
 
   const fetchUser = async () => {
+    if (!tg_user) return;
     setLoading(true);
     let fetchedUser;
     try {
