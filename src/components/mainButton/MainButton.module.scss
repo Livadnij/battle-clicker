@@ -1,33 +1,28 @@
 .main-button {
   width: 100%;
   height: auto;
-  position: relative; // For positioning the image and text
-  //   display: inline-flex; // Use flexbox for alignment
-  align-items: center; // Vertically center content
-  justify-content: center; // Horizontally center content (if needed)
-  padding: 0; // Remove default button padding
-  border: none; // Remove default button border
-  background: none; // Remove default button background
-  cursor: pointer; // Indicate it's clickable
-
-  // Add any other button styles here, like:
-  // height: 50px;
-  // width: 150px;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
 
   .button-image {
-    width: 100%; // Make SVG fill the button container
-    height: auto; // Maintain aspect ratio
-    display: block; // Prevents a small gap below the image
+    width: 100%;
+    height: auto;
+    display: block;
   }
 
   .button-text {
     text-transform: uppercase;
     position: absolute; // Position text over the image
-    top: 50%;
+    top: 45%;
     left: 50%;
     transform: translate(-50%, -50%); // Center the text
     color: rgb(0, 0, 0); // Or any color you want
-    font-size: 32px; // Adjust font size
+    font-size: 36px; // Adjust font size
     font-weight: bold; // Adjust font weight
     // Add any other text styles you need
   }

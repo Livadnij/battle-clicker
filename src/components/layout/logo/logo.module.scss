@@ -1,0 +1,11 @@
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.logo {
+  position: absolute;
+  top: -32px;
+}

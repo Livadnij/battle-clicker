@@ -11,7 +11,7 @@ import { useNavigation } from "hooks/useNavigation";
 
 type DepositPageType = {};
 
-const DepositPage: FC<DepositPageType> = ({}) => {
+const DepositOnboardingPage: FC<DepositPageType> = ({}) => {
   const [value, setValue] = useState<string>("");
   const [userPaid, setUserPaid] = useState<boolean>(false);
   const { user } = useUser();
@@ -68,4 +68,4 @@ const DepositPage: FC<DepositPageType> = ({}) => {
   );
 };
 
-export default DepositPage;
+export default DepositOnboardingPage;

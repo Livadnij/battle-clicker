@@ -6,3 +6,21 @@
   align-items: center;
   justify-content: center;
 }
+
+.bottom-text-container {
+  line-height: 0.5;
+  font-weight: bold;
+  font-size: 10px;
+  color: #fffb00;
+  height: 100%;
+  width: 100%;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  align-items: end;
+}
+
+.logo-container {
+  height: 50%;
+}

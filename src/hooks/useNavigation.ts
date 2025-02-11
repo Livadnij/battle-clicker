@@ -23,12 +23,22 @@ export function useNavigation() {
     navigate("/deposit");
   };
 
+  const goDepositOn = () => {
+    navigate("/depositOn");
+  };
+
+  const goRules = () => {
+    navigate("/rules");
+  };
+
   return {
+    goDepositOn,
     navigate,
     goIndex,
     goHome,
     goFight,
     goRegister,
     goDeposit,
+    goRules,
   };
 }

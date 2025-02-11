@@ -6,7 +6,9 @@ import FightPage from "./pages/Fight";
 import HomePage from "./pages/Home";
 import { UserProvider } from "context/UserContext";
 import RegisterPage from "pages/Register";
-import DepositPage from "pages/Deposit";
+import DepositOnboardingPage from "pages/DepositOnboarding";
+import RulesPage from "pages/Rules";
+import DepositRegularPage from "pages/DepositRegular";
 
 const App: React.FC = () => (
   <BrowserRouter>
@@ -16,7 +18,9 @@ const App: React.FC = () => (
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/fight" element={<FightPage />} />
-        <Route path="/deposit" element={<DepositPage />} />
+        <Route path="/depositOn" element={<DepositOnboardingPage />} />
+        <Route path="/rules" element={<RulesPage />} />
+        <Route path="/deposit" element={<DepositRegularPage />} />
       </Routes>
     </UserProvider>
   </BrowserRouter>

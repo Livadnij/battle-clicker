@@ -1,0 +1,40 @@
+<svg width="338" height="70" viewBox="0 0 338 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_b_6_1407)">
+<rect width="338" height="68.0001" transform="translate(0 1)" fill="white" fill-opacity="0.04"/>
+<path d="M64 1H132L139 15H71L64 1Z" fill="#FFFB00"/>
+<rect x="4.5" y="1.5" width="67" height="67" fill="#FFFB00" fill-opacity="0.15" stroke="#FFFB00"/>
+<path d="M-1.79217e-06 4L-2.92866e-06 39L4 36L4 1L-1.79217e-06 4Z" fill="#FFFB00"/>
+<path opacity="0.4" d="M-5.84043e-07 43L-4.03724e-06 56L4 59L4 40L-5.84043e-07 43Z" fill="white"/>
+<path d="M3.27835e-06 43L-1.74846e-07 44L4 41L4 40L3.27835e-06 43Z" fill="#FFFB00"/>
+<path d="M3.27835e-06 41L-1.74846e-07 42L4 39L4 38L3.27835e-06 41Z" fill="#FFFB00"/>
+<path d="M22 69L338 69" stroke="#FFFB00" stroke-opacity="0.2"/>
+<path d="M22 1.00003L338 0.999972" stroke="#FFFB00" stroke-opacity="0.2"/>
+<mask id="mask0_6_1407" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="298" y="59" width="40" height="9">
+<path d="M298 59H338V68H298V59Z" fill="white" fill-opacity="0.6"/>
+</mask>
+<g mask="url(#mask0_6_1407)">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M335.538 57.4951L318.395 74.5768L317.048 73.2347L334.191 56.1531L335.538 57.4951Z" fill="white" fill-opacity="0.6"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M341.251 57.4951L324.109 74.5768L322.762 73.2347L339.905 56.1531L341.251 57.4951Z" fill="white" fill-opacity="0.6"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M346.966 57.4951L329.823 74.5768L328.476 73.2347L345.619 56.1531L346.966 57.4951Z" fill="white" fill-opacity="0.6"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M352.68 57.4951L335.537 74.5768L334.19 73.2347L351.333 56.1531L352.68 57.4951Z" fill="white" fill-opacity="0.6"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M329.823 57.4951L312.68 74.5768L311.333 73.2347L328.476 56.1531L329.823 57.4951Z" fill="white" fill-opacity="0.6"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M324.108 57.4951L306.966 74.5768L305.619 73.2347L322.762 56.1531L324.108 57.4951Z" fill="white" fill-opacity="0.6"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M318.395 57.4951L301.252 74.5768L299.905 73.2347L317.048 56.1531L318.395 57.4951Z" fill="white" fill-opacity="0.6"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M312.68 57.4951L295.537 74.5768L294.19 73.2347L311.333 56.1531L312.68 57.4951Z" fill="white" fill-opacity="0.6"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M306.966 57.4951L289.823 74.5768L288.476 73.2347L305.619 56.1531L306.966 57.4951Z" fill="white" fill-opacity="0.6"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M301.251 57.4951L284.109 74.5768L282.762 73.2347L299.905 56.1531L301.251 57.4951Z" fill="white" fill-opacity="0.6"/>
+</g>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M337 42V12H338V42H337Z" fill="#FFFB00" fill-opacity="0.5"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M337 58V55H338V58H337Z" fill="#FFFB00" fill-opacity="0.5"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M337 52V32H338V52H337Z" fill="#FFFB00" fill-opacity="0.5"/>
+<path d="M337 7V1H331" stroke="#FFFB00" stroke-width="2"/>
+</g>
+<defs>
+<filter id="filter0_b_6_1407" x="-24" y="-24" width="386" height="117.5" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feGaussianBlur in="BackgroundImageFix" stdDeviation="12"/>
+<feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_6_1407"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_6_1407" result="shape"/>
+</filter>
+</defs>
+</svg>

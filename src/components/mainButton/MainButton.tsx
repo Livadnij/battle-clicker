@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 
 import styles from "./MainButton.module.scss";
-import buttonImage from "../../assets/buttons/MainButton.svg";
+import buttonImage from "../../assets/buttons/mainCTA.svg";
 import { MainButtonType } from "types/types";
 
 const MainButton: FC<MainButtonType> = ({
@@ -22,7 +22,7 @@ const MainButton: FC<MainButtonType> = ({
         alt="Main Button"
         className={styles["button-image"]}
       />
-      {children && <span className={styles["button-text"]}>{children}</span>}
+      {children && <p className={styles["button-text"]}>{children}</p>}
     </button>
   );
 };

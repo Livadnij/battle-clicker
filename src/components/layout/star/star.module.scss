@@ -1,0 +1,24 @@
+@import "../../../styles/variables/variables";
+
+.star-container {
+  position: relative;
+  height: 53px;
+  width: 56px;
+}
+
+.star-bottom,
+.star-top {
+  position: absolute;
+}
+
+.star-bottom {
+  top: 1px;
+}
+
+.star-top path {
+  fill: $primary-color;
+}
+
+.star-bottom path {
+  fill: $background-color;
+}

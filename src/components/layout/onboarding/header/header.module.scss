@@ -1,0 +1,60 @@
+.header-container {
+  height: 177px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.header-component-1 {
+  position: absolute;
+  width: 100%;
+  top: 19px;
+}
+
+.union {
+  width: 68%;
+  position: absolute;
+  top: 20px;
+}
+
+.union-container {
+  position: absolute;
+  top: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  padding-left: 16%;
+  padding-right: 16%;
+
+  img {
+    height: auto;
+    width: 100%;
+  }
+}
+.left {
+  filter: grayscale(100%);
+}
+.middle {
+  filter: grayscale(100%);
+}
+.right {
+  filter: grayscale(100%);
+}
+
+.left-selected {
+  filter: grayscale(0%);
+}
+
+.middle-selected {
+  filter: grayscale(0%);
+}
+
+.right-selected {
+  filter: grayscale(0%);
+}
+
+.logo-container {
+  position: absolute;
+  top: 50px;
+}

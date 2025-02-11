@@ -30,11 +30,6 @@ const TextInputField: FC<TextInputFieldType> = ({
         minLength={limitations[0]}
         maxLength={limitations[1]}
       />
-      <img
-        src={layoutElementOne}
-        alt="Layout Element"
-        className={styles["layout-element-one"]}
-      />
     </div>
   );
 };
