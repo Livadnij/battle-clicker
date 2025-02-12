@@ -1,7 +1,5 @@
 import React, { FC } from "react";
 import styles from "./TextInputField.module.scss";
-import layoutElementOne from "../../assets/layout/Vector2841.svg";
-import { UserType } from "types/types";
 
 type TextInputFieldType = {
   placeholder: string;

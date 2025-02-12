@@ -11,14 +11,13 @@ import Crosses from "components/layout/onboarding/crosses/Crosses";
 type RulesProps = {};
 
 const RulesPage: FC<RulesProps> = ({}) => {
-  const { goDepositOn } = useNavigation();
-  const handleNextPage = () => {};
+  const { goDeposit } = useNavigation();
 
   return (
     <Layout
       color="blue"
       buttonTitle="I`m in"
-      onClick={goDepositOn}
+      onClick={goDeposit}
       backgroundImage={backgroundImage}
     >
       <div className={styles["container"]}>

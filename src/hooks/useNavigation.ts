@@ -4,41 +4,47 @@ export function useNavigation() {
   const navigate = useNavigate();
 
   const goIndex = () => {
+    //index page, obviously
     navigate("/");
   };
 
   const goHome = () => {
+    //main page with star balance and button to start fights
     navigate("/home");
   };
 
   const goFight = () => {
+    //fight page
     navigate("/fight");
   };
 
-  const goRegister = () => {
-    navigate("/register");
-  };
-
-  const goDeposit = () => {
-    navigate("/deposit");
-  };
-
-  const goDepositOn = () => {
-    navigate("/depositOn");
+  const goLoading = () => {
+    //loading page
+    navigate("/loading");
   };
 
   const goRules = () => {
+    // first part of the onboarding with basic rules
     navigate("/rules");
   };
 
+  const goDeposit = () => {
+    // second part of the onboarding which has a button to trigger payment
+    navigate("/deposit");
+  };
+
+  const goRegister = () => {
+    // third part of the onboarding group where person sets a username
+    navigate("/register");
+  };
+
   return {
-    goDepositOn,
-    navigate,
+    goDeposit,
     goIndex,
     goHome,
     goFight,
-    goRegister,
-    goDeposit,
     goRules,
+    goLoading,
+    goRegister,
   };
 }

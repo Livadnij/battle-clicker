@@ -18,11 +18,11 @@ const Rule: FC<RuleProps> = ({ number, text, type = "star" }) => {
       <div className={styles["star-container"]}>
         <Svg type={type} />
       </div>
-      <div className={styles["body"]}>
-        <div className={styles["text-comtainer"]}>{text}</div>
+      <div className={styles.body}>
+        <div className={styles["text-container"]}>{text}</div>
         <RightElement className={styles["right-element"]} />
       </div>
-      <div className={styles["rectangle-comtainer"]}>
+      <div className={styles["rectangle-container"]}>
         <Rectangle />
         <span> Rule #{number}</span>
       </div>
