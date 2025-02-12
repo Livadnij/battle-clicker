@@ -15,4 +15,13 @@ html,
 body {
   height: 100%;
   margin: 0; /* Important: Remove default margins */
+  background: gray;
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
