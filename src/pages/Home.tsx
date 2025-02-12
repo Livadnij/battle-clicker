@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
 import { useUser } from "context/UserContext";
 import { useNavigation } from "hooks/useNavigation";
@@ -35,41 +35,43 @@ const HomePage: React.FC = () => {
     }
   };
 
+  const handleClick = () => {
+    if (!loading) {
+      enoughForFight ? goFight() : goDeposit();
+    }
+  };
+
+  const buttonTitle = useMemo(() => {
+    if (!loading) {
+        if (enoughForFight) {
+            return "start fight";
+        } else {
+            return "deposit";
+        }
+    }
+    return "Loading...";
+  }, [loading, enoughForFight]);
+
   useEffect(() => {
     fetchUser();
   }, []);
 
   return (
     <Layout
-      buttonTitle={
-        loading ? "Loading..." : enoughForFight ? "start fight" : "deposit"
-      }
-      onClick={
-        loading
-          ? () => {}
-          : () => {
-              enoughForFight ? goFight() : goDeposit();
-            }
-      }
+      buttonTitle={buttonTitle}
+      onClick={handleClick}
     >
-      <div className={styles["home-container"]}>
-        <h1>{user ? user.username : "John doe 2077"}</h1>
-        {loading ? (
-          <></>
-        ) : (
-          <>
-            <h2>{`You joined ${user?.fights_quantity} ${
-              user?.fights_quantity === 1 ? "fight" : "fights"
-            }`}</h2>
-            <h2>{`Balance : ${user?.balance} stars`}</h2>
-            <h4>{`You ${
-              enoughForFight ? "" : `dont `
-            }have enough stars to start a fight. ${
-              enoughForFight ? "" : ` Please Deposit`
-            }`}</h4>
-          </>
-        )}
-      </div>
+        <div className={styles["home-container"]}>
+            <h1>{user?.username ?? "John doe 2077"}</h1>
+            {!loading && (
+                <>
+                    <h2>You joined {user?.fights_quantity} {user?.fights_quantity === 1 ? "fight" : "fights"}</h2>
+                    <h2>Balance: {user?.balance} stars</h2>
+                    <h4>You {enoughForFight ? "" : "don't "}have enough stars to start a
+                        fight. {enoughForFight ? "" : "Please Deposit"}</h4>
+                </>
+            )}
+        </div>
     </Layout>
   );
 };
