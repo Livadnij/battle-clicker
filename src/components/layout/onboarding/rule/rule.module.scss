@@ -15,7 +15,7 @@
   -webkit-backdrop-filter: $blur;
   background-color: $primary-transparent;
   border: solid 1px $primary-color;
-  padding: 6px;
+  padding: 9px;
 }
 
 .rectangle-comtainer {
@@ -33,6 +33,20 @@
   }
 }
 
+.right-element {
+  height: 100%;
+}
+
+.body {
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  border: solid 2px $primary-transparent;
+  backdrop-filter: $blur;
+  background-color: $secondary-transparent;
+}
+
 .text-comtainer {
+  width: 90%;
   padding: 20px 50px 10px 10px;
 }

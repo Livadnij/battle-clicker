@@ -1,0 +1,56 @@
+@import "../../../../styles/variables/variables";
+
+.container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center; // Centers horizontally
+  align-items: center; // Centers vertically
+  padding-bottom: 40px;
+}
+
+.sign-container {
+  display: flex;
+  width: 351px;
+  height: 114px;
+  position: relative;
+  backdrop-filter: $blur;
+}
+
+.sign {
+  position: absolute;
+  transform: translateX(-50%);
+  left: 50%;
+}
+
+.sign-body {
+  padding-top: 25px;
+  width: 100%;
+  gap: 6px;
+  height: "auto";
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: $primary-color;
+  font-size: 12px;
+}
+
+.banner-container {
+  transform: translateX(-50%);
+  left: 50%;
+  top: -10px;
+  position: absolute;
+  text-align: center;
+
+  span {
+    transform: translateX(-50%);
+    left: 50%;
+    top: 5px;
+    width: 150px;
+    position: absolute;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: $text-color;
+  }
+}

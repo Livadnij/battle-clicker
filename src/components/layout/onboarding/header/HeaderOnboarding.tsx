@@ -7,7 +7,7 @@ import middle from "../../../../assets/layout/rules/middle.svg";
 import Logo from "components/layout/logo/Logo";
 
 type headerProps = {
-  pageName: "rules" | "register" | "depositOn";
+  pageName: "rules" | "depositOn" | "register";
 };
 
 const HeaderOnboarding: FC<headerProps> = ({ pageName }) => {
@@ -24,13 +24,13 @@ const HeaderOnboarding: FC<headerProps> = ({ pageName }) => {
         <img
           src={middle}
           className={
-            styles[`${pageName === "register" ? "middle-selected" : "middle"}`]
+            styles[`${pageName === "depositOn" ? "middle-selected" : "middle"}`]
           }
         />
         <img
           src={right}
           className={
-            styles[`${pageName === "depositOn" ? "right-selected" : "right"}`]
+            styles[`${pageName === "register" ? "right-selected" : "right"}`]
           }
         />
       </div>

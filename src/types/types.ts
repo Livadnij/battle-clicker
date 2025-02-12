@@ -15,9 +15,3 @@ export type UserType = {
   fights_quantity: number;
   username: string;
 };
-
-export type MainButtonType = {
-  children?: React.ReactNode;
-  onClick?: () => void;
-  type?: "button" | "submit" | "reset";
-};

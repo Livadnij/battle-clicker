@@ -6,23 +6,45 @@ import RulesBanner from "components/layout/onboarding/rulesBanner/RulesBanner";
 import styles from "../styles/rules.module.scss";
 import Rule from "components/layout/onboarding/rule/Rule";
 import { useNavigation } from "../hooks/useNavigation";
+import Crosses from "components/layout/onboarding/crosses/Crosses";
 
 type RulesProps = {};
 
 const RulesPage: FC<RulesProps> = ({}) => {
-  const { goHome } = useNavigation();
+  const { goDepositOn } = useNavigation();
   const handleNextPage = () => {};
 
   return (
     <Layout
+      color="blue"
       buttonTitle="I`m in"
-      onClick={goHome}
+      onClick={goDepositOn}
       backgroundImage={backgroundImage}
     >
-      <HeaderOnboarding pageName="rules" />
-      <RulesBanner />
-      <div className={styles["rules-comtainer"]}>
-        <Rule number={1} text="Deposit 100 Stars to enter theN fight arena." />
+      <div className={styles["container"]}>
+        <HeaderOnboarding pageName="rules" />
+        <RulesBanner />
+        <div className={styles["body"]}>
+          <div className={styles["rules-comtainer"]}>
+            <Rule
+              type="star"
+              number={1}
+              text="Deposit 100 Stars to enter theN fight arena."
+            />
+            <Crosses />
+            <Rule
+              type="skull"
+              number={2}
+              text="Face real opponents in intense battles."
+            />
+            <Crosses />
+            <Rule
+              type="card"
+              number={3}
+              text="Crush your rival. Take their cash."
+            />
+          </div>
+        </div>
       </div>
     </Layout>
   );

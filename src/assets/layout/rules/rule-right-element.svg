@@ -1,0 +1,20 @@
+<svg width="40" height="68" viewBox="0 0 40 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask0_15_1820" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="59" width="40" height="9">
+<path d="M0 59H40V68H0V59Z" fill="white" fill-opacity="0.6"/>
+</mask>
+<g mask="url(#mask0_15_1820)">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M37.5378 57.4951L20.395 74.5768L19.0481 73.2347L36.191 56.1531L37.5378 57.4951Z" fill="white" fill-opacity="0.6"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M43.2514 57.4951L26.1086 74.5768L24.7617 73.2347L41.9046 56.1531L43.2514 57.4951Z" fill="white" fill-opacity="0.6"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M48.966 57.4951L31.8232 74.5768L30.4763 73.2347L47.6192 56.1531L48.966 57.4951Z" fill="white" fill-opacity="0.6"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M54.6802 57.4951L37.5373 74.5768L36.1904 73.2347L53.3333 56.1531L54.6802 57.4951Z" fill="white" fill-opacity="0.6"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M31.823 57.4951L14.6801 74.5768L13.3333 73.2347L30.4761 56.1531L31.823 57.4951Z" fill="white" fill-opacity="0.6"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M26.1084 57.4951L8.96552 74.5768L7.61865 73.2347L24.7615 56.1531L26.1084 57.4951Z" fill="white" fill-opacity="0.6"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M20.3948 57.4951L3.2519 74.5768L1.90503 73.2347L19.0479 56.1531L20.3948 57.4951Z" fill="white" fill-opacity="0.6"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M14.6802 57.4951L-2.4627 74.5768L-3.80957 73.2347L13.3333 56.1531L14.6802 57.4951Z" fill="white" fill-opacity="0.6"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M8.96605 57.4951L-8.17681 74.5768L-9.52368 73.2347L7.61918 56.1531L8.96605 57.4951Z" fill="white" fill-opacity="0.6"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M3.25145 57.4951L-13.8914 74.5768L-15.2383 73.2347L1.90458 56.1531L3.25145 57.4951Z" fill="white" fill-opacity="0.6"/>
+</g>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M39 58V55H40V58H39Z" fill="#FFFB00" fill-opacity="0.5"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M39 52V32H40V52H39Z" fill="#FFFB00" fill-opacity="0.5"/>
+<path d="M39 7V1H33" stroke="#FFFB00" stroke-width="2"/>
+</svg>
