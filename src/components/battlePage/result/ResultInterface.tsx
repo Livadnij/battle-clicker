@@ -17,16 +17,15 @@ export function ResultInterface({ botName, score }: ResultInterfaceProps) {
   const userWin = score.userScore === 3;
   const fightPrice = settings.fightPrice;
 
+    const winnerName = userWin ? user?.username ?? tg_username : botName;
+    const resultMessage = userWin
+        ? `You received ${fightPrice} Stars from ${botName}`
+        : `You lost ${fightPrice} Stars to ${botName}`;
+
   return (
     <div className={styles["result-container"]}>
-      <h1>{`${
-        userWin ? (user?.username ? user.username : tg_username) : botName
-      } Won`}</h1>
-      <h2>
-        {userWin
-          ? `You recieved ${fightPrice} Stars from ${botName}`
-          : `You lost ${fightPrice} Stars to ${botName}`}
-      </h2>
+        <h1>{`${winnerName} Won`}</h1>
+        <h2>{resultMessage}</h2>
     </div>
   );
 }
