@@ -9,6 +9,7 @@ import RegisterPage from "pages/Register";
 import DepositOnboardingPage from "pages/DepositOnboarding";
 import RulesPage from "pages/Rules";
 import DepositRegularPage from "pages/DepositRegular";
+import LoadingPage from "pages/Loading";
 
 const App: React.FC = () => (
   <BrowserRouter>
@@ -21,6 +22,7 @@ const App: React.FC = () => (
         <Route path="/depositOn" element={<DepositOnboardingPage />} />
         <Route path="/rules" element={<RulesPage />} />
         <Route path="/deposit" element={<DepositRegularPage />} />
+        <Route path="/loading" element={<LoadingPage />} />
       </Routes>
     </UserProvider>
   </BrowserRouter>

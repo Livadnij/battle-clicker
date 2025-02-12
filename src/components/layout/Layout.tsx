@@ -5,8 +5,8 @@ import MainButton from "components/mainButton/MainButton";
 interface LayoutProps {
   children: ReactNode;
   backgroundImage?: string;
-  buttonTitle: string;
-  onClick: () => void;
+  buttonTitle?: string;
+  onClick?: () => void;
   type?: "button" | "submit" | "reset";
   color?: "yellow" | "blue";
 }
@@ -15,8 +15,8 @@ const Layout: React.FC<LayoutProps> = ({
   color,
   children,
   backgroundImage = "",
-  buttonTitle,
-  onClick,
+  buttonTitle = "",
+  onClick = () => {},
   type,
 }) => {
   return (
@@ -25,9 +25,13 @@ const Layout: React.FC<LayoutProps> = ({
       style={{ backgroundImage: `url(${backgroundImage})` }}
     >
       <div className={styles["children"]}>{children}</div>
-      <MainButton color={color} onClick={onClick}>
-        {buttonTitle}
-      </MainButton>
+      {buttonTitle ? (
+        <MainButton color={color} onClick={onClick}>
+          {buttonTitle}
+        </MainButton>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

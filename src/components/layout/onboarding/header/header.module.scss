@@ -10,23 +10,25 @@
 .header-component-1 {
   position: absolute;
   width: 100%;
+  height: auto;
   top: 19px;
 }
 
-.union {
-  width: 68%;
-  position: absolute;
-  top: 20px;
-}
-
 .union-container {
+  justify-content: center;
   position: absolute;
   top: 20px;
+  height: auto;
   width: 100%;
   display: flex;
   flex-direction: row;
   padding-left: 16%;
   padding-right: 16%;
+
+  svg {
+    width: 100%;
+    height: auto;
+  }
 }
 .left {
   filter: grayscale(100%);
