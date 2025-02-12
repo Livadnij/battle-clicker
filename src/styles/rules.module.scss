@@ -1,8 +1,23 @@
-.rules-comtainer {
-  width: 100%;
-  gap: 16px;
+.container {
+  padding-bottom: 5vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-container {
+  width: 100%;
+}
+
+.rules-comtainer {
+  height: 80%;
+  flex-shrink: 2;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -11,11 +26,5 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  flex-direction: column;
-}
-
-.container {
-  height: 100%;
-  display: flex;
   flex-direction: column;
 }
