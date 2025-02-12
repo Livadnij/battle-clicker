@@ -1,0 +1,32 @@
+.cyber-input {
+  display: flex;
+  justify-self: center;
+  position: relative;
+  width: 345px;
+  z-index: 1;
+  bottom: 100px;
+
+  &__input {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-30%);
+    font-size: 16px;
+    font-weight: bold;
+    padding: 8px;
+    text-align: left;
+  }
+
+  &__label {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 4px);
+    color: black;
+    font-weight: bold;
+  }
+
+  img {
+    width: 345px;
+  }
+}
