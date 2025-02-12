@@ -10,6 +10,7 @@ import DepositOnboardingPage from "pages/DepositOnboarding";
 import RulesPage from "pages/Rules";
 import DepositRegularPage from "pages/DepositRegular";
 import LoadingPage from "pages/Loading";
+import RegisterOnboardingPage from "./pages/RegisterOnboarding";
 
 const App: React.FC = () => (
   <BrowserRouter>
