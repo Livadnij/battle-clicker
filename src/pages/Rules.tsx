@@ -22,29 +22,31 @@ const RulesPage: FC<RulesProps> = ({}) => {
       backgroundImage={backgroundImage}
     >
       <div className={styles["container"]}>
-        <HeaderOnboarding pageName="rules" />
-        <RulesBanner />
-        <div className={styles["body"]}>
-          <div className={styles["rules-comtainer"]}>
-            <Rule
-              type="star"
-              number={1}
-              text="Deposit 100 Stars to enter theN fight arena."
-            />
-            <Crosses />
-            <Rule
-              type="skull"
-              number={2}
-              text="Face real opponents in intense battles."
-            />
-            <Crosses />
-            <Rule
-              type="card"
-              number={3}
-              text="Crush your rival. Take their cash."
-            />
-          </div>
+        <div className={styles["header-container"]}>
+          <HeaderOnboarding pageName="rules" />
         </div>
+        <RulesBanner />
+        {/* <div className={styles["body"]}>
+          <div className={styles["rules-comtainer"]}> */}
+        <Rule
+          type="star"
+          number={1}
+          text="Deposit 100 Stars to enter theN fight arena."
+        />
+        <Crosses />
+        <Rule
+          type="skull"
+          number={2}
+          text="Face real opponents in intense battles."
+        />
+        <Crosses />
+        <Rule
+          type="card"
+          number={3}
+          text="Crush your rival. Take their cash."
+        />
+        {/* </div>
+        </div> */}
       </div>
     </Layout>
   );
