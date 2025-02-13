@@ -11,44 +11,31 @@ import backgroundImage from "../assets/layout/deposit/background.png";
 import { useNavigation } from "hooks/useNavigation";
 import HeaderOnboarding from "components/layout/onboarding/header/HeaderOnboarding";
 import Sign from "components/layout/onboarding/sign/Sign";
+import { handleInvoice } from "helpers/handleInvoice";
 
 type DepositPageType = {};
 
 const DepositOnboardingPage: FC<DepositPageType> = ({}) => {
-  const [value, setValue] = useState<string>("");
-  const [userPaid, setUserPaid] = useState<boolean>(false);
-  const { user } = useUser();
+  const { user, setUser } = useUser();
   const { tg } = useTelegram();
-  const { goHome } = useNavigation();
+  const { goRegister } = useNavigation();
 
   const fightPrice = settings.fightPrice;
   const apiUrl = process.env.REACT_APP_API_URL;
 
-  const createInvoice = async () => {
-    try {
-      const response = await axios.post(apiUrl! + "/get-invoice", {
-        amount: Number(fightPrice),
-        description: "Deposit stars to get access to paid fights",
-        title: "Buy Fights",
-      });
+  const handleInvoicePaid = () => {
+    setUser({ ...user!, balance: fightPrice });
+    goRegister();
+  };
 
-      if (response.data.invoiceLink) {
-        // Open the payment link inside Telegram WebApp
-        tg.openInvoice(response.data.invoiceLink, (invoiceStatus: any) => {
-          if (invoiceStatus === "paid") {
-            setTimeout(() => {
-              //Updating user balance takes some time on a backend so to prevent user from seen home screen with old balance we need to set timeout.
-              setUserPaid(true);
-            }, 2000);
-          }
-        });
-        // tg.onEvent("invoiceClosed", (data: any) => {
-        //   console.log("tg onEvent (invoiceClosed)", data);
-        // });
-      }
-    } catch (error) {
-      console.error("Failed to create invoice:", error);
-    }
+  const createInvoice = () => {
+    if (!apiUrl || !fightPrice) return;
+    handleInvoice({
+      tg,
+      apiUrl,
+      amount: fightPrice,
+      handleCallback: handleInvoicePaid,
+    });
   };
 
   return (
