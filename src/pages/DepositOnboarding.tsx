@@ -29,13 +29,15 @@ const DepositOnboardingPage: FC<DepositPageType> = ({}) => {
   };
 
   const createInvoice = () => {
-    if (!apiUrl || !fightPrice) return;
-    handleInvoice({
-      tg,
-      apiUrl,
-      amount: fightPrice,
-      handleCallback: handleInvoicePaid,
-    });
+    console.log(apiUrl && fightPrice, apiUrl, fightPrice);
+    if (apiUrl && fightPrice) {
+      handleInvoice({
+        tg,
+        apiUrl,
+        amount: fightPrice,
+        handleCallback: handleInvoicePaid,
+      });
+    }
   };
 
   return (

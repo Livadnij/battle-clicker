@@ -14,6 +14,7 @@ export const handleInvoice = async ({
   amount,
   handleCallback,
 }: Invoice) => {
+  console.log(tg, apiUrl, amount, handleCallback);
   try {
     const response = await axios.post(apiUrl! + "/get-invoice", {
       amount: amount,
