@@ -12,7 +12,7 @@ import { randomizer } from "utils/Randomizer";
 
 const WelcomePage: React.FC = () => {
   const { tg, tg_user } = useTelegram();
-  const { goHome, goRegister, goRules } = useNavigation();
+  const { goHome, goRegister, goRules, goDeposit } = useNavigation();
   const { setUser } = useUser();
 
   const [loading, setLoading] = useState<boolean>(false);
@@ -29,12 +29,27 @@ const WelcomePage: React.FC = () => {
       setLoading(false);
     }
     if (fetchedUser && fetchedUser.username) {
+      // user already registerd => redirect to main
       setUser(fetchedUser);
       goHome();
-    } else if (fetchedUser && !fetchedUser.username) {
+    } else if (
+      fetchedUser &&
+      !fetchedUser.username &&
+      fetchedUser.balance === 0
+    ) {
+      // user already registered but didnt pass deposit stage of onboarding => redirect to deposit
+      setUser(fetchedUser);
+      goDeposit();
+    } else if (
+      fetchedUser &&
+      !fetchedUser.username &&
+      fetchedUser.balance !== 0
+    ) {
+      // user already registered but passed deposit stage of onboarding but not register stage  => redirect to register
       setUser(fetchedUser);
       goRegister();
     } else {
+      // user isn't registered => create user and redirect to rules
       const user = {
         id: tg_user.id.toString(),
         balance: 0,
