@@ -13,7 +13,7 @@
     { "title": "chest", "value": 1 },
     { "title": "legs", "value": 2 }
   ],
-  "fightPrice": 100,
+  "fightPrice": 1,
   "maxScore": 3,
   "maxBotSurrenderCount": 3,
   "version": "v0.3.0",
