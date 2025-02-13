@@ -1,6 +1,9 @@
 @import "../../../styles/variables/variables";
 
 .bar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin: 0, 15px;
   max-width: 342px;
   width: 100%;
@@ -19,10 +22,25 @@
   }
 }
 
+.blur-container {
+  top: 13px;
+  position: absolute;
+  width: 100%;
+  height: 43px;
+  backdrop-filter: $blur;
+  background-color: $secondary-transparent;
+}
+
 .progress-bar {
   position: absolute;
   width: 100%;
   min-width: 100%;
+}
+
+.progress-container {
+  position: absolute;
+  height: 100%;
+  width: 95%;
 }
 
 .progress-bar-fill {

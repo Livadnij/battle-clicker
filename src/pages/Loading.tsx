@@ -12,7 +12,9 @@ const LoadingPage: FC<FightLoadingProps> = ({}) => {
   const timeout = 3.0;
 
   useEffect(() => {
-    setProgress(100);
+    setTimeout(() => {
+      setProgress(100);
+    }, 500);
     setTimeout(() => {
       console.log("redirect");
     }, timeout * 1000);
