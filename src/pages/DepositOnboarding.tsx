@@ -25,10 +25,9 @@ const DepositOnboardingPage: FC<DepositPageType> = ({}) => {
   const apiUrl = process.env.REACT_APP_API_URL;
 
   const createInvoice = async () => {
-    const currentValue = value;
     try {
       const response = await axios.post(apiUrl! + "/get-invoice", {
-        amount: Number(currentValue),
+        amount: Number(fightPrice),
         description: "Deposit stars to get access to paid fights",
         title: "Buy Fights",
       });

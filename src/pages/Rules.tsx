@@ -25,8 +25,6 @@ const RulesPage: FC<RulesProps> = ({}) => {
           <HeaderOnboarding pageName="rules" />
         </div>
         <RulesBanner />
-        {/* <div className={styles["body"]}>
-          <div className={styles["rules-comtainer"]}> */}
         <Rule
           type="star"
           number={1}
@@ -44,8 +42,6 @@ const RulesPage: FC<RulesProps> = ({}) => {
           number={3}
           text="Crush your rival. Take their cash."
         />
-        {/* </div>
-        </div> */}
       </div>
     </Layout>
   );

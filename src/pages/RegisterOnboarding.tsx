@@ -5,61 +5,86 @@ import backgroundImageFirst from "../assets/layout/register/register-onboarding-
 import backgroundImageSecond from "../assets/layout/register/register-onboarding-2.png";
 import backgroundImageThird from "../assets/layout/register/register-onboarding-3.png";
 import backgroundImageFourth from "../assets/layout/register/register-onboarding-4.png";
-import cyberManFirst from "../assets/layout/register/cyber-man-1.png"
-import cyberManSecond from "../assets/layout/register/cyber-man-2.png"
-import cyberManThird from "../assets/layout/register/cyber-man-3.png"
-import cyberManFourth from "../assets/layout/register/cyber-man-4.png"
+import cyberManFirst from "../assets/layout/register/cyber-man-1.png";
+import cyberManSecond from "../assets/layout/register/cyber-man-2.png";
+import cyberManThird from "../assets/layout/register/cyber-man-3.png";
+import cyberManFourth from "../assets/layout/register/cyber-man-4.png";
 
 import HeaderOnboarding from "components/layout/onboarding/header/HeaderOnboarding";
 import CyberInput from "../components/layout/onboarding/cyberInput/CyberInput";
 import { randomizer } from "../utils/Randomizer";
+import { useTelegram } from "hooks/useTelegram";
+import { useUser } from "context/UserContext";
+import { useNavigation } from "hooks/useNavigation";
+import { updateUser } from "../firebase/firebaseFirestore";
 
 type RegisterPageType = {};
 
 const cyberManArray = [
-    {
-        avatar: cyberManFirst,
-        background: backgroundImageFirst
-    },
-    {
-        avatar: cyberManSecond,
-        background: backgroundImageSecond
-    },
-    {
-        avatar: cyberManThird,
-        background: backgroundImageThird
-    },
-    {
-        avatar: cyberManFourth,
-        background: backgroundImageFourth
-    }
-]
+  {
+    avatar: cyberManFirst,
+    background: backgroundImageFirst,
+  },
+  {
+    avatar: cyberManSecond,
+    background: backgroundImageSecond,
+  },
+  {
+    avatar: cyberManThird,
+    background: backgroundImageThird,
+  },
+  {
+    avatar: cyberManFourth,
+    background: backgroundImageFourth,
+  },
+];
 
 const RegisterOnboardingPage: FC<RegisterPageType> = ({}) => {
-    const [value, setValue] = useState<string>("Enter your name");
-    const variant = randomizer(0,3)
-    const variantData = cyberManArray[variant]
+  const { tg_user } = useTelegram();
+  const { user, setUser } = useUser();
+  const { goHome } = useNavigation();
 
-    return (
-        <Layout
-            backgroundImage={variantData.background}
-            buttonTitle={"LET’S FIGHT!"}
-            onClick={() => {
-            }}
-        >
-            <div className={styles["register-container"]}>
-                <HeaderOnboarding pageName="register"/>]
-                <div>
-                    <CyberInput
-                        label='Enter your name'
-                        value={value}
-                        onChange={(e) => setValue(e.target.value)}
-                    />
-                    <img src={variantData.avatar} className={styles["register-container__avatar"]}/>
-                </div>
-            </div>
-        </Layout>
-    );
+  const [value, setValue] = useState<string>(
+    tg_user ? tg_user.username : "Enter your name"
+  );
+  const variant = user ? user.avatar : randomizer(0, 3);
+  const variantData = cyberManArray[variant];
+
+  const handleSubmitUser = async () => {
+    if (!user) return;
+    if (value.length <= 3) return alert("Name is too short");
+    if (value.length > 12) return alert("Name is too long");
+    try {
+      await updateUser(user.id, "users", { ...user, username: value });
+    } catch (error) {
+      console.log("Failed to fetch user data");
+    }
+    setUser({ ...user, username: value });
+    goHome();
+  };
+
+  return (
+    <Layout
+      backgroundImage={variantData.background}
+      buttonTitle={"LET’S FIGHT!"}
+      onClick={handleSubmitUser}
+    >
+      <div className={styles["register-container"]}>
+        <HeaderOnboarding pageName="register" />]
+        <div>
+          <CyberInput
+            label="Enter your name"
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+          />
+          <img
+            src={variantData.avatar}
+            className={styles["register-container__avatar"]}
+          />
+        </div>
+      </div>
+    </Layout>
+  );
 };
 
 export default RegisterOnboardingPage;

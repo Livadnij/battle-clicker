@@ -1,3 +1,5 @@
+@import "../../../../styles/variables/variables";
+
 .cyber-input {
   display: flex;
   justify-self: center;
@@ -7,23 +9,40 @@
   bottom: 100px;
 
   &__input {
+    caret-color: $primary-color;
+    font-family: "Orbitron", serif;
+    text-transform: uppercase;
+    color: white;
+    background: transparent;
+    border: transparent;
+    width: 100%;
     position: absolute;
     top: 50%;
     left: 0;
     transform: translateY(-30%);
-    font-size: 16px;
-    font-weight: bold;
+    font-size: 14px;
+    font-weight: 600;
     padding: 8px;
     text-align: left;
+    animation: caret-always 1s step-end infinite;
+  }
+
+  @keyframes caret-always {
+    from,
+    to {
+      caret-color: $primary-color; /* Ensures caret stays visible */
+    }
   }
 
   &__label {
+    font-size: 12px;
+    text-transform: uppercase;
     position: absolute;
-    top: 0;
+    top: 3px;
     left: 50%;
     transform: translate(-50%, 4px);
-    color: black;
-    font-weight: bold;
+    color: $text-color;
+    font-weight: 900;
   }
 
   img {

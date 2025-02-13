@@ -14,4 +14,5 @@ export type UserType = {
   balance: number;
   fights_quantity: number;
   username: string;
+  avatar: number;
 };

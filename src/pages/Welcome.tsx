@@ -3,11 +3,12 @@ import { useTelegram } from "hooks/useTelegram";
 import React, { useEffect, useState } from "react";
 
 import styles from "../styles/welcome.module.scss";
-import { getUserById } from "../firebase/firebaseFirestore";
+import { addUser, getUserById } from "../firebase/firebaseFirestore";
 import backgroundImage from "../assets/layout/start/background.png";
 
 import { useUser } from "context/UserContext";
 import { useNavigation } from "hooks/useNavigation";
+import { randomizer } from "utils/Randomizer";
 
 const WelcomePage: React.FC = () => {
   const { tg, tg_user } = useTelegram();
@@ -27,17 +28,24 @@ const WelcomePage: React.FC = () => {
     } finally {
       setLoading(false);
     }
-    if (fetchedUser) {
+    if (fetchedUser && fetchedUser.username) {
       setUser(fetchedUser);
       goHome();
+    } else if (fetchedUser && !fetchedUser.username) {
+      setUser(fetchedUser);
+      goRegister();
     } else {
-      setUser({
+      const user = {
         id: tg_user.id.toString(),
         balance: 0,
         fights_quantity: 0,
         username: "",
-      });
-      goRegister();
+        avatar: randomizer(0, 3),
+      };
+
+      await addUser("users", user, user.id);
+      setUser(user);
+      goRules();
     }
   };
 
@@ -49,7 +57,7 @@ const WelcomePage: React.FC = () => {
   return (
     <Layout
       buttonTitle={loading ? "LOADING" : "join now"}
-      onClick={goRules}
+      onClick={fetchUser}
       backgroundImage={backgroundImage}
     >
       <div className={styles["bottom-text-container"]}>
