@@ -7,6 +7,27 @@ import Layout from "components/layout/Layout";
 import styles from "../styles/home.module.scss";
 import settings from "../settings/settings.json";
 import { getUserById } from "../firebase/firebaseFirestore";
+import MainHeader from "components/main/MainHeader";
+import background from "../assets/layout/main/background.png";
+import cyberManFirst from "../assets/layout/main/char-1.png";
+import cyberManSecond from "../assets/layout/main/char-2.png";
+import cyberManThird from "../assets/layout/main/char-3.png";
+import cyberManFourth from "../assets/layout/main/char-4.png";
+
+const cyberManArray = [
+  {
+    avatar: cyberManFirst,
+  },
+  {
+    avatar: cyberManSecond,
+  },
+  {
+    avatar: cyberManThird,
+  },
+  {
+    avatar: cyberManFourth,
+  },
+];
 
 const HomePage: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
@@ -16,9 +37,9 @@ const HomePage: React.FC = () => {
   const fightPrice = settings.fightPrice;
   const enoughForFight = user?.balance! >= fightPrice;
 
-  if (!user?.id) {
-    goIndex();
-  }
+  // if (!user?.id) {
+  //   goIndex();
+  // }
 
   const fetchUser = async () => {
     try {
@@ -43,11 +64,7 @@ const HomePage: React.FC = () => {
 
   const buttonTitle = useMemo(() => {
     if (!loading) {
-        if (enoughForFight) {
-            return "start fight";
-        } else {
-            return "deposit";
-        }
+      return "start fight";
     }
     return "Loading...";
   }, [loading, enoughForFight]);
@@ -56,22 +73,26 @@ const HomePage: React.FC = () => {
     fetchUser();
   }, []);
 
+  const variantData = cyberManArray[user ? user.avatar : 2];
+
   return (
     <Layout
+      backgroundImage={background}
       buttonTitle={buttonTitle}
       onClick={handleClick}
     >
-        <div className={styles["home-container"]}>
-            <h1>{user?.username ?? "John doe 2077"}</h1>
-            {!loading && (
-                <>
-                    <h2>You joined {user?.fights_quantity} {user?.fights_quantity === 1 ? "fight" : "fights"}</h2>
-                    <h2>Balance: {user?.balance} stars</h2>
-                    <h4>You {enoughForFight ? "" : "don't "}have enough stars to start a
-                        fight. {enoughForFight ? "" : "Please Deposit"}</h4>
-                </>
-            )}
-        </div>
+      <div className={styles["home-container"]}>
+        <MainHeader username={user ? user.username : "John_Do89"} />
+        <img
+          style={
+            (user && user.avatar === 2) || true
+              ? { top: "-15%" }
+              : { top: "-20%" }
+          }
+          src={variantData.avatar}
+          className={styles["home-container__avatar"]}
+        />
+      </div>
     </Layout>
   );
 };

@@ -1,0 +1,22 @@
+@import "../../styles/variables/variables";
+
+.container {
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+
+  svg {
+    top: 5px;
+    position: absolute;
+    width: 100%;
+    height: auto;
+  }
+
+  h2 {
+    font-family: "Orbitron";
+    font-size: 3vh;
+    color: $primary-color;
+  }
+}

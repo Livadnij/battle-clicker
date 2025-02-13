@@ -27,13 +27,14 @@
   }
 
   .button-text {
+    width: 100%;
     text-transform: uppercase;
     position: absolute; // Position text over the image
-    top: 45%;
+    top: 43%;
     left: 50%;
     transform: translate(-50%, -50%); // Center the text
     color: rgb(0, 0, 0); // Or any color you want
-    font-size: 36px; // Adjust font size
+    font-size: 4vh; // Adjust font size
     font-weight: bold; // Adjust font weight
     // Add any other text styles you need
   }
