@@ -7,12 +7,14 @@ import Layout from "components/layout/Layout";
 import styles from "../styles/home.module.scss";
 import settings from "../settings/settings.json";
 import { getUserById } from "../firebase/firebaseFirestore";
-import MainHeader from "components/main/MainHeader";
+import MainHeader from "components/layout/main/mainHeader/MainHeader";
 import background from "../assets/layout/main/background.png";
 import cyberManFirst from "../assets/layout/main/char-1.png";
 import cyberManSecond from "../assets/layout/main/char-2.png";
 import cyberManThird from "../assets/layout/main/char-3.png";
 import cyberManFourth from "../assets/layout/main/char-4.png";
+import Balance from "components/layout/main/balance/Balance";
+import FightEvents from "components/layout/main/fightEvents/FightEvents";
 
 const cyberManArray = [
   {
@@ -69,9 +71,9 @@ const HomePage: React.FC = () => {
     return "Loading...";
   }, [loading, enoughForFight]);
 
-  useEffect(() => {
-    fetchUser();
-  }, []);
+  // useEffect(() => {
+  //   fetchUser();
+  // }, []);
 
   const variantData = cyberManArray[user ? user.avatar : 2];
 
@@ -82,16 +84,28 @@ const HomePage: React.FC = () => {
       onClick={handleClick}
     >
       <div className={styles["home-container"]}>
-        <MainHeader username={user ? user.username : "John_Do89"} />
-        <img
-          style={
-            (user && user.avatar === 2) || true
-              ? { top: "-15%" }
-              : { top: "-20%" }
-          }
-          src={variantData.avatar}
-          className={styles["home-container__avatar"]}
-        />
+        <div className={styles["body-container"]}>
+          <MainHeader username={user ? user.username : "John_Do89"} />
+          <Balance title="title" value={user ? user.balance : 50} />
+          <FightEvents />
+        </div>
+        <div className={styles["image-container"]}>
+          <img
+            style={
+              (user && user.avatar === 2) || true
+                ? { top: "-15%" }
+                : { top: "-20%" }
+            }
+            src={variantData.avatar}
+            className={styles["image-container__avatar"]}
+          />
+          <div className={styles["gradient-container"]}>
+            <div className={styles["gradient-container__gradient"]} />
+            <div className={styles["gradient-container__solid"]} />
+            <div className={styles["gradient-container__gradient-blur"]} />
+            <div className={styles["gradient-container__solid-blur"]} />
+          </div>
+        </div>
       </div>
     </Layout>
   );

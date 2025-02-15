@@ -1,7 +1,9 @@
 import React, { FC } from "react";
 
 import styles from "./MainButton.module.scss";
-import { ReactComponent as ButtonImage } from "../../assets/buttons/mainCTA.svg";
+import { ReactComponent as ButtonImage } from "../../assets/buttons/mainCTA_new.svg";
+import { ReactComponent as TopContainerBorder } from "../../assets/buttons/top-container-border.svg";
+import { ReactComponent as GlitchEffect } from "../../assets/buttons/glitch-effect.svg";
 
 type MainButtonType = {
   children?: React.ReactNode;
@@ -18,25 +20,19 @@ const MainButton: FC<MainButtonType> = ({
   ...rest
 }) => {
   return (
-    <button
-      className={styles["main-button"]}
-      onClick={onClick}
-      type={type}
-      {...rest}
-    >
-      <ButtonImage
-        className={
-          styles[
-            color === "yellow"
-              ? "button-image-yellow"
-              : color === "blue"
-              ? "button-image-blue"
-              : ""
-          ]
-        }
-      />
-      {children && <p className={styles["button-text"]}>{children}</p>}
-    </button>
+    <div className={styles["button-container"]}>
+      <TopContainerBorder className={styles["button-container__top-border"]} />
+      <button
+        className={styles["main-button"]}
+        onClick={onClick}
+        type={type}
+        {...rest}
+      >
+        <GlitchEffect className={styles["main-button__glitch"]} />
+        <ButtonImage className={styles["main-button__image"]} />
+        {children && <p className={styles["main-button__text"]}>{children}</p>}
+      </button>
+    </div>
   );
 };
 
