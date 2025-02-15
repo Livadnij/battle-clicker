@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import styles from "./mainHeader.module.scss";
-import { ReactComponent as HeaderComponent } from "../../assets/layout/main/header-component.svg";
+import { ReactComponent as HeaderComponent } from "../../../../assets/layout/main/header-component.svg";
 
 type MainHeaderProps = { username: string };
 

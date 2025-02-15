@@ -1,8 +1,24 @@
 @import "../../styles/variables/variables";
 
-.main-button {
+.button-container {
+  padding: 3% 5% 5% 5%;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: $blur;
+  background-color: $accent-transparent;
+  position: relative;
 
+  &__top-border {
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 100%;
+  }
+}
+
+.main-button {
   position: relative;
   align-items: center;
   justify-content: center;
@@ -11,22 +27,13 @@
   background: none;
   cursor: pointer;
 
-  .button-image-yellow,
-  .button-image-blue {
+  &__image {
     width: 100%;
     height: auto;
-    display: block;
   }
 
-  .button-image-yellow path {
-    fill: $primary-color;
-  }
-
-  .button-image-blue path {
-    fill: $accent-color;
-  }
-
-  .button-text {
+  &__text {
+    font-family: "Orbitron";
     width: 100%;
     text-transform: uppercase;
     position: absolute; // Position text over the image
@@ -34,11 +41,14 @@
     left: 50%;
     transform: translate(-50%, -50%); // Center the text
     color: rgb(0, 0, 0); // Or any color you want
-    font-size: 4vh; // Adjust font size
-    font-weight: bold; // Adjust font weight
-    // Add any other text styles you need
+    font-size: 3.5vh; // Adjust font size
+    font-weight: 900; // Adjust font weight
   }
 
-  // &:hover { ... } // Styles for hover state
-  // &:active { ... } // Styles for active/pressed state
+  &__glitch {
+    z-index: 100;
+    width: 100%;
+    top: 30%;
+    position: absolute;
+  }
 }
