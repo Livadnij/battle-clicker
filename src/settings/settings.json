@@ -9,9 +9,21 @@
     "Dad"
   ],
   "fightOptions": [
-    { "title": "head", "value": 0 },
-    { "title": "chest", "value": 1 },
-    { "title": "legs", "value": 2 }
+    {
+      "title": "head",
+      "value": 0,
+      "image": ""
+    },
+    {
+      "title": "body",
+      "value": 1,
+      "image": ""
+    },
+    {
+      "title": "legs",
+      "value": 2,
+      "image": ""
+    }
   ],
   "fightPrice": 1,
   "maxScore": 3,
