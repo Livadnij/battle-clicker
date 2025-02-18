@@ -3,6 +3,7 @@
 .button-container {
   padding: 3% 5% 5% 5%;
   width: 100%;
+  height: auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,6 +20,8 @@
 }
 
 .main-button {
+  width: 100%;
+  height: auto;
   position: relative;
   align-items: center;
   justify-content: center;

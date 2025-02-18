@@ -8,7 +8,7 @@
   width: 100%;
 
   svg {
-    top: 5px;
+    top: 0;
     position: absolute;
     width: 100%;
     height: auto;
@@ -16,7 +16,7 @@
 
   h2 {
     font-family: "Orbitron";
-    font-size: 2.5vh;
+    font-size: 1.5rem;
     color: $primary-color;
   }
 }

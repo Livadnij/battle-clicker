@@ -16,3 +16,13 @@ export type UserType = {
   username: string;
   avatar: number;
 };
+
+export type Winner = {
+  number: number;
+  name: string;
+  title: string;
+  payout: number;
+  roundsQuantity: number;
+  duration: string;
+  howLongAgo: number;
+};

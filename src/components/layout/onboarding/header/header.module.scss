@@ -1,3 +1,5 @@
+@import "../../../../styles/variables/variables";
+
 .header-container {
   width: 100%;
   height: 150px;
@@ -40,16 +42,10 @@
   filter: grayscale(100%);
 }
 
-.left-selected {
-  filter: grayscale(0%);
-}
-
-.middle-selected {
-  filter: grayscale(0%);
-}
-
-.right-selected {
-  filter: grayscale(0%);
+.left-selected path,
+.middle-selected path,
+.right-selected path {
+  fill: $primary-color;
 }
 
 .logo-container {

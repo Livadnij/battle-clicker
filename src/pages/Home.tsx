@@ -68,14 +68,14 @@ const HomePage: React.FC = () => {
     if (!loading) {
       return "start fight";
     }
-    return "Loading...";
+    return "Loading";
   }, [loading, enoughForFight]);
 
-  // useEffect(() => {
-  //   fetchUser();
-  // }, []);
+  useEffect(() => {
+    fetchUser();
+  }, []);
 
-  const variantData = cyberManArray[user ? user.avatar : 2];
+  const variantData = cyberManArray[user ? user.avatar : 3];
 
   return (
     <Layout
@@ -84,18 +84,22 @@ const HomePage: React.FC = () => {
       onClick={handleClick}
     >
       <div className={styles["home-container"]}>
-        <div className={styles["body-container"]}>
+        <div className={styles["container"]}>
           <MainHeader username={user ? user.username : "John_Do89"} />
-          <Balance title="title" value={user ? user.balance : 50} />
-          <FightEvents />
+          <div className={styles["body"]}>
+            <div className={styles["body__balance"]}>
+              <Balance
+                title="ADD EXTRA STARS"
+                value={user ? user.balance : 50}
+              />
+            </div>
+            <div className={styles["body__events"]}>
+              <FightEvents quantity={4} />
+            </div>
+          </div>
         </div>
         <div className={styles["image-container"]}>
           <img
-            style={
-              (user && user.avatar === 2) || true
-                ? { top: "-15%" }
-                : { top: "-20%" }
-            }
             src={variantData.avatar}
             className={styles["image-container__avatar"]}
           />

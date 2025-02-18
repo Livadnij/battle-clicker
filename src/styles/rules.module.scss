@@ -1,30 +1,49 @@
+@import "../styles/variables/variables";
+
 .container {
-  padding-bottom: 5vh;
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
+  align-content: start;
 }
 
 .header-container {
   width: 100%;
 }
 
-.rules-comtainer {
-  height: 80%;
-  flex-shrink: 2;
+.rules-container {
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  gap: 15px;
+
+  &__rule {
+    backdrop-filter: $blur;
+    position: relative;
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+    div {
+      width: 53%;
+      top: 30%;
+      left: 25%;
+      position: absolute;
+    }
+  }
 }
 
 .body {
-  height: 100%;
+  padding: 5% 5% 0 5%;
   width: 100%;
+  height: 65%;
   display: flex;
-  justify-content: center;
   flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  &__banner {
+    width: 100%;
+    height: auto;
+  }
 }
