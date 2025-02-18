@@ -84,10 +84,19 @@ const HomePage: React.FC = () => {
       onClick={handleClick}
     >
       <div className={styles["home-container"]}>
-        <div className={styles["body-container"]}>
+        <div className={styles["container"]}>
           <MainHeader username={user ? user.username : "John_Do89"} />
-          <Balance title="title" value={user ? user.balance : 50} />
-          <FightEvents />
+          <div className={styles["body"]}>
+            <div className={styles["body__balance"]}>
+              <Balance
+                title="ADD EXTRA STARS"
+                value={user ? user.balance : 50}
+              />
+            </div>
+            <div className={styles["bode__events"]}>
+              <FightEvents />
+            </div>
+          </div>
         </div>
         <div className={styles["image-container"]}>
           <img

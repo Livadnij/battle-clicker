@@ -10,8 +10,10 @@ import backgroundImage from "../assets/layout/deposit/background.png";
 
 import { useNavigation } from "hooks/useNavigation";
 import HeaderOnboarding from "components/layout/onboarding/header/HeaderOnboarding";
-import Sign from "components/layout/onboarding/sign/Sign";
 import { handleInvoice } from "helpers/handleInvoice";
+import FightEvents from "components/layout/main/fightEvents/FightEvents";
+import { ReactComponent as WinnersBanner } from "../assets/layout/deposit/last-winners-banner.svg";
+import { ReactComponent as Sign } from "../assets/layout/deposit/sign-new.svg";
 
 type DepositPageType = {};
 
@@ -29,7 +31,6 @@ const DepositOnboardingPage: FC<DepositPageType> = ({}) => {
   };
 
   const createInvoice = () => {
-    console.log(apiUrl && fightPrice, apiUrl, fightPrice);
     if (apiUrl && fightPrice) {
       handleInvoice({
         tg,
@@ -48,7 +49,11 @@ const DepositOnboardingPage: FC<DepositPageType> = ({}) => {
     >
       <div className={styles["deposit-container"]}>
         <HeaderOnboarding pageName="depositOn" />
-        <Sign />
+        <div className={styles["deposit-body"]}>
+          <WinnersBanner className={styles["deposit-body__banner"]} />
+          <FightEvents />
+          <Sign className={styles["deposit-body__sign"]} />
+        </div>
       </div>
     </Layout>
   );

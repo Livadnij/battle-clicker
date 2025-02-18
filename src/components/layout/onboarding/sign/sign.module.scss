@@ -2,11 +2,12 @@
 
 .container {
   position: relative;
+  margin: 0 5%;
   width: 100%;
   display: flex;
   justify-content: center; // Centers horizontally
   align-items: center; // Centers vertically
-  padding-bottom: 40px;
+  padding-bottom: 5%;
 }
 
 .sign-container {

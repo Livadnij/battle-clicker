@@ -1,4 +1,19 @@
 .events-container {
-  height: 300px;
   width: 100%;
+  height: auto;
+}
+
+.sliding-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+
+.list-item {
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide-out {
+  transform: translateX(100%);
 }
