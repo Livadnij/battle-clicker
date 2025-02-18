@@ -15,14 +15,15 @@ import { logTemplate } from "helpers/logTemplate";
 import { resolveFightLogic } from "helpers/resolveFightLogic";
 import { handleChangeBalance } from "helpers/handleChangeBalance";
 import { handleExitFight } from "helpers/handleExitFight";
-import fightHeader from "../assets/layout/fight/fight-header.png"
-import headerAttack from "../assets/layout/fight/attack.svg"
-import headerDefeat from "../assets/layout/fight/defeat.svg"
 import fightBackground from "../assets/layout/fight/fight-background.png"
-import pickSection from "../assets/layout/fight/pick-section.svg"
 import { ReactComponent as Head } from "../assets/layout/fight/head.svg";
 import { ReactComponent as Body } from "../assets/layout/fight/body.svg";
 import { ReactComponent as Legs } from "../assets/layout/fight/legs.svg";
+import BattleInterface from "../components/battlePage/battleInterface/BattleInterface";
+import BattleLog from "../components/battlePage/log/BattleLog";
+import fightHeader from "../assets/layout/fight/fight-header.png";
+import headerAttack from "../assets/layout/fight/attack.svg";
+import headerDefeat from "../assets/layout/fight/defeat.svg";
 
 showConsoleArt();
 
@@ -124,42 +125,8 @@ const FightPage: React.FC = () => {
                     <img className={styles["battle__header-line"]} src={fightHeader}/>
                     <img className={styles["battle__header-state"]} src={turn ? headerAttack : headerDefeat}/>
                 </div>
-                <div className={styles["battle__main"]}>
-                    <img className={styles["battle__main-pick"]} src={pickSection}/>
-                    <div className={styles["battle__main-header"]}>
-                        Pick attack area
-                    </div>
-                    <div className={styles["battle__main-items"]}>
-                        {areas.map((area: any, index: number) => (
-                            <button className={styles["battle__main-item"]}>
-                                <div className={styles["battle__item-header"]}>
-                                    {/*<img src={area.image} className={styles["battle__item-image"]} style={{height: area.title === 'legs'  ? '75%' : ''}}/>*/}
-                                    {/*{area.image}*/}
-                                    {area.image}
-                                </div>
-                                <div className={styles["battle__item-footer"]}>
-                                    {area.title.toUpperCase()}
-                                </div>
-                            </button>
-                        ))}
-                    </div>
-                </div>
-                {/*<ScoreInterface userName={userName} botName={botName} score={score} />*/}
-                {/*<BattleLog logArray={log} />*/}
-                {/*{isResult ? (*/}
-                {/*  <ResultInterface botName={botName} score={score} />*/}
-                {/*) : (*/}
-                {/*  <BattleInterface*/}
-                {/*    turn={turn}*/}
-                {/*    title={radioTitle}*/}
-                {/*    options={areas}*/}
-                {/*    userChoise={userChoice}*/}
-                {/*    setUserChoise={setUserChoice}*/}
-                {/*    attackHandler={attackHandler}*/}
-                {/*  />*/}
-                {/*)}*/}
-
-
+                <BattleLog logArray={log} score={score}/>
+                <BattleInterface areas={areas}/>
             </div>
         </Layout>
     );

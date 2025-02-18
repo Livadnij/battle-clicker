@@ -1,21 +1,9 @@
-.log-container {
-  padding: 0 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  width: 100%;
-}
-
 .log {
-  justify-content: start;
-  align-items: start;
-  border: 2px solid rgb(255, 255, 255);
-  height: 30vh;
-  padding: 10px;
-  overflow: auto;
-  scroll-behavior: smooth;
-}
+  width: 100%;
+  display: flex;
+  justify-content: center;
 
-ul {
-  padding-left: 20px;
+  &__block {
+    width: 90%;
+  }
 }
