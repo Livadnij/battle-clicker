@@ -100,9 +100,6 @@ const HomePage: React.FC = () => {
         </div>
         <div className={styles["image-container"]}>
           <img
-            style={
-              user && user.avatar === 2 ? { top: "-15%" } : { top: "-20%" }
-            }
             src={variantData.avatar}
             className={styles["image-container__avatar"]}
           />
