@@ -8,11 +8,11 @@ import { randomizer } from "utils/Randomizer";
 import { getNextNumber } from "helpers/getNextNumberFromWinnerArray";
 import { getRandomBotName } from "helpers/getRandomBotName";
 import { getDefaultWinner } from "helpers/getDefaultWinners";
+import settings from "../../../../settings/settings.json";
 
 type FightEventsProps = {};
 
 const FightEvents: FC<FightEventsProps> = ({}) => {
-  const [items, setItems] = useState<number[]>([1, 2, 3, 4, 5]);
   const [winners, setWinners] = useState<Winner[]>(getDefaultWinner(5));
   const [isRemoving, setIsRemoving] = useState(false);
 
@@ -32,7 +32,7 @@ const FightEvents: FC<FightEventsProps> = ({}) => {
                 number: getNextNumber(winners),
                 name: getRandomBotName(),
                 title: "Won flawless victory!",
-                payout: 100,
+                payout: settings.fightPrice,
                 roundsQuantity: 3,
                 duration: `${randomizer(200, 500) * 0.01} min`,
                 howLongAgo: new Date().getTime(),
