@@ -1,23 +1,9 @@
 <svg width="345" height="87" viewBox="0 0 345 87" fill="none" xmlns="http://www.w3.org/2000/svg">
-<mask id="mask0_143_286" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="13" width="345" height="72">
-<rect x="0.00334167" y="13" width="343.997" height="72" fill="url(#paint0_linear_143_286)"/>
-<rect x="0.503342" y="13.5" width="342.997" height="71" stroke="white" stroke-opacity="0.05"/>
-</mask>
-<g mask="url(#mask0_143_286)">
-<foreignObject x="-43.9967" y="-62.457" width="431.997" height="191.457"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(22px);clip-path:url(#bgblur_0_143_286_clip_path);height:100%;width:100%"></div></foreignObject><g data-figma-bg-blur-radius="44">
-<rect x="0.00334167" y="-18.457" width="343.997" height="103.456" fill="black" fill-opacity="0.3"/>
-<rect x="0.503342" y="-17.957" width="342.997" height="102.456" stroke="white" stroke-opacity="0.05"/>
-</g>
-</g>
-<mask id="mask1_143_286" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="-1" y="13" width="345" height="72">
-<rect width="343.997" height="72" transform="matrix(-1 0 0 1 343.996 13)" fill="url(#paint1_linear_143_286)"/>
+<mask id="mask0_143_286" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="-1" y="13" width="345" height="72">
+<rect width="343.997" height="72" transform="matrix(-1 0 0 1 343.996 13)" fill="url(#paint0_linear_143_286)"/>
 <rect x="-0.5" y="0.5" width="342.997" height="71" transform="matrix(-1 0 0 1 342.996 13)" stroke="white" stroke-opacity="0.05"/>
 </mask>
-<g mask="url(#mask1_143_286)">
-<foreignObject x="-44.0005" y="-62.457" width="431.997" height="191.457"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(22px);clip-path:url(#bgblur_1_143_286_clip_path);height:100%;width:100%"></div></foreignObject><g data-figma-bg-blur-radius="44">
-<rect width="343.997" height="103.456" transform="matrix(-1 0 0 1 343.996 -18.457)" fill="black" fill-opacity="0.3"/>
-<rect x="-0.5" y="0.5" width="342.997" height="102.456" transform="matrix(-1 0 0 1 342.996 -18.457)" stroke="white" stroke-opacity="0.05"/>
-</g>
+<g mask="url(#mask0_143_286)">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M-1.20555 75.0001L-3.49973 87.0445L-2.87263 87.0213C-0.624719 86.938 2.69547 86.8382 5.35184 86.8091C6.68203 86.7945 7.83671 86.7978 8.60577 86.829C8.88752 86.8404 9.10297 86.8552 9.25181 86.8717L9.51013 87.13L9.83247 86.9688C9.86933 86.9504 10.0014 86.8844 10.0865 86.7405C10.1404 86.6494 10.1797 86.5187 10.1495 86.37C10.1213 86.2312 10.045 86.139 9.99143 86.0888C9.89678 86.0002 9.78881 85.9635 9.74776 85.95L9.7428 85.9484L-1.20555 75.0001Z" fill="#FFFB00"/>
 <path fill-rule="evenodd" clip-rule="evenodd" d="M346 74.293L335.793 84.5001H334.5V89.5001H346V74.293Z" fill="#FFFB00"/>
 </g>
@@ -39,10 +25,10 @@
 <path d="M292 85.5H293.5" stroke="#FFFB00" stroke-width="2"/>
 <path d="M1 19V13H7" stroke="#FFFB00" stroke-width="2"/>
 <path d="M344 19V13H338" stroke="#FFFB00" stroke-width="2"/>
-<mask id="mask2_143_286" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="3" y="16" width="31" height="7">
+<mask id="mask1_143_286" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="3" y="16" width="31" height="7">
 <path d="M3 16H34V23H3V16Z" fill="#FFFB00"/>
 </mask>
-<g mask="url(#mask2_143_286)">
+<g mask="url(#mask1_143_286)">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M32.0916 14.829L18.8059 28.1147L17.7621 27.0709L31.0478 13.7852L32.0916 14.829Z" fill="#FFFB00"/>
 <path fill-rule="evenodd" clip-rule="evenodd" d="M36.52 14.829L23.2342 28.1147L22.1904 27.0709L35.4761 13.7852L36.52 14.829Z" fill="#FFFB00"/>
 <path fill-rule="evenodd" clip-rule="evenodd" d="M40.9487 14.829L27.663 28.1147L26.6192 27.0709L39.9049 13.7852L40.9487 14.829Z" fill="#FFFB00"/>
@@ -54,10 +40,10 @@
 <path fill-rule="evenodd" clip-rule="evenodd" d="M9.94871 14.829L-3.337 28.1147L-4.38083 27.0709L8.90489 13.7852L9.94871 14.829Z" fill="#FFFB00"/>
 <path fill-rule="evenodd" clip-rule="evenodd" d="M5.51996 14.829L-7.76576 28.1147L-8.80959 27.0709L4.47613 13.7852L5.51996 14.829Z" fill="#FFFB00"/>
 </g>
-<mask id="mask3_143_286" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="310" y="16" width="31" height="7">
+<mask id="mask2_143_286" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="310" y="16" width="31" height="7">
 <path d="M310 16H341V23H310V16Z" fill="#FFFB00"/>
 </mask>
-<g mask="url(#mask3_143_286)">
+<g mask="url(#mask2_143_286)">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M339.092 14.829L325.806 28.1147L324.762 27.0709L338.048 13.7852L339.092 14.829Z" fill="#FFFB00"/>
 <path fill-rule="evenodd" clip-rule="evenodd" d="M343.52 14.829L330.234 28.1147L329.19 27.0709L342.476 13.7852L343.52 14.829Z" fill="#FFFB00"/>
 <path fill-rule="evenodd" clip-rule="evenodd" d="M347.949 14.829L334.663 28.1147L333.619 27.0709L346.905 13.7852L347.949 14.829Z" fill="#FFFB00"/>
@@ -71,10 +57,10 @@
 </g>
 <path d="M0 75L-7.55787e-05 77.7071L7.43934 84.8536H324.5L330.646 78.7071L328.939 78L324.086 82.8536L7.85355 82.8536L0 75Z" fill="#FFFB00"/>
 <path d="M310 78H331L324.163 85H310V78Z" fill="#FFFB00"/>
-<mask id="mask4_143_286" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="324" y="78" width="21" height="7">
+<mask id="mask3_143_286" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="324" y="78" width="21" height="7">
 <path d="M324 78H345L338.163 85H324V78Z" fill="#FFFB00"/>
 </mask>
-<g mask="url(#mask4_143_286)">
+<g mask="url(#mask3_143_286)">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M343.707 77.2071L334.707 86.2071L334 85.5L343 76.5L343.707 77.2071Z" fill="#FFFB00"/>
 <path fill-rule="evenodd" clip-rule="evenodd" d="M340.707 77.2071L331.707 86.2071L331 85.5L340 76.5L340.707 77.2071Z" fill="#FFFB00"/>
 <path fill-rule="evenodd" clip-rule="evenodd" d="M337.707 77.2071L328.707 86.2071L328 85.5L337 76.5L337.707 77.2071Z" fill="#FFFB00"/>
@@ -87,14 +73,7 @@
 <path fill-rule="evenodd" clip-rule="evenodd" d="M157.686 2L81 2.176V22.0601L87.6542 26H90.1707V25H92.4634V26H95.9024V25H97.0488V26H98.1951V25H107.366V26H108.512V25H111.951V26H262.363V25.805L262.506 25.8977L269 22.0601V2.176L192.314 2L186.288 6.52776H163.712L157.686 2Z" fill="#FFFB00" fill-opacity="0.6"/>
 <path d="M81 2.176L80.9989 1.676L80.5 1.67714V2.176H81ZM157.686 2L157.986 1.60026L157.852 1.49962L157.685 1.5L157.686 2ZM81 22.0601H80.5V22.3451L80.7453 22.4903L81 22.0601ZM87.6542 26L87.3995 26.4302L87.5173 26.5H87.6542V26ZM90.1707 26V26.5H90.6707V26H90.1707ZM90.1707 25V24.5H89.6707V25H90.1707ZM92.4634 25H92.9634V24.5H92.4634V25ZM92.4634 26H91.9634V26.5H92.4634V26ZM95.9024 26V26.5H96.4024V26H95.9024ZM95.9024 25V24.5H95.4024V25H95.9024ZM97.0488 25H97.5488V24.5H97.0488V25ZM97.0488 26H96.5488V26.5H97.0488V26ZM98.1951 26V26.5H98.6951V26H98.1951ZM98.1951 25V24.5H97.6951V25H98.1951ZM107.366 25H107.866V24.5H107.366V25ZM107.366 26H106.866V26.5H107.366V26ZM108.512 26V26.5H109.012V26H108.512ZM108.512 25V24.5H108.012V25H108.512ZM111.951 25H112.451V24.5H111.951V25ZM111.951 26H111.451V26.5H111.951V26ZM262.363 26V26.5H262.863V26H262.363ZM262.363 25.805L262.635 25.3854L261.863 24.8853V25.805H262.363ZM262.506 25.8977L262.235 26.3174L262.494 26.4857L262.761 26.3282L262.506 25.8977ZM269 22.0601L269.254 22.4905L269.5 22.3454V22.0601H269ZM269 2.176H269.5V1.67714L269.001 1.676L269 2.176ZM192.314 2L192.315 1.5L192.148 1.49962L192.014 1.60026L192.314 2ZM186.288 6.52776V7.02776H186.455L186.588 6.9275L186.288 6.52776ZM163.712 6.52776L163.412 6.9275L163.545 7.02776H163.712V6.52776ZM81.0011 2.67599L157.687 2.5L157.685 1.5L80.9989 1.676L81.0011 2.67599ZM81.5 22.0601V2.176H80.5V22.0601H81.5ZM87.909 25.5698L81.2547 21.6299L80.7453 22.4903L87.3995 26.4302L87.909 25.5698ZM90.1707 25.5H87.6542V26.5H90.1707V25.5ZM89.6707 25V26H90.6707V25H89.6707ZM92.4634 24.5H90.1707V25.5H92.4634V24.5ZM92.9634 26V25H91.9634V26H92.9634ZM95.9024 25.5H92.4634V26.5H95.9024V25.5ZM95.4024 25V26H96.4024V25H95.4024ZM97.0488 24.5H95.9024V25.5H97.0488V24.5ZM97.5488 26V25H96.5488V26H97.5488ZM98.1951 25.5H97.0488V26.5H98.1951V25.5ZM97.6951 25V26H98.6951V25H97.6951ZM107.366 24.5H98.1951V25.5H107.366V24.5ZM107.866 26V25H106.866V26H107.866ZM108.512 25.5H107.366V26.5H108.512V25.5ZM108.012 25V26H109.012V25H108.012ZM111.951 24.5H108.512V25.5H111.951V24.5ZM112.451 26V25H111.451V26H112.451ZM262.363 25.5H111.951V26.5H262.363V25.5ZM261.863 25.805V26H262.863V25.805H261.863ZM262.778 25.4781L262.635 25.3854L262.091 26.2246L262.235 26.3174L262.778 25.4781ZM268.746 21.6296L262.252 25.4673L262.761 26.3282L269.254 22.4905L268.746 21.6296ZM268.5 2.176V22.0601H269.5V2.176H268.5ZM192.313 2.5L268.999 2.67599L269.001 1.676L192.315 1.5L192.313 2.5ZM186.588 6.9275L192.615 2.39974L192.014 1.60026L185.988 6.12802L186.588 6.9275ZM163.712 7.02776H186.288V6.02776H163.712V7.02776ZM157.385 2.39974L163.412 6.9275L164.012 6.12802L157.986 1.60026L157.385 2.39974Z" fill="#FFFB00"/>
 <defs>
-<clipPath id="bgblur_0_143_286_clip_path"><rect transform="translate(43.9967 62.457)" x="0.00334167" y="-18.457" width="343.997" height="103.456"/>
-</clipPath><clipPath id="bgblur_1_143_286_clip_path"><rect transform="translate(44.0005 62.457)" width="343.997" height="103.456" transform="matrix(-1 0 0 1 343.996 -18.457)"/>
-</clipPath><linearGradient id="paint0_linear_143_286" x1="172.002" y1="13" x2="172.002" y2="85" gradientUnits="userSpaceOnUse">
-<stop stop-opacity="0"/>
-<stop offset="0.505703" stop-opacity="0.81"/>
-<stop offset="1"/>
-</linearGradient>
-<linearGradient id="paint1_linear_143_286" x1="171.998" y1="0" x2="171.998" y2="72" gradientUnits="userSpaceOnUse">
+<linearGradient id="paint0_linear_143_286" x1="171.998" y1="0" x2="171.998" y2="72" gradientUnits="userSpaceOnUse">
 <stop stop-opacity="0"/>
 <stop offset="0.505703" stop-opacity="0.81"/>
 <stop offset="1"/>
