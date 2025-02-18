@@ -10,10 +10,10 @@ import { getRandomBotName } from "helpers/getRandomBotName";
 import { getDefaultWinner } from "helpers/getDefaultWinners";
 import settings from "../../../../settings/settings.json";
 
-type FightEventsProps = {};
+type FightEventsProps = { quantity?: number };
 
-const FightEvents: FC<FightEventsProps> = ({}) => {
-  const [winners, setWinners] = useState<Winner[]>(getDefaultWinner(5));
+const FightEvents: FC<FightEventsProps> = ({ quantity = 4 }) => {
+  const [winners, setWinners] = useState<Winner[]>(getDefaultWinner(quantity));
   const [isRemoving, setIsRemoving] = useState(false);
 
   useEffect(() => {
@@ -21,7 +21,7 @@ const FightEvents: FC<FightEventsProps> = ({}) => {
       if (!isRemoving) {
         setIsRemoving(true);
         setTimeout(() => {
-          if (winners.length >= 5) {
+          if (winners.length >= quantity) {
             console.log(winners);
             setWinners((prev) => prev.slice(0, -1));
           }

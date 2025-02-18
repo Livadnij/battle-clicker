@@ -75,7 +75,7 @@ const HomePage: React.FC = () => {
   //   fetchUser();
   // }, []);
 
-  const variantData = cyberManArray[user ? user.avatar : 2];
+  const variantData = cyberManArray[user ? user.avatar : 3];
 
   return (
     <Layout
@@ -94,16 +94,14 @@ const HomePage: React.FC = () => {
               />
             </div>
             <div className={styles["bode__events"]}>
-              <FightEvents />
+              <FightEvents quantity={5} />
             </div>
           </div>
         </div>
         <div className={styles["image-container"]}>
           <img
             style={
-              (user && user.avatar === 2) || true
-                ? { top: "-15%" }
-                : { top: "-20%" }
+              user && user.avatar === 2 ? { top: "-15%" } : { top: "-20%" }
             }
             src={variantData.avatar}
             className={styles["image-container__avatar"]}
