@@ -75,7 +75,9 @@ const WelcomePage: React.FC = () => {
       onClick={fetchUser}
       backgroundImage={backgroundImage}
     >
-      <></>
+      <div className={styles["bottom-text-container"]}>
+        welcome to the underground...
+      </div>
     </Layout>
   );
 };

@@ -1,7 +1,6 @@
 import React, { FC } from "react";
 import styles from "./logo.module.scss";
 import logoSmall from "../../../assets/layout/logo-small.svg";
-import logoBottom from "../../../assets/layout/logo-bottom.svg";
 
 type logoProps = {};
 

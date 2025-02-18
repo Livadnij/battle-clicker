@@ -2,11 +2,13 @@ import Layout from "components/layout/Layout";
 import React, { FC } from "react";
 import backgroundImage from "../assets/layout/rules/background.png";
 import HeaderOnboarding from "components/layout/onboarding/header/HeaderOnboarding";
-import RulesBanner from "components/layout/onboarding/rulesBanner/RulesBanner";
+import { ReactComponent as RulesBanner } from "../assets/layout/rules/rules-banner.svg";
+import { ReactComponent as Crosses } from "../assets/layout/rules/cross.svg";
 import styles from "../styles/rules.module.scss";
-import Rule from "components/layout/onboarding/rule/Rule";
+import { ReactComponent as RuleOne } from "../assets/layout/rules/rule-one.svg";
+import { ReactComponent as RuleTwo } from "../assets/layout/rules/rule-two.svg";
+import { ReactComponent as RuleThree } from "../assets/layout/rules/rule-three.svg";
 import { useNavigation } from "../hooks/useNavigation";
-import Crosses from "components/layout/onboarding/crosses/Crosses";
 
 type RulesProps = {};
 
@@ -24,24 +26,31 @@ const RulesPage: FC<RulesProps> = ({}) => {
         <div className={styles["header-container"]}>
           <HeaderOnboarding pageName="rules" />
         </div>
-        <RulesBanner />
-        <Rule
-          type="star"
-          number={1}
-          text="Deposit 100 Stars to enter theN fight arena."
-        />
-        <Crosses />
-        <Rule
-          type="skull"
-          number={2}
-          text="Face real opponents in intense battles."
-        />
-        <Crosses />
-        <Rule
-          type="card"
-          number={3}
-          text="Crush your rival. Take their cash."
-        />
+        <div className={styles["body"]}>
+          <RulesBanner className={styles["body__banner"]} />
+          <div className={styles["rules-container"]}>
+            <div className={styles["rules-container__rule"]}>
+              <RuleOne />
+              <div>
+                <p>Deposit 100 Stars to enter theN fight arena.</p>
+              </div>
+            </div>
+            <Crosses />
+            <div className={styles["rules-container__rule"]}>
+              <RuleTwo />
+              <div>
+                <p>Face real opponents in intense battles.</p>
+              </div>
+            </div>
+            <Crosses />
+            <div className={styles["rules-container__rule"]}>
+              <RuleThree />
+              <div>
+                <p>Crush your rival. Take their cash.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </Layout>
   );

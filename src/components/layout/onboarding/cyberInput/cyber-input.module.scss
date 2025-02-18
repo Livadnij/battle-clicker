@@ -1,12 +1,19 @@
 @import "../../../../styles/variables/variables";
 
 .cyber-input {
-  display: flex;
-  justify-self: center;
+  bottom: 100%;
+  margin: 0 5%;
+  width: 50%;
+  align-content: center;
   position: relative;
-  width: 345px;
+  width: auto;
   z-index: 1;
-  bottom: 100px;
+
+  &__img {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
 
   &__input {
     caret-color: $primary-color;

@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import styles from "./cyber-input.module.scss";
-import cyberSvg from "../../../../assets/layout/register/cyber-input.png";
+import { ReactComponent as InputElement } from "../../../../assets/layout/register/cyber-input.svg";
 
 type CyberInputType = {
   label: string;
@@ -11,7 +11,8 @@ const CyberInput: FC<CyberInputType> = ({ label, value, onChange }) => {
   console.log(label);
   return (
     <div className={styles["cyber-input"]}>
-      <img src={cyberSvg} />
+      <div className={styles["cyber-input__blur"]} />
+      <InputElement className={styles["cyber-input__img"]} />
       <span className={styles["cyber-input__label"]}>{label}</span>
       <input
         className={styles["cyber-input__input"]}

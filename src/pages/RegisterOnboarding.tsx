@@ -70,7 +70,7 @@ const RegisterOnboardingPage: FC<RegisterPageType> = ({}) => {
       onClick={handleSubmitUser}
     >
       <div className={styles["register-container"]}>
-        <HeaderOnboarding pageName="register" />]
+        <HeaderOnboarding pageName="register" />
         <div>
           <CyberInput
             label="Enter your name"
