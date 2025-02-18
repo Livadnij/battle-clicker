@@ -46,7 +46,7 @@
     top: 2%;
     transform: translate(-50%, 0);
     font-weight: 900;
-    font-size: 1vh;
+    font-size: 0.6rem;
     letter-spacing: 0.06rem;
   }
 
@@ -59,13 +59,13 @@
     left: 50%;
     transform: translate(-50%, 0);
     span:first-child {
-      line-height: 80%;
       padding: 0;
-      font-size: 1.8vh;
+      font-size: 1.2rem;
       font-family: "Orbitron";
     }
 
     span:last-child {
+      line-height: 0.1rem;
       font-size: 0.8vh;
     }
   }

@@ -12,7 +12,7 @@ import settings from "../../../../settings/settings.json";
 
 type FightEventsProps = { quantity?: number };
 
-const FightEvents: FC<FightEventsProps> = ({ quantity = 4 }) => {
+const FightEvents: FC<FightEventsProps> = ({ quantity = 5 }) => {
   const [winners, setWinners] = useState<Winner[]>(getDefaultWinner(quantity));
   const [isRemoving, setIsRemoving] = useState(false);
 

@@ -68,12 +68,12 @@ const HomePage: React.FC = () => {
     if (!loading) {
       return "start fight";
     }
-    return "Loading...";
+    return "Loading";
   }, [loading, enoughForFight]);
 
-  // useEffect(() => {
-  //   fetchUser();
-  // }, []);
+  useEffect(() => {
+    fetchUser();
+  }, []);
 
   const variantData = cyberManArray[user ? user.avatar : 3];
 
@@ -93,8 +93,8 @@ const HomePage: React.FC = () => {
                 value={user ? user.balance : 50}
               />
             </div>
-            <div className={styles["bode__events"]}>
-              <FightEvents quantity={5} />
+            <div className={styles["body__events"]}>
+              <FightEvents quantity={4} />
             </div>
           </div>
         </div>

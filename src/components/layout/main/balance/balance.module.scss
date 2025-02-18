@@ -1,15 +1,14 @@
 @import "../../../../styles/variables/variables";
 
 .container {
-  width: auto;
-  height: 100%;
-  padding: 0 5%;
+  width: 100%;
+  height: auto;
+  padding-bottom: 5%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   &__banner {
-    width: 100%;
-    height: auto;
+    align-self: center;
   }
 
   &__enough {
@@ -47,15 +46,11 @@
   font-size: 1.5vh;
   text-transform: uppercase;
   position: relative;
-  width: 100%;
-  height: auto;
   background: none;
   border: none;
   color: $accent-color;
 
   &__svg-image {
-    width: 100%;
-    height: 100%;
   }
 
   &__title {

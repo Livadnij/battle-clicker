@@ -2,10 +2,8 @@ import React, { FC, useState } from "react";
 import Layout from "components/layout/Layout";
 import { useUser } from "context/UserContext";
 import settings from "../settings/settings.json";
-import TextInputField from "components/textInput/TextInputField";
 import styles from "../styles/deposit.module.scss";
 import { useTelegram } from "hooks/useTelegram";
-import axios from "axios";
 import backgroundImage from "../assets/layout/deposit/background.png";
 
 import { useNavigation } from "hooks/useNavigation";
@@ -51,7 +49,9 @@ const DepositOnboardingPage: FC<DepositPageType> = ({}) => {
         <HeaderOnboarding pageName="depositOn" />
         <div className={styles["deposit-body"]}>
           <WinnersBanner className={styles["deposit-body__banner"]} />
-          <FightEvents />
+          <div className={styles["deposit-body__events"]}>
+            <FightEvents quantity={5} />
+          </div>
           <Sign className={styles["deposit-body__sign"]} />
         </div>
       </div>
