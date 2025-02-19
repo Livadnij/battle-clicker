@@ -14,7 +14,7 @@ const App: React.FC = () => (
   <BrowserRouter>
     <UserProvider>
       <Routes>
-        <Route path="/" element={<FightPage />} />
+        <Route path="/" element={<WelcomePage />} />
         <Route path="/rules" element={<RulesPage />} />
         <Route path="/deposit" element={<DepositOnboardingPage />} />
         <Route path="/register" element={<RegisterOnboardingPage />} />
