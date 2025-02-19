@@ -63,6 +63,20 @@ const RegisterOnboardingPage: FC<RegisterPageType> = ({}) => {
     goHome();
   };
 
+  const getAvatarStyles = () => {
+    if (variant === 0) {
+      return { top: "100px" };
+    } else if (variant === 1) {
+      return { top: "100px" };
+    } else if (variant === 2) {
+      return { top: 0 };
+    } else if (variant === 3) {
+      return { top: 0 };
+    } else {
+      return { top: 0 };
+    }
+  };
+
   return (
     <Layout
       backgroundImage={variantData.background}
@@ -79,6 +93,7 @@ const RegisterOnboardingPage: FC<RegisterPageType> = ({}) => {
           />
           <img
             src={variantData.avatar}
+            style={getAvatarStyles()}
             className={styles["register-container__avatar"]}
           />
         </div>

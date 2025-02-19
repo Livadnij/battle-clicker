@@ -7,10 +7,9 @@
   position: relative;
 
   &__avatar {
-    top: -100px;
     position: absolute;
     width: 100%;
-    transform: translate(-50%, 20%);
+    transform: translate(-50%, 0);
     left: 50%;
   }
 }
