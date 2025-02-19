@@ -19,6 +19,8 @@ import fightBackground from "../assets/layout/fight/fight-background.png"
 import { ReactComponent as Head } from "../assets/layout/fight/head.svg";
 import { ReactComponent as Body } from "../assets/layout/fight/body.svg";
 import { ReactComponent as Legs } from "../assets/layout/fight/legs.svg";
+import  UserAvatar from "../assets/layout/avatars/avatar-1.png"
+import BotAvatar from "../assets/layout/avatars/avatar-4.png"
 import BattleInterface from "../components/battlePage/battleInterface/BattleInterface";
 import BattleLog from "../components/battlePage/log/BattleLog";
 import fightHeader from "../assets/layout/fight/fight-header.png";
@@ -41,6 +43,8 @@ const FightPage: React.FC = () => {
     const [turn, setTurn] = useState<boolean>(!!randomizer(0, 1));
     const [userBided, setUserBided] = useState<boolean>(false);
 
+    const userAvatar = UserAvatar
+    const botAvatar = BotAvatar
     const userName = user ? user.username : "not found";
     const areas: any = settings.fightOptions;
     const fightPrice = settings.fightPrice;
@@ -50,11 +54,11 @@ const FightPage: React.FC = () => {
 
     areas.map((area: any) => {
         if (area.title === "head") {
-            area.image = <Head className={styles["battle__item-image"]} />;
+            area.image = <Head className={styles["battle__item-image"]}/>;
         } else if (area.title === "body") {
-            area.image = <Body className={styles["battle__item-image"]} />;
+            area.image = <Body className={styles["battle__item-image"]}/>;
         } else if (area.title === "legs") {
-            area.image = <Legs style={{height: '80%'}} className={styles["battle__item-image"]} />;
+            area.image = <Legs style={{height: '80%'}} className={styles["battle__item-image"]}/>;
         }
     })
 
@@ -125,7 +129,13 @@ const FightPage: React.FC = () => {
                     <img className={styles["battle__header-line"]} src={fightHeader}/>
                     <img className={styles["battle__header-state"]} src={turn ? headerAttack : headerDefeat}/>
                 </div>
-                <BattleLog logArray={log} score={score}/>
+                <BattleLog
+                    userAvatar={userAvatar}
+                    botAvatar={botAvatar}
+                    userName={userName}
+                    botName={botName}
+                    logArray={log}
+                    score={score}/>
                 <BattleInterface areas={areas}/>
             </div>
         </Layout>

@@ -13,11 +13,11 @@ const LogContainerSvg: FC<LogContainerSvgProps> = (
 ) => {
 
     const userScore = useMemo(() => {
-        return score.userScore =1
+        return score.userScore
     }, [score])
 
     const botScore = useMemo(() => {
-        return score.botScore =3
+        return score.botScore
     }, [score])
 
     return (
@@ -64,8 +64,6 @@ const LogContainerSvg: FC<LogContainerSvgProps> = (
             </g>
             <path d="M164 2H184" stroke="#FFFB00" stroke-width="2"/>
             <path d="M167 4H181" stroke="#FFFB00" stroke-width="2"/>
-            <circle cx="175" cy="49" r="2" fill="#FFFB00"/>
-            <circle cx="175" cy="65" r="2" fill="#FFFB00"/>
             <path d="M1.5 70V38" stroke="#FFFB00"/>
             <path d="M1.5 97V90" stroke="#FFFB00"/>
             <path d="M1.5 102.5V95.5" stroke="#FFFB00" stroke-opacity="0.2"/>

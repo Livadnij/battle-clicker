@@ -1,0 +1,62 @@
+@import "../../../../styles/variables/variables";
+
+.fight-row {
+  padding-top: 10px;
+  position: relative;
+
+  &__underline {
+    border-bottom: 1px solid rgba($accent-second, 0.4);
+    width: 95%;
+    position: relative;
+    padding-top: 10px;
+
+    &:before {
+      content: "";
+      display: block;
+      position: absolute;
+      height: 1px;
+      width: 10px;
+      background: $primary-color;
+      right: -12px;
+      transform: rotate(130deg) translateY(6px);
+    }
+  }
+
+  &__row {
+    display: flex;
+    gap: 15px;
+  }
+
+  &__row-time {
+    width: 50px;
+    margin-left: 12px;
+    color: $accent-second;
+    font-weight: bold;
+  }
+
+  &__row-title {
+    max-width: 200px;
+    color: $accent-second;
+    font-weight: bold;
+  }
+
+  &__row-icon {
+    width: 50px;
+    margin-left: 12px;
+  }
+
+  &__row-description {
+    max-width: 200px;
+    font-size: 0.7rem;
+    color: rgba(white, 0.3);
+  }
+
+  &__status {
+    color: $primary-color;
+    font-weight: bold;
+    position: absolute;
+    bottom: 10px;
+    right: 8%;
+    font-size: 0.8rem;
+  }
+}
