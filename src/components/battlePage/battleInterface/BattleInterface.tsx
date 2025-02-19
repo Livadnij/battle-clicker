@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import pickSection from "../../../assets/layout/fight/pick-section.svg";
 import styles from "./BattleInterface.module.scss";
 
@@ -27,7 +27,7 @@ const BattleInterface: FC<BattleInterfaceProps> = ({
         {areas.map((area: any, index: number) => (
           <button
             onClick={() => handleClick(index)}
-            className={styles["battle__main-item"]}
+            className={`${styles["battle__main-item"]} ${index === useChoice ? styles["battle__main-item__selected"] : ""}`}
           >
             <div className={styles["battle__item-header"]}>{area.image}</div>
             <div className={styles["battle__item-footer"]}>

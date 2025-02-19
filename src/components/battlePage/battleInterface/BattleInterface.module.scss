@@ -65,7 +65,7 @@
     background: transparent;
     position: relative;
 
-    &:focus {
+    &__selected  {
       .battle__item-footer {
         position: relative;
 

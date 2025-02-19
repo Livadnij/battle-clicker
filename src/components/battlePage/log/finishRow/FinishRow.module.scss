@@ -1,6 +1,6 @@
 @import "../../../../styles/variables/variables";
 
-.welcome {
+.finish {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -14,6 +14,10 @@
     color: $accent-color;
     font-weight: bold;
     font-size: 0.9rem;
+
+    &:last-child {
+      color: $primary-color;
+    }
   }
 
   &__title {
@@ -40,4 +44,11 @@
       right: 5%;
     }
   }
+}
+
+.user:before {
+  content: url("../../../../assets/layout/fight/active-arrow.svg");
+}
+.bot:after {
+  content: url("../../../../assets/layout/fight/active-arrow-2.svg");
 }

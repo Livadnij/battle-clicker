@@ -3,6 +3,8 @@
 .page-container {
   width: 100%;
   position: relative;
+  height: 100%;
+  max-height: 360px;
 }
 
 .title-container {
@@ -67,4 +69,11 @@
   outline-offset: -2px;
   outline: 2px solid $primary-transparent;
   aspect-ratio: 19/1;
+}
+
+.log__over-main {
+  overflow-y: scroll;
+  height: 65%;
+  position: relative;
+  border: 1px solid rgba($accent-second, 0.5);
 }

@@ -10,6 +10,7 @@ import { ReactComponent as ScoreBanner } from "../../../assets/layout/fight/scor
 import { ReactComponent as BattleLogBanner } from "../../../assets/layout/fight/score/battle-log-banner.svg";
 import { getAvatar } from "helpers/getAvatar";
 import BattleLogBannerScore from "./BattleLogBannerScore";
+import FinishRow from "./finishRow/FinishRow";
 
 type BattleLogProps = {
   logArray: BattleLogType[];
@@ -63,6 +64,7 @@ const BattleLog: FC<BattleLogProps> = ({
         {logArray.map((log, index) => (
           <FightRow key={index} log={log} />
         ))}
+        <FinishRow winnerName={userName} winnerTurn={true} />
       </div>
     </div>
   );

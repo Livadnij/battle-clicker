@@ -10,7 +10,7 @@ type WelcomeRowProps = {
 const WelcomeRow: FC<WelcomeRowProps> = ({userName, botName}) => {
     return (
         <div className={style["welcome"]}>
-            <span className={style["welcome__title"]}>Fight started</span>
+            <span className={style["welcome__title"]}>FIGHT STARTED</span>
             <div className={style["welcome__info"]}>
                 <span>{userName.toUpperCase()}</span>
                 <span>VS.</span>
