@@ -9,3 +9,34 @@ export const initAnalytics = () => {
         }
     )
 }
+
+const trackAppLaunch = () => {}
+const trackDepositSuccess = () => {}
+const trackOnboardingFinished = () => {}
+const trackMainScreen = () => {}
+const trackError = () => {}
+const trackDepositError = () => {}
+const trackOnboardingScreen = () => {}
+const trackFightFinished = () => {}
+const trackFightNotFinished = () => {}
+const trackDepositStart = () => {}
+const trackFightStart = () => {}
+const trackFightScreen = () => {}
+const trackMoveMade = () => {}
+
+
+export const trackEvent = {
+    "MAIN_SCREEN": trackMainScreen,
+    "ONBOARDING_SCREEN": trackOnboardingScreen,
+    "APP_LAUNCH": trackAppLaunch,
+    "DEPOSIT_SUCCESS": trackDepositSuccess,
+    "ONBOARDING_FINISHED": trackOnboardingFinished,
+    "DEPOSIT_ERROR": trackDepositError,
+    "DEPOSIT_START": trackDepositStart,
+    "FIGHT_START": trackFightStart,
+    "FIGHT_SCREEN": trackFightScreen,
+    "FIGHT_FINISHED": trackFightFinished,
+    "FIGHT_NOT_FINISHED": trackFightNotFinished,
+    "MOVE_MADE": trackMoveMade,
+    "ERROR": trackError,
+}
