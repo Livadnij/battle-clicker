@@ -10,28 +10,41 @@
 }
 
 .deposit-body {
-  padding-bottom: 5%;
+  padding: 0 5% 5% 5%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
+  gap: 2%;
+  max-height: 77%;
   height: 77%;
 
   &__banner {
-    padding: 0 5%;
-    height: auto;
     width: 100%;
+    height: 100%;
   }
 
   &__events {
     width: 100%;
-    height: 62%;
     align-content: end;
   }
+}
 
+.sing-container {
   &__sign {
-    padding: 0 5%;
-    height: auto;
     width: 100%;
+    height: auto;
+    position: relative;
+  }
+
+  &__title {
+    font-weight: 900;
+    position: fixed;
+    color: $text-color;
+    font-size: 13px;
+    text-transform: uppercase;
+    left: 50%;
+    transform: translate(-50%, 28%);
   }
 }

@@ -49,7 +49,10 @@ const FightEvents: FC<FightEventsProps> = ({ quantity = 5 }) => {
   }, [isRemoving]);
 
   return (
-    <div className={styles["sliding-list"]}>
+    <div
+      style={{ aspectRatio: `${6.17 / quantity}` }}
+      className={styles["sliding-list"]}
+    >
       <AnimatePresence initial={false}>
         {winners.map((item, index) => (
           <motion.div

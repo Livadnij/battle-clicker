@@ -10,7 +10,7 @@ type singleEventProps = {
 
 const SingleEvent: FC<singleEventProps> = ({ data }) => {
   return (
-    <div className={styles["event-container"]}>
+    <div className={styles["container"]}>
       <div className={styles["info-container"]}>
         <div className={styles["payout-container"]}>
           <span className={styles["payout-container__header"]}>Payout</span>
@@ -40,9 +40,7 @@ const SingleEvent: FC<singleEventProps> = ({ data }) => {
           </div>
         </div>
       </div>
-      <EventContainerElement
-        className={styles["event-container__background"]}
-      />
+      <EventContainerElement className={styles["container__background"]} />
     </div>
   );
 };

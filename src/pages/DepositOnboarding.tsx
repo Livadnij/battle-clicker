@@ -48,11 +48,18 @@ const DepositOnboardingPage: FC<DepositPageType> = ({}) => {
       <div className={styles["deposit-container"]}>
         <HeaderOnboarding pageName="depositOn" />
         <div className={styles["deposit-body"]}>
-          <WinnersBanner className={styles["deposit-body__banner"]} />
+          <div>
+            <WinnersBanner className={styles["deposit-body__banner"]} />
+          </div>
           <div className={styles["deposit-body__events"]}>
             <FightEvents quantity={5} />
           </div>
-          <Sign className={styles["deposit-body__sign"]} />
+          <div className={styles["sing-container"]}>
+            <Sign className={styles["sing-container__sign"]} />
+            <span className={styles["sing-container__title"]}>
+              Deposit {fightPrice} Stars
+            </span>
+          </div>
         </div>
       </div>
     </Layout>

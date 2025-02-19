@@ -22,7 +22,7 @@
 }
 
 .body {
-  padding-bottom: 5%;
+  padding: 0 5% 5% 5%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -31,6 +31,8 @@
 
   &__balance {
     width: 100%;
+    height: 100%;
+    padding-bottom: 5%;
   }
 
   &__events {
@@ -43,7 +45,7 @@
   width: 100%;
   height: 100%;
   &__avatar {
-    top: -27%;
+    top: -150px;
     position: absolute;
     width: 100%;
     transform: translate(-50%, 20%);
