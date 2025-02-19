@@ -16,7 +16,7 @@ const BattleInterface: FC<BattleInterfaceProps> = ({
   const handleClick = (index: number) => {
     setUserChoice(index);
   };
-
+  //
   return (
     <div className={styles["battle__main"]}>
       <img className={styles["battle__main-pick"]} src={pickSection} />
@@ -27,7 +27,9 @@ const BattleInterface: FC<BattleInterfaceProps> = ({
         {areas.map((area: any, index: number) => (
           <button
             onClick={() => handleClick(index)}
-            className={`${styles["battle__main-item"]} ${index === useChoice ? styles["battle__main-item__selected"] : ""}`}
+            className={`${styles["battle__main-item"]} ${
+              index === useChoice ? styles["battle__main-item__selected"] : ""
+            }`}
           >
             <div className={styles["battle__item-header"]}>{area.image}</div>
             <div className={styles["battle__item-footer"]}>
