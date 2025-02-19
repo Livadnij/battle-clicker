@@ -30,7 +30,6 @@ import headerDefeat from "../assets/layout/fight/defeat.svg";
 showConsoleArt();
 
 const scoreDefaultValue = { botScore: 0, userScore: 0 };
-const logDefaultValue = [{ time: getCurrentTime(), log: "Fight Started" }];
 
 const FightPage: React.FC = () => {
   const { goHome } = useNavigation();
@@ -39,7 +38,7 @@ const FightPage: React.FC = () => {
 
   const [score, setScore] = useState<ScoreType>(scoreDefaultValue);
   const [userChoice, setUserChoice] = useState<number | null>(null);
-  const [log, setLog] = useState<BattleLogType[]>(logDefaultValue);
+  const [log, setLog] = useState<BattleLogType[]>([]);
   const [turn, setTurn] = useState<boolean>(!!randomizer(0, 1));
   const [userBided, setUserBided] = useState<boolean>(false);
 
@@ -145,7 +144,11 @@ const FightPage: React.FC = () => {
             logArray={log}
             score={score}
           />
-          <BattleInterface areas={areas} />
+          <BattleInterface
+            useChoice={userChoice}
+            setUserChoice={setUserChoice}
+            areas={areas}
+          />
         </div>
       </div>
     </Layout>
