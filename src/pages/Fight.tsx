@@ -23,7 +23,7 @@ import UserAvatar from "../assets/layout/avatars/avatar-1.png";
 import BotAvatar from "../assets/layout/avatars/avatar-4.png";
 import BattleInterface from "../components/battlePage/battleInterface/BattleInterface";
 import BattleLog from "../components/battlePage/log/BattleLog";
-import fightHeader from "../assets/layout/fight/fight-header.png";
+import { ReactComponent as FightHeader } from "../assets/layout/fight/header-line.svg";
 import headerAttack from "../assets/layout/fight/attack.svg";
 import headerDefeat from "../assets/layout/fight/defeat.svg";
 
@@ -130,7 +130,7 @@ const FightPage: React.FC = () => {
     >
       <div className={styles["battle"]}>
         <div className={styles["battle__header"]}>
-          <img className={styles["battle__header-line"]} src={fightHeader} />
+          <FightHeader className={styles["battle__header-line"]} />
           <img
             className={styles["battle__header-state"]}
             src={turn ? headerAttack : headerDefeat}

@@ -31,12 +31,12 @@ const BattleLogBannerScore: FC<BattleLogBannerScoreProps> = ({
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <foreignObject x="92.1621" y="-9.5" width="151.671" height="39">
-        <div
-        // xmlns="http://www.w3.org/1999/xhtml"
-        // style="backdrop-filter:blur(5px);clip-path:url(#bgblur_0_182_674_clip_path);height:100%;width:100%"
-        ></div>
-      </foreignObject>
+      <foreignObject
+        x="92.1621"
+        y="-9.5"
+        width="151.671"
+        height="39"
+      ></foreignObject>
       <g data-figma-bg-blur-radius="10">
         <path
           fill-rule="evenodd"
