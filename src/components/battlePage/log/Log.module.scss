@@ -48,6 +48,12 @@
     color: $primary-color;
     font-size: 40px;
   }
+
+  &__banner {
+    width: 50%;
+
+    height: auto;
+  }
 }
 
 .image-score-container {
@@ -61,13 +67,4 @@
   outline-offset: -2px;
   outline: 2px solid $primary-transparent;
   aspect-ratio: 19/1;
-
-  &__banner {
-    padding: 0 5px;
-    width: 100%;
-    align-items: center;
-    position: absolute;
-    bottom: 0;
-    height: auto;
-  }
 }

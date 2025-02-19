@@ -9,6 +9,7 @@ import FightRow from "./fightRow/FightRow";
 import { ReactComponent as ScoreBanner } from "../../../assets/layout/fight/score/banner.svg";
 import { ReactComponent as BattleLogBanner } from "../../../assets/layout/fight/score/battle-log-banner.svg";
 import { getAvatar } from "helpers/getAvatar";
+import BattleLogBannerScore from "./BattleLogBannerScore";
 
 type BattleLogProps = {
   logArray: BattleLogType[];
@@ -51,7 +52,10 @@ const BattleLog: FC<BattleLogProps> = ({
           </span>
         </div>
         <div className={style["image-score-container"]}>
-          <BattleLogBanner className={style["image-score-container__banner"]} />
+          <BattleLogBannerScore
+            score={score}
+            className={style["image-score-container__banner"]}
+          />
         </div>
       </div>
       <div className={style["log__over-main"]}>
