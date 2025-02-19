@@ -1,0 +1,42 @@
+@import "../../../../styles/variables/variables";
+
+.welcome {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+  padding: 15px;
+  border-bottom: 1px solid rgba($accent-second, 0.4);
+  background: rgba($accent-color, 0.1);
+
+  span {
+    color: $accent-color;
+    font-weight: bold;
+    font-size: 0.9rem;
+  }
+
+  &__title {
+    color: $primary-color!important;
+    font-size: 0.7rem!important;
+    margin-bottom: 4px;
+  }
+
+  &__info {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    &:before {
+      content: url("../../../../assets/layout/fight/log-arrow.svg");
+      position: absolute;
+      left: 10%;
+    }
+
+    &:after {
+      content: url("../../../../assets/layout/fight/log-arrow-2.svg");
+      position: absolute;
+      right: 10%;
+    }
+  }
+}

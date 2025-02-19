@@ -1,11 +1,27 @@
-.battle-container {
-  padding: 30px 0;
+@import "../styles/variables/variables";
+
+.battle {
+  padding: 12px 0;
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__header-line {
+    width: 100%;
+  }
+
+  &__header-state {
+    height: 5vh;
+  }
 }
 
 h3 {
