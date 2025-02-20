@@ -30,7 +30,7 @@ const scoreDefaultValue = { botScore: 0, userScore: 0 };
 
 const FightPage: React.FC = () => {
   const botList = settings.botData;
-  const { goHome } = useNavigation();
+  const { goDefeat, goVictory } = useNavigation();
   const { user } = useUser();
   const [botData, setBotData] = useState(botList[randomizer(1, 4) - 1]);
 
@@ -120,7 +120,13 @@ const FightPage: React.FC = () => {
       onClick={
         userWins
           ? () =>
-              handleExitFight({ score, user, userBided, fightPrice, goHome })
+              handleExitFight({
+                score,
+                user,
+                userBided,
+                fightPrice,
+                exitCallback: userWins ? goVictory : goDefeat,
+              })
           : userChoice === null
           ? () => {}
           : attackHandler

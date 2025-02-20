@@ -9,6 +9,8 @@ import DepositOnboardingPage from "pages/DepositOnboarding";
 import RulesPage from "pages/Rules";
 import LoadingPage from "pages/Loading";
 import RegisterOnboardingPage from "./pages/RegisterOnboarding";
+import DefeatPage from "pages/Defeat";
+import VictoryPage from "pages/Victory";
 
 const App: React.FC = () => (
   <BrowserRouter>
@@ -19,9 +21,10 @@ const App: React.FC = () => (
         <Route path="/deposit" element={<DepositOnboardingPage />} />
         <Route path="/register" element={<RegisterOnboardingPage />} />
         <Route path="/loading" element={<LoadingPage />} />
-
         <Route path="/home" element={<HomePage />} />
         <Route path="/fight" element={<FightPage />} />
+        <Route path="/defeat" element={<DefeatPage />} />
+        <Route path="/victory" element={<VictoryPage />} />
       </Routes>
     </UserProvider>
   </BrowserRouter>
