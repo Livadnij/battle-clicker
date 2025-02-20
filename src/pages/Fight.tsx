@@ -22,7 +22,7 @@ import { ReactComponent as FightHeader } from "../assets/layout/fight/header-lin
 import { ReactComponent as HeaderAttack } from "../assets/layout/fight/attack.svg";
 import { ReactComponent as HeaderDefeat } from "../assets/layout/fight/defeat.svg";
 import BattleHeader from "components/battlePage/battleHeader/BattleHeader";
-import BattleLog from "components/battlePage/log/BattleLog";
+import BattleLog from "components/battlePage/battleLog/BattleLog";
 
 showConsoleArt();
 
