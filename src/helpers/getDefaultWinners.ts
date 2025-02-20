@@ -1,5 +1,5 @@
 import { randomizer } from "utils/Randomizer";
-import { getRandomBotName } from "./getRandomBotName";
+import { getRandomBotData } from "./getRandomBotName";
 import settings from "../settings/settings.json";
 
 export const getDefaultWinner = (number: number) => {
@@ -7,7 +7,7 @@ export const getDefaultWinner = (number: number) => {
   for (let i = 0; i <= number - 1; i++) {
     winners.unshift({
       number: i,
-      name: getRandomBotName(),
+      name: getRandomBotData().name,
       title: "Won flawless victory!",
       payout: settings.fightPrice,
       roundsQuantity: 3,

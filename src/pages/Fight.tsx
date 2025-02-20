@@ -2,8 +2,6 @@ import React, { useEffect, useMemo, useState } from "react";
 
 import Layout from "../components/layout/Layout";
 import { BattleLogType, ScoreType } from "../types/types";
-import { getRandomBotName } from "../helpers/getRandomBotName";
-import { getCurrentTime } from "../helpers/getCurrentTime";
 import { showConsoleArt } from "../utils/ConsoleArt";
 import settings from "../settings/settings.json";
 import styles from "../styles/battle.module.scss";
@@ -19,22 +17,22 @@ import fightBackground from "../assets/layout/fight/fight-background.png";
 import { ReactComponent as Head } from "../assets/layout/fight/head.svg";
 import { ReactComponent as Body } from "../assets/layout/fight/body.svg";
 import { ReactComponent as Legs } from "../assets/layout/fight/legs.svg";
-import UserAvatar from "../assets/layout/avatars/avatar-1.png";
-import BotAvatar from "../assets/layout/avatars/avatar-4.png";
 import BattleInterface from "../components/battlePage/battleInterface/BattleInterface";
-import BattleLog from "../components/battlePage/log/BattleLog";
 import { ReactComponent as FightHeader } from "../assets/layout/fight/header-line.svg";
-import headerAttack from "../assets/layout/fight/attack.svg";
-import headerDefeat from "../assets/layout/fight/defeat.svg";
+import { ReactComponent as HeaderAttack } from "../assets/layout/fight/attack.svg";
+import { ReactComponent as HeaderDefeat } from "../assets/layout/fight/defeat.svg";
+import BattleHeader from "components/battlePage/battleHeader/BattleHeader";
+import BattleLog from "components/battlePage/log/BattleLog";
 
 showConsoleArt();
 
 const scoreDefaultValue = { botScore: 0, userScore: 0 };
 
 const FightPage: React.FC = () => {
+  const botList = settings.botData;
   const { goHome } = useNavigation();
   const { user } = useUser();
-  const [botName, setBotName] = useState(getRandomBotName());
+  const [botData, setBotData] = useState(botList[randomizer(1, 4) - 1]);
 
   const [score, setScore] = useState<ScoreType>(scoreDefaultValue);
   const [userChoice, setUserChoice] = useState<number | null>(null);
@@ -43,7 +41,6 @@ const FightPage: React.FC = () => {
   const [userBided, setUserBided] = useState<boolean>(false);
 
   const userAvatar = user ? user.avatar : randomizer(1, 4) - 1;
-  const enemyAvatar = randomizer(1, 4) - 1;
   const userName = user ? user.username : "not found";
   const areas: any = settings.fightOptions;
   const fightPrice = settings.fightPrice;
@@ -66,13 +63,23 @@ const FightPage: React.FC = () => {
     }
   });
 
-  const radioTitle = useMemo(() => {
-    return turn ? "Pick an area to punch!" : "Pick an area to Block!";
-  }, [turn]);
+  // const radioTitle = useMemo(() => {
+  //   return turn ? "Pick an area to punch!" : "Pick an area to Block!";
+  // }, [turn]);
   const isResult = useMemo(
     () => score.botScore === 3 || score.userScore === 3,
     [score]
   );
+
+  const isWinner = useMemo(() => {
+    if (score.botScore === 3) {
+      return botData.name;
+    } else if (score.userScore === 3) {
+      return user ? user?.username : "no name";
+    } else {
+      return "";
+    }
+  }, [score]);
 
   const attackHandler = () => {
     const botChoice = getBotChoice({
@@ -87,7 +94,7 @@ const FightPage: React.FC = () => {
     const currentLog = logTemplate({
       turn,
       userName,
-      botName,
+      botName: botData.name,
       areas,
       botChoice,
       userChoice,
@@ -127,23 +134,31 @@ const FightPage: React.FC = () => {
           : attackHandler
       }
     >
-      <div className={styles["battle"]}>
-        <div className={styles["battle__header"]}>
-          <FightHeader className={styles["battle__header-line"]} />
-          <img
-            className={styles["battle__header-state"]}
-            src={turn ? headerAttack : headerDefeat}
-          />
+      <div className={styles["container"]}>
+        <div className={styles["container__header"]}>
+          <FightHeader className={styles["container__header-line"]} />
+          {turn ? (
+            <HeaderAttack className={styles["container__header-state"]} />
+          ) : (
+            <HeaderDefeat className={styles["container__header-state"]} />
+          )}
         </div>
         <div className={styles["body"]}>
-          <BattleLog
+          <BattleHeader
             userAvatar={userAvatar}
-            enemyAvatar={enemyAvatar}
+            enemyAvatar={botData.avatar}
             userName={userName}
-            botName={botName}
-            logArray={log}
+            botName={botData.name}
             score={score}
           />
+          {/* <div className={styles["body__log"]}> */}
+          <BattleLog
+            userName={userName}
+            botName={botData.name}
+            logArray={log}
+            isWinner={isWinner}
+          />
+          {/* </div> */}
           <BattleInterface
             useChoice={userChoice}
             setUserChoice={setUserChoice}

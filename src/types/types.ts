@@ -7,7 +7,13 @@ export type BodyAreaType = { title: string; value: number };
 
 export type Areas = BodyAreaType[];
 
-export type BattleLogType = { time: string; log: string };
+export type BattleLogType = {
+  title: string;
+  time: string;
+  description: string;
+  success: boolean;
+  userSide: boolean;
+};
 
 export type UserType = {
   id: string;
