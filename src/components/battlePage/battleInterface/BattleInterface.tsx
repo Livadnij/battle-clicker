@@ -1,5 +1,4 @@
-import React, { FC, useState } from "react";
-import pickSection from "../../../assets/layout/fight/pick-section.svg";
+import React, { FC } from "react";
 import styles from "./BattleInterface.module.scss";
 import { ReactComponent as Banner } from "../../../assets/layout/fight/log/banner.svg";
 import { ReactComponent as Stripes } from "../../../assets/layout/fight/log/stripes.svg";

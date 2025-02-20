@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 import Layout from "components/layout/Layout";
 import { useUser } from "context/UserContext";
 import settings from "../settings/settings.json";
@@ -15,7 +15,7 @@ import { ReactComponent as Sign } from "../assets/layout/deposit/sign-new.svg";
 
 type DepositPageType = {};
 
-const DepositOnboardingPage: FC<DepositPageType> = ({}) => {
+const DepositOnboardingPage: FC<DepositPageType> = () => {
   const { user, setUser } = useUser();
   const { tg } = useTelegram();
   const { goRegister } = useNavigation();

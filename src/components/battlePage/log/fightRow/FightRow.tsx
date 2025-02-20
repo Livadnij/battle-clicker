@@ -11,8 +11,7 @@ type FightRowProps = {
 
 const FightRow: FC<FightRowProps> = ({ log }) => {
   const { description, success, time, userSide, title } = log;
-  console.log(log);
-  const status = "WON";
+
   return (
     <div className={style["fight-row"]}>
       <div className={style["fight-row__row"]}>
@@ -21,6 +20,7 @@ const FightRow: FC<FightRowProps> = ({ log }) => {
       </div>
       <div className={style["fight-row__row"]}>
         <img
+          alt="side arrow"
           src={userSide ? ArrowUser : ArrowBot}
           className={style["fight-row__row-icon"]}
         />

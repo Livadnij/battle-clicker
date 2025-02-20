@@ -4,10 +4,10 @@ import logoSmall from "../../../assets/layout/logo-small.svg";
 
 type logoProps = {};
 
-const Logo: FC<logoProps> = ({}) => {
+const Logo: FC<logoProps> = () => {
   return (
     <div className={styles["logo-container"]}>
-      <img src={logoSmall} className={styles["logo"]} />
+      <img src={logoSmall} alt="logo" className={styles["logo"]} />
     </div>
   );
 };

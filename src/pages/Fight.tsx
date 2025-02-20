@@ -48,7 +48,7 @@ const FightPage: React.FC = () => {
   const maxBotSurrenderCount = settings.maxBotSurrenderCount;
   const botSurrender = user?.fights_quantity! > maxBotSurrenderCount;
 
-  areas.map((area: any) => {
+  areas.forEach((area: any) => {
     if (area.title === "head") {
       area.image = <Head className={styles["battle__item-image"]} />;
     } else if (area.title === "body") {
@@ -62,14 +62,6 @@ const FightPage: React.FC = () => {
       );
     }
   });
-
-  // const radioTitle = useMemo(() => {
-  //   return turn ? "Pick an area to punch!" : "Pick an area to Block!";
-  // }, [turn]);
-  const isResult = useMemo(
-    () => score.botScore === 3 || score.userScore === 3,
-    [score]
-  );
 
   const isWinner = useMemo(() => {
     if (score.botScore === 3) {
@@ -124,7 +116,7 @@ const FightPage: React.FC = () => {
   return (
     <Layout
       backgroundImage={fightBackground}
-      buttonTitle={userWins ? "home" : turn ? "Attack!" : "Block!"}
+      buttonTitle={userWins ? "next" : turn ? "Attack" : "Block"}
       onClick={
         userWins
           ? () =>

@@ -100,6 +100,7 @@ const HomePage: React.FC = () => {
         </div>
         <div className={styles["image-container"]}>
           <img
+            alt="user avatar"
             src={variantData.avatar}
             className={styles["image-container__avatar"]}
           />

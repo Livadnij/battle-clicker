@@ -39,7 +39,7 @@ const cyberManArray = [
   },
 ];
 
-const RegisterOnboardingPage: FC<RegisterPageType> = ({}) => {
+const RegisterOnboardingPage: FC<RegisterPageType> = () => {
   const { tg_user } = useTelegram();
   const { user, setUser } = useUser();
   const { goHome } = useNavigation();
@@ -92,6 +92,7 @@ const RegisterOnboardingPage: FC<RegisterPageType> = ({}) => {
             onChange={(e) => setValue(e.target.value)}
           />
           <img
+            alt="user avatar"
             src={variantData.avatar}
             style={getAvatarStyles()}
             className={styles["register-container__avatar"]}

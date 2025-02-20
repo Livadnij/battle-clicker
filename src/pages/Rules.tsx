@@ -12,7 +12,7 @@ import { useNavigation } from "../hooks/useNavigation";
 
 type RulesProps = {};
 
-const RulesPage: FC<RulesProps> = ({}) => {
+const RulesPage: FC<RulesProps> = () => {
   const { goDeposit } = useNavigation();
 
   return (

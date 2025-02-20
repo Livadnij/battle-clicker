@@ -1,6 +1,5 @@
 import { ScoreType, UserType } from "types/types";
 import { handleChangeFightQuantity } from "./handleChangeFightQuantity";
-import { useNavigation } from "hooks/useNavigation";
 import { handleChangeBalance } from "./handleChangeBalance";
 
 type ExitFight = {

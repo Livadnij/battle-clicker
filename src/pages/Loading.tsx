@@ -7,7 +7,7 @@ import LoadingBar from "components/layout/loadingDar/LoadingBar";
 
 type FightLoadingProps = {};
 
-const LoadingPage: FC<FightLoadingProps> = ({}) => {
+const LoadingPage: FC<FightLoadingProps> = () => {
   const [progress, setProgress] = useState<number>(0);
   const timeout = 3.0;
 

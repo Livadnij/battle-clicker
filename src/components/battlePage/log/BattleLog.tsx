@@ -3,7 +3,7 @@ import styles from "./battleLog.module.scss";
 import WelcomeRow from "./welcomeRow/WelcomeRow";
 import FightRow from "./fightRow/FightRow";
 import FinishRow from "./finishRow/FinishRow";
-import { BattleLogType, ScoreType } from "types/types";
+import { BattleLogType } from "types/types";
 import { useUser } from "context/UserContext";
 
 type BattleLogProps = {
