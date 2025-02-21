@@ -15,6 +15,8 @@ const DefeatPage: FC<DefeatProps> = () => {
   const { user } = useUser();
   const fightPrice = settings.fightPrice;
 
+  //
+
   const { goHome } = useNavigation();
   return (
     <Layout backgroundImage={background} buttonTitle="Home" onClick={goHome}>
