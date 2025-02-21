@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useEffect, useRef } from "react";
 import styles from "./battleLog.module.scss";
 import WelcomeRow from "./welcomeRow/WelcomeRow";
 import FightRow from "./fightRow/FightRow";
@@ -20,10 +20,15 @@ const BattleLog: FC<BattleLogProps> = ({
   isWinner,
 }) => {
   const { user } = useUser();
-  console.log(isWinner);
+  const logContainerRef = useRef<HTMLDivElement>(null);
 
+  useEffect(() => {
+    if (logContainerRef.current) {
+      logContainerRef.current.scrollTop = logContainerRef.current.scrollHeight;
+    }
+  }, [logArray]);
   return (
-    <div className={styles["log-container"]}>
+    <div className={styles["log-container"]} ref={logContainerRef}>
       <WelcomeRow userName={userName} botName={botName} />
       {logArray.map((log, index) => (
         <FightRow key={index} log={log} />
