@@ -49,6 +49,7 @@ const FightPage: React.FC = () => {
   const maxScore = settings.maxScore;
   const maxBotSurrenderCount = settings.maxBotSurrenderCount;
   const botSurrender = user?.fights_quantity! > maxBotSurrenderCount;
+  const fightUID = `${user?.id!}-${Date.now()}`;
 
   areas.forEach((area: any) => {
     if (area.title === "head") {
@@ -76,6 +77,9 @@ const FightPage: React.FC = () => {
   }, [score]);
 
   const attackHandler = () => {
+    if (isWinner) return;
+    trackEvent.MOVE_MADE({ fightid: fightUID });
+
     const botChoice = getBotChoice({
       userChoice,
       score,
@@ -124,6 +128,8 @@ const FightPage: React.FC = () => {
       goDefeat();
     }
   };
+
+  trackEvent.FIGHT_SCREEN({ fightid: fightUID });
 
   return (
     <Layout

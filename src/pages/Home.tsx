@@ -16,6 +16,7 @@ import cyberManFourth from "../assets/layout/main/char-4.png";
 import Balance from "components/layout/main/balance/Balance";
 import FightEvents from "components/layout/main/fightEvents/FightEvents";
 import { trackEvent } from "utils/analytics";
+import { e } from "react-router/dist/development/route-data-Cq_b5feC";
 
 const cyberManArray = [
   {
@@ -34,7 +35,7 @@ const cyberManArray = [
 
 const HomePage: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
-  const { goIndex, goLoading, goDeposit } = useNavigation();
+  const { goIndex, goLoading } = useNavigation();
   const { user, setUser } = useUser();
 
   const fightPrice = settings.fightPrice;
@@ -61,8 +62,9 @@ const HomePage: React.FC = () => {
   };
 
   const handleClick = () => {
-    if (!loading) {
-      enoughForFight ? goLoading() : goDeposit();
+    if (!loading && enoughForFight) {
+      trackEvent.FIGHT_START({ fightid: user?.id! });
+      goLoading();
     }
   };
 

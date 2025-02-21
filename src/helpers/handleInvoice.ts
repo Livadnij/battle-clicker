@@ -27,16 +27,14 @@ export const handleInvoice = async ({
         console.log(invoiceStatus);
         if (invoiceStatus === "paid") {
           handleCallback();
-          //   setUser({ ...user!, balance: fightPrice });
-          //   goRegister();
+        }
+        if (invoiceStatus === "cancelled") {
+          trackEvent.DEPOSIT_ERROR({ error: `Deposit was cancelled` });
         }
       });
-      // tg.onEvent("invoiceClosed", (data: any) => {
-      //   console.log("tg onEvent (invoiceClosed)", data);
-      // });
     }
   } catch (error) {
-    trackEvent.ERROR({ error: `Failed to create invoice. ${error}` });
+    trackEvent.DEPOSIT_ERROR({ error: `Failed to create invoice. ${error}` });
     console.error("Failed to create invoice:", error);
   }
 };
