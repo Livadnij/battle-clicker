@@ -32,7 +32,7 @@ const scoreDefaultValue = { botScore: 0, userScore: 0 };
 const FightPage: React.FC = () => {
   const botList = settings.botData;
   const { goDefeat, goVictory } = useNavigation();
-  const { user } = useUser();
+  const { user, setUser } = useUser();
   const [botData, setBotData] = useState(botList[randomizer(1, 4) - 1]);
 
   const [score, setScore] = useState<ScoreType>(scoreDefaultValue);
@@ -112,22 +112,30 @@ const FightPage: React.FC = () => {
     }
   }, []);
 
-  const fightEnded = score.botScore === 3 || score.userScore === 3;
+  const exitCallback = () => {
+    if (!user) return;
+    if (isWinner === user?.username) {
+      setUser({ ...user, balance: user.balance + fightPrice });
+      goVictory();
+    } else {
+      setUser({ ...user, balance: user.balance - fightPrice });
+      goDefeat();
+    }
+  };
 
   return (
     <Layout
       backgroundImage={fightBackground}
-      buttonTitle={fightEnded ? "next" : turn ? "Attack" : "Block"}
+      buttonTitle={isWinner ? "next" : turn ? "Attack" : "Block"}
       onClick={
-        fightEnded
+        isWinner
           ? () =>
               handleExitFight({
                 score,
                 user,
                 userBided,
                 fightPrice,
-                exitCallback:
-                  isWinner === user?.username ? goVictory : goDefeat,
+                exitCallback,
               })
           : userChoice === null
           ? () => {}
