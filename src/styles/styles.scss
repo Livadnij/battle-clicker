@@ -13,7 +13,7 @@ span {
 
 html,
 body {
-  height: 100%;
+  height: var(--tg-viewport-height);
   margin: 0; /* Important: Remove default margins */
   background: gray;
 }
