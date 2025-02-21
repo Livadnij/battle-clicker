@@ -112,21 +112,22 @@ const FightPage: React.FC = () => {
     }
   }, []);
 
-  const userWins = score.botScore === 3 || score.userScore === 3;
+  const fightEnded = score.botScore === 3 || score.userScore === 3;
 
   return (
     <Layout
       backgroundImage={fightBackground}
-      buttonTitle={userWins ? "next" : turn ? "Attack" : "Block"}
+      buttonTitle={fightEnded ? "next" : turn ? "Attack" : "Block"}
       onClick={
-        userWins
+        fightEnded
           ? () =>
               handleExitFight({
                 score,
                 user,
                 userBided,
                 fightPrice,
-                exitCallback: userWins ? goVictory : goDefeat,
+                exitCallback:
+                  isWinner === user?.username ? goVictory : goDefeat,
               })
           : userChoice === null
           ? () => {}
