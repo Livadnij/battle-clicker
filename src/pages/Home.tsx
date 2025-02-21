@@ -15,6 +15,7 @@ import cyberManThird from "../assets/layout/main/char-3.png";
 import cyberManFourth from "../assets/layout/main/char-4.png";
 import Balance from "components/layout/main/balance/Balance";
 import FightEvents from "components/layout/main/fightEvents/FightEvents";
+import { trackEvent } from "utils/analytics";
 
 const cyberManArray = [
   {
@@ -74,6 +75,8 @@ const HomePage: React.FC = () => {
   useEffect(() => {
     fetchUser();
   }, []);
+
+  trackEvent.MAIN_SCREEN();
 
   const variantData = cyberManArray[user ? user.avatar : 3];
 

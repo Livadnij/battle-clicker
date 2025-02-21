@@ -12,6 +12,7 @@ import { handleInvoice } from "helpers/handleInvoice";
 import FightEvents from "components/layout/main/fightEvents/FightEvents";
 import { ReactComponent as WinnersBanner } from "../assets/layout/deposit/last-winners-banner.svg";
 import { ReactComponent as Sign } from "../assets/layout/deposit/sign-new.svg";
+import { trackEvent } from "utils/analytics";
 
 type DepositPageType = {};
 
@@ -24,11 +25,14 @@ const DepositOnboardingPage: FC<DepositPageType> = () => {
   const apiUrl = process.env.REACT_APP_API_URL;
 
   const handleInvoicePaid = () => {
-    setUser({ ...user!, balance: fightPrice });
+    if (!user) return;
+    trackEvent.DEPOSIT_SUCCESS({ purchase_amount: fightPrice });
+    setUser({ ...user!, balance: user?.balance + fightPrice });
     goRegister();
   };
 
   const createInvoice = () => {
+    trackEvent.DEPOSIT_START({ screen: "onboarding" });
     if (apiUrl && fightPrice) {
       handleInvoice({
         tg,
@@ -38,6 +42,10 @@ const DepositOnboardingPage: FC<DepositPageType> = () => {
       });
     }
   };
+
+  if (user && !user.username && !user.balance) {
+    trackEvent.ONBOARDING_SCREEN({ screen: "deposit" });
+  }
 
   return (
     <Layout

@@ -24,6 +24,7 @@ import { ReactComponent as HeaderDefeat } from "../assets/layout/fight/defeat.sv
 import BattleHeader from "components/battlePage/battleHeader/BattleHeader";
 import BattleLog from "components/battlePage/battleLog/BattleLog";
 import OldBattleInterface from "components/battlePage/battleInterface/OldBattleInterface";
+import { trackEvent } from "utils/analytics";
 
 showConsoleArt();
 
@@ -113,6 +114,7 @@ const FightPage: React.FC = () => {
   }, []);
 
   const exitCallback = () => {
+    trackEvent.FIGHT_FINISHED();
     if (!user) return;
     if (isWinner === user?.username) {
       setUser({ ...user, balance: user.balance + fightPrice });

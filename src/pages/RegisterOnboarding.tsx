@@ -17,6 +17,7 @@ import { useTelegram } from "hooks/useTelegram";
 import { useUser } from "context/UserContext";
 import { useNavigation } from "hooks/useNavigation";
 import { updateUser } from "../firebase/firebaseFirestore";
+import { trackEvent } from "utils/analytics";
 
 type RegisterPageType = {};
 
@@ -76,6 +77,9 @@ const RegisterOnboardingPage: FC<RegisterPageType> = () => {
       return { top: 0 };
     }
   };
+
+  trackEvent.ONBOARDING_SCREEN({ screen: "register" });
+  trackEvent.ONBOARDING_FINISHED();
 
   return (
     <Layout

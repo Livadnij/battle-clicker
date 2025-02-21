@@ -6,6 +6,7 @@ import { ReactComponent as ButtonImage } from "../../../../assets/buttons/invoic
 import { handleInvoice } from "helpers/handleInvoice";
 import { useTelegram } from "hooks/useTelegram";
 import { useUser } from "context/UserContext";
+import { trackEvent } from "utils/analytics";
 
 type BalanceProps = {
   title: string;
@@ -17,13 +18,17 @@ const Balance: FC<BalanceProps> = ({ title = "add extra stars", value }) => {
   const { user, setUser } = useUser();
   const fightPrice = settings.fightPrice;
   const apiUrl = process.env.REACT_APP_API_URL;
+  console.log(process.env.REACT_APP_MAINTENANCE_MODE);
   const notEnoughForFight = fightPrice > value;
 
   const handleInvoicePaid = () => {
-    setUser({ ...user!, balance: fightPrice });
+    if (!user) return;
+    trackEvent.DEPOSIT_SUCCESS({ purchase_amount: fightPrice });
+    setUser({ ...user!, balance: user.balance + fightPrice });
   };
 
   const createInvoice = () => {
+    trackEvent.DEPOSIT_START({ screen: "main" });
     if (apiUrl && fightPrice && tg) {
       handleInvoice({
         tg,

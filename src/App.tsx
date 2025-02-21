@@ -11,23 +11,43 @@ import LoadingPage from "pages/Loading";
 import RegisterOnboardingPage from "./pages/RegisterOnboarding";
 import DefeatPage from "pages/Defeat";
 import VictoryPage from "pages/Victory";
+import MaintenancePage from "pages/Maintenance";
 
-const App: React.FC = () => (
-  <BrowserRouter>
-    <UserProvider>
-      <Routes>
-        <Route path="/" element={<WelcomePage />} />
-        <Route path="/rules" element={<RulesPage />} />
-        <Route path="/deposit" element={<DepositOnboardingPage />} />
-        <Route path="/register" element={<RegisterOnboardingPage />} />
-        <Route path="/loading" element={<LoadingPage />} />
-        <Route path="/home" element={<HomePage />} />
-        <Route path="/fight" element={<FightPage />} />
-        <Route path="/defeat" element={<DefeatPage />} />
-        <Route path="/victory" element={<VictoryPage />} />
-      </Routes>
-    </UserProvider>
-  </BrowserRouter>
-);
+const App: React.FC = () => {
+  const maintenance = process.env.REACT_APP_MAINTENANCE_MODE;
+  return maintenance === "true" ? (
+    <BrowserRouter>
+      <UserProvider>
+        <Routes>
+          <Route path="/" element={<MaintenancePage />} />
+          <Route path="/rules" element={<MaintenancePage />} />
+          <Route path="/deposit" element={<MaintenancePage />} />
+          <Route path="/register" element={<MaintenancePage />} />
+          <Route path="/loading" element={<MaintenancePage />} />
+          <Route path="/home" element={<MaintenancePage />} />
+          <Route path="/fight" element={<MaintenancePage />} />
+          <Route path="/defeat" element={<MaintenancePage />} />
+          <Route path="/victory" element={<MaintenancePage />} />
+        </Routes>
+      </UserProvider>
+    </BrowserRouter>
+  ) : (
+    <BrowserRouter>
+      <UserProvider>
+        <Routes>
+          <Route path="/" element={<WelcomePage />} />
+          <Route path="/rules" element={<RulesPage />} />
+          <Route path="/deposit" element={<DepositOnboardingPage />} />
+          <Route path="/register" element={<RegisterOnboardingPage />} />
+          <Route path="/loading" element={<LoadingPage />} />
+          <Route path="/home" element={<HomePage />} />
+          <Route path="/fight" element={<FightPage />} />
+          <Route path="/defeat" element={<DefeatPage />} />
+          <Route path="/victory" element={<VictoryPage />} />
+        </Routes>
+      </UserProvider>
+    </BrowserRouter>
+  );
+};
 
 export default App;

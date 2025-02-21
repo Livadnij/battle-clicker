@@ -9,11 +9,14 @@ import { ReactComponent as RuleOne } from "../assets/layout/rules/rule-one.svg";
 import { ReactComponent as RuleTwo } from "../assets/layout/rules/rule-two.svg";
 import { ReactComponent as RuleThree } from "../assets/layout/rules/rule-three.svg";
 import { useNavigation } from "../hooks/useNavigation";
+import { trackEvent } from "utils/analytics";
 
 type RulesProps = {};
 
 const RulesPage: FC<RulesProps> = () => {
   const { goDeposit } = useNavigation();
+
+  trackEvent.ONBOARDING_SCREEN({ screen: "rules" });
 
   return (
     <Layout

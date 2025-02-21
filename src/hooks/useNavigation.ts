@@ -46,6 +46,10 @@ export function useNavigation() {
     navigate("/victory");
   };
 
+  const goMaintenance = () => {
+    navigate("/maintenance");
+  };
+
   return {
     goDeposit,
     goIndex,
@@ -56,5 +60,6 @@ export function useNavigation() {
     goRegister,
     goDefeat,
     goVictory,
+    goMaintenance,
   };
 }
