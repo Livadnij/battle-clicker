@@ -34,7 +34,7 @@ const FightEvents: FC<FightEventsProps> = ({ quantity = 5 }) => {
                 title: "Won flawless victory!",
                 payout: settings.fightPrice,
                 roundsQuantity: 3,
-                duration: `${randomizer(200, 500) * 0.01} min`,
+                duration: `${randomizer(1, 5)}.${randomizer(0, 5)}0 min`,
                 howLongAgo: new Date().getTime(),
               },
               ...prev,
@@ -43,7 +43,7 @@ const FightEvents: FC<FightEventsProps> = ({ quantity = 5 }) => {
           }, 1000);
         }, 1000);
       }
-    }, randomizer(1, 10) * 1000);
+    }, randomizer(1, 5) * 1000);
 
     return () => clearInterval(interval);
   }, [isRemoving]);

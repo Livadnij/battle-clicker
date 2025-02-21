@@ -11,7 +11,7 @@ export const getDefaultWinner = (number: number) => {
       title: "Won flawless victory!",
       payout: settings.fightPrice,
       roundsQuantity: 3,
-      duration: `${randomizer(200, 500) * 0.01} min`,
+      duration: `${randomizer(1, 5)}.${randomizer(0, 5)}0 min`,
       howLongAgo: new Date().getTime(),
     });
   }
