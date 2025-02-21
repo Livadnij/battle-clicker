@@ -24,7 +24,6 @@ export const handleInvoice = async ({
     if (response.data.invoiceLink) {
       // Open the payment link inside Telegram WebApp
       tg.openInvoice(response.data.invoiceLink, (invoiceStatus: string) => {
-        console.log(invoiceStatus);
         if (invoiceStatus === "paid") {
           handleCallback();
         }

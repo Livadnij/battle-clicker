@@ -1,12 +1,12 @@
 {
   "botData": [
-    { "name": "Hemingway", "avatar": 0 },
-    { "name": "William Shatner", "avatar": 1 },
-    { "name": "Palahniuk", "avatar": 2 },
-    { "name": "મહાત્મા", "avatar": 3 },
-    { "name": "Lincoln", "avatar": 0 },
-    { "name": "Boss", "avatar": 1 },
-    { "name": "Dad", "avatar": 2 }
+    { "name": "Hemingway", "avatar": 0, "id": 0 },
+    { "name": "William Shatner", "avatar": 1, "id": 0 },
+    { "name": "Palahniuk", "avatar": 2, "id": 0 },
+    { "name": "મહાત્મા", "avatar": 3, "id": 0 },
+    { "name": "Lincoln", "avatar": 0, "id": 0 },
+    { "name": "Boss", "avatar": 1, "id": 0 },
+    { "name": "Dad", "avatar": 2, "id": 0 }
   ],
   "fightOptions": [
     {

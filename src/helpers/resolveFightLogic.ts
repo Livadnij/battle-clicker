@@ -1,6 +1,7 @@
 import { BattleLogType, ScoreType } from "types/types";
 import { handleNextTurn } from "./handleNextTurn";
 import { randomizer } from "utils/Randomizer";
+import { trackEvent } from "utils/analytics";
 
 type FightLogic = {
   turn: boolean;
@@ -44,7 +45,7 @@ export const resolveFightLogic = ({
       //if its bots turn and he hits armored part of the users body
       handleNextTurn({ setLog, currentLog, setTurn, setUserChoice });
     } else {
-      console.log("fight logic failed");
+      trackEvent.ERROR({ error: "fight logic failed" });
     }
   }, randomizer(0.5, 1.5) * 1000);
 };

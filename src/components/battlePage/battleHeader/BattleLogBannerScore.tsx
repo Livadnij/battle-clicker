@@ -9,7 +9,6 @@ const BattleLogBannerScore: FC<BattleLogBannerScoreProps> = ({
   score,
   className,
 }) => {
-  console.log(score);
   const userScore = useMemo(() => {
     return score.userScore;
   }, [score]);

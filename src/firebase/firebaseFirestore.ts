@@ -115,7 +115,6 @@ export const updateField = async (
     await updateDoc(docRef, {
       [fieldName]: newValue,
     });
-    console.log("Document updated successfully!");
   } catch (error) {
     trackEvent.ERROR({ error: `Error updating document: ${error}` });
     console.error("Error updating document:", error);

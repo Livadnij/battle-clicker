@@ -22,7 +22,6 @@ const FightEvents: FC<FightEventsProps> = ({ quantity = 5 }) => {
         setIsRemoving(true);
         setTimeout(() => {
           if (winners.length >= quantity) {
-            console.log(winners);
             setWinners((prev) => prev.slice(0, -1));
           }
 

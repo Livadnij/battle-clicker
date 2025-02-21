@@ -32,6 +32,5 @@ export const handleChangeFightQuantity = async (
     });
   } catch (error) {
     trackEvent.ERROR({ error: `Error updating user's fight data: ${error}` });
-    console.log("Failed to fetch user data");
   }
 };

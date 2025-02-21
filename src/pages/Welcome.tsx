@@ -14,6 +14,7 @@ import { useUser } from "context/UserContext";
 import { useNavigation } from "hooks/useNavigation";
 import { randomizer } from "utils/Randomizer";
 import { trackEvent } from "utils/analytics";
+import { showConsoleArt } from "utils/ConsoleArt";
 
 const WelcomePage: React.FC = () => {
   const { tg, tg_user } = useTelegram();
@@ -30,7 +31,6 @@ const WelcomePage: React.FC = () => {
       fetchedUser = await getUserById("users", tg_user.id.toString());
     } catch (error) {
       trackEvent.ERROR({ error: `Failed to fetch user data. ${error}` });
-      console.log("Failed to fetch user data");
     } finally {
       setLoading(false);
     }
@@ -141,6 +141,8 @@ const WelcomePage: React.FC = () => {
     tg.ready();
     tg.expand();
   }, []);
+
+  showConsoleArt();
 
   return (
     <Layout

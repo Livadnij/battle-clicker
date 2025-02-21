@@ -8,7 +8,6 @@ type CyberInputType = {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 const CyberInput: FC<CyberInputType> = ({ label, value, onChange }) => {
-  console.log(label);
   return (
     <div className={styles["cyber-input"]}>
       <div className={styles["cyber-input__blur"]} />

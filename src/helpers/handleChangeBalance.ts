@@ -29,6 +29,5 @@ export const handleChangeBalance = async ({
     await updateField("users", user?.id.toString()!, "balance", newBalance);
   } catch (error) {
     trackEvent.ERROR({ error: `Error updating user's balance: ${error}` });
-    console.log("Failed to fetch user data");
   }
 };

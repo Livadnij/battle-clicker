@@ -18,7 +18,6 @@ const Balance: FC<BalanceProps> = ({ title = "add extra stars", value }) => {
   const { user, setUser } = useUser();
   const fightPrice = settings.fightPrice;
   const apiUrl = process.env.REACT_APP_API_URL;
-  console.log(process.env.REACT_APP_MAINTENANCE_MODE);
   const notEnoughForFight = fightPrice > value;
 
   const handleInvoicePaid = () => {

@@ -2,7 +2,6 @@ import React, { useEffect, useMemo, useState } from "react";
 
 import Layout from "../components/layout/Layout";
 import { BattleLogType, ScoreType } from "../types/types";
-import { showConsoleArt } from "../utils/ConsoleArt";
 import settings from "../settings/settings.json";
 import styles from "../styles/battle.module.scss";
 import { useUser } from "context/UserContext";
@@ -25,8 +24,6 @@ import BattleHeader from "components/battlePage/battleHeader/BattleHeader";
 import BattleLog from "components/battlePage/battleLog/BattleLog";
 import OldBattleInterface from "components/battlePage/battleInterface/OldBattleInterface";
 import { trackEvent } from "utils/analytics";
-
-showConsoleArt();
 
 const scoreDefaultValue = { botScore: 0, userScore: 0 };
 
@@ -111,7 +108,6 @@ const FightPage: React.FC = () => {
   };
 
   useEffect(() => {
-    console.log(user);
     if (!user) {
       goHome();
       return;
