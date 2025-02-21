@@ -32,7 +32,7 @@ const scoreDefaultValue = { botScore: 0, userScore: 0 };
 
 const FightPage: React.FC = () => {
   const botList = settings.botData;
-  const { goDefeat, goVictory } = useNavigation();
+  const { goDefeat, goVictory, goHome } = useNavigation();
   const { user, setUser } = useUser();
   const [botData, setBotData] = useState(botList[randomizer(1, 4) - 1]);
 
@@ -111,9 +111,11 @@ const FightPage: React.FC = () => {
   };
 
   useEffect(() => {
-    if (!userBided) {
+    if (!userBided && user!.balance >= fightPrice) {
       handleChangeBalance({ state: "bid", user, fightPrice });
       setUserBided((prev) => !prev);
+    } else if (!userBided && user!.balance < fightPrice) {
+      goHome();
     }
   }, []);
 
