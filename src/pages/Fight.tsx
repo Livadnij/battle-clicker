@@ -117,13 +117,14 @@ const FightPage: React.FC = () => {
       return;
     }
     if (!userBided && user.balance >= fightPrice) {
+      trackEvent.FIGHT_SCREEN({ fightid: fightUID });
       handleChangeBalance({ state: "bid", user, fightPrice });
       setUserBided((prev) => !prev);
     }
   }, []);
 
   const exitCallback = () => {
-    trackEvent.FIGHT_FINISHED();
+    trackEvent.FIGHT_FINISHED({ fightid: fightUID });
     if (!user) return;
     if (isWinner === user?.username) {
       setUser({ ...user, balance: user.balance + fightPrice });
@@ -133,8 +134,6 @@ const FightPage: React.FC = () => {
       goDefeat();
     }
   };
-
-  trackEvent.FIGHT_SCREEN({ fightid: fightUID });
 
   return (
     <Layout

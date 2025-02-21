@@ -99,8 +99,8 @@ const trackDepositError = ({ error }: DepositErrorProps) => {
 const trackOnboardingScreen = ({ screen }: OnboardingProps) => {
   posthog.capture("ONBOARDING_SCREEN", { params: { screen } });
 };
-const trackFightFinished = () => {
-  posthog.capture("FIGHT_FINISHED");
+const trackFightFinished = ({ fightid }: FightStartProps) => {
+  posthog.capture("FIGHT_FINISHED", { params: { fightid } });
 };
 const trackFightNotFinished = ({ error }: FightNotFinishedProps) => {
   posthog.capture("FIGHT_NOT_FINISHED", { params: { error } });
