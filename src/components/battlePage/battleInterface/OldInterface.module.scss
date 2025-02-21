@@ -51,14 +51,16 @@
   }
 
   &__main-item {
-    border: 1px solid transparent;
+    outline-offset: -1px;
+    outline: 2px solid $primary-transparent;
+    border: none;
     box-sizing: content-box;
-    width: 33%;
+    width: 33.3333333%;
     height: 100%;
     background: transparent;
     position: relative;
 
-    &:focus {
+    &__selected {
       .battle__item-footer {
         position: relative;
 
