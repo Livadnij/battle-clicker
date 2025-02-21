@@ -33,7 +33,7 @@ const cyberManArray = [
 
 const HomePage: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
-  const { goIndex, goFight, goDeposit } = useNavigation();
+  const { goIndex, goLoading, goDeposit } = useNavigation();
   const { user, setUser } = useUser();
 
   const fightPrice = settings.fightPrice;
@@ -60,7 +60,7 @@ const HomePage: React.FC = () => {
 
   const handleClick = () => {
     if (!loading) {
-      enoughForFight ? goFight() : goDeposit();
+      enoughForFight ? goLoading() : goDeposit();
     }
   };
 
