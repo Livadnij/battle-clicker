@@ -1,7 +1,46 @@
 import posthog from 'posthog-js'
 
+type Onboarding = 'start' | 'rules' | 'deposit'
+type Deposit = 'onboarding' | 'main'
+
+type DepositSuccessProps = {
+    purchase_amount: number
+}
+
+type ErrorProps = {
+    error: string
+}
+
+type FightNotFinishedProps = {
+    error: string
+}
+
+type DepositErrorProps = {
+    error: string
+}
+
+type OnboardingProps = {
+    screen: Onboarding
+}
+
+type DepositStartProps = {
+    screen: Deposit
+}
+
+type FightStartProps = {
+    fightid: number | string
+}
+
+type FightScreenProps = {
+    fightid: number | string
+}
+
+type MoveMadeProps = {
+    fightid: number | string
+}
+
 export const initAnalytics = () => {
-    posthog.init('phc_UL7kZlVuIOqLkpqWGPI6lPUvgQhJrW3tk3yKZJvcr16',
+    posthog.init('phc_NeIVHg6btas9Y92CAQa7i2H0lbnBqphY75KjpmkS0P0',
         {
             api_host: 'https://us.i.posthog.com',
             person_profiles: 'never',
@@ -10,19 +49,44 @@ export const initAnalytics = () => {
     )
 }
 
-const trackAppLaunch = () => {}
-const trackDepositSuccess = () => {}
-const trackOnboardingFinished = () => {}
-const trackMainScreen = () => {}
-const trackError = () => {}
-const trackDepositError = () => {}
-const trackOnboardingScreen = () => {}
-const trackFightFinished = () => {}
-const trackFightNotFinished = () => {}
-const trackDepositStart = () => {}
-const trackFightStart = () => {}
-const trackFightScreen = () => {}
-const trackMoveMade = () => {}
+const trackAppLaunch = () => {
+}
+const trackDepositSuccess = ({purchase_amount}: DepositSuccessProps) => {
+    posthog.capture('DEPOSIT_SUCCESS', {params: {purchase_amount}});
+}
+const trackOnboardingFinished = () => {
+    posthog.capture('ONBOARDING_FINISHED');
+}
+const trackMainScreen = () => {
+    posthog.capture('MAIN_SCREEN');
+}
+const trackError = ({error}: ErrorProps) => {
+    posthog.capture('ERROR', {params: {error}});
+}
+const trackDepositError = ({error}: DepositErrorProps) => {
+    posthog.capture('DEPOSIT_ERROR', {params: {error}});
+}
+const trackOnboardingScreen = ({screen}: OnboardingProps) => {
+    posthog.capture('ONBOARDING_SCREEN', {params: {screen}});
+}
+const trackFightFinished = () => {
+    posthog.capture('FIGHT_FINISHED');
+}
+const trackFightNotFinished = ({error}: FightNotFinishedProps) => {
+    posthog.capture('FIGHT_NOT_FINISHED', {params: {error}});
+}
+const trackDepositStart = ({screen}: DepositStartProps) => {
+    posthog.capture('DEPOSIT_START', {params: {screen}});
+}
+const trackFightStart = ({fightid}: FightStartProps) => {
+    posthog.capture('FIGHT_START', {params: {fightid}});
+}
+const trackFightScreen = ({fightid}: FightScreenProps) => {
+    posthog.capture('FIGHT_SCREEN', {params: {fightid}});
+}
+const trackMoveMade = ({fightid}: MoveMadeProps) => {
+    posthog.capture('MOVE_MADE', {params: {fightid}});
+}
 
 
 export const trackEvent = {
