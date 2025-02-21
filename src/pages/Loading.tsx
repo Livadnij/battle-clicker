@@ -11,7 +11,7 @@ type FightLoadingProps = {};
 const LoadingPage: FC<FightLoadingProps> = () => {
   const { goFight } = useNavigation();
   const [progress, setProgress] = useState<number>(0);
-  const timeout = 3.0;
+  const timeout = 4.0;
 
   useEffect(() => {
     setTimeout(() => {
