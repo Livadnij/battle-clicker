@@ -1,6 +1,5 @@
 import { ScoreType, UserType } from "types/types";
 import { handleChangeFightQuantity } from "./handleChangeFightQuantity";
-import { useNavigation } from "hooks/useNavigation";
 import { handleChangeBalance } from "./handleChangeBalance";
 
 type ExitFight = {
@@ -8,7 +7,7 @@ type ExitFight = {
   user: UserType | null;
   userBided: boolean;
   fightPrice: number;
-  goHome: () => void;
+  exitCallback: () => void;
 };
 
 export const handleExitFight = ({
@@ -16,16 +15,16 @@ export const handleExitFight = ({
   user,
   userBided,
   fightPrice,
-  goHome,
+  exitCallback,
 }: ExitFight) => {
   if (!user) return;
   if (score.botScore === 3) {
     handleChangeFightQuantity(user);
-    goHome();
+    exitCallback();
   }
   if (userBided && score.userScore === 3) {
     handleChangeBalance({ state: "win", user, fightPrice });
     handleChangeFightQuantity(user);
-    goHome();
+    exitCallback();
   }
 };

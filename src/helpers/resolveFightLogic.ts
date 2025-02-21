@@ -10,7 +10,7 @@ type FightLogic = {
   setTurn: React.Dispatch<React.SetStateAction<boolean>>;
   setLog: React.Dispatch<React.SetStateAction<BattleLogType[]>>;
   setUserChoice: React.Dispatch<React.SetStateAction<number | null>>;
-  currentLog: string | undefined;
+  currentLog: BattleLogType | undefined;
 };
 
 export const resolveFightLogic = ({

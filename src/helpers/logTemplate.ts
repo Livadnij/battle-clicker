@@ -1,4 +1,5 @@
 import { BodyAreaType } from "types/types";
+import { getCurrentTime } from "./getCurrentTime";
 
 type Log = {
   turn: boolean;
@@ -17,17 +18,30 @@ export const logTemplate = ({
   botChoice,
   userChoice,
 }: Log) => {
+  const time = getCurrentTime();
   const mappedAreas = areas.map((area) => area.title);
   if (userChoice === null || botChoice === null) return;
 
-  const attackerName = turn ? userName : botName;
-  const defenderName = !turn ? userName : botName;
+  const attackerName = turn ? "You" : botName;
+  const defenderName = !turn ? "You" : botName;
   const hitArea = turn ? mappedAreas[userChoice] : mappedAreas[botChoice];
   const defendAction =
     userChoice === botChoice
-      ? ` but ${defenderName} blocks an attack`
-      : ` but ${defenderName} couldnt block an attack`;
+      ? `${defenderName} block an attack`
+      : `${defenderName} couldnt block an attack`;
 
-  return `${attackerName} hits ${defenderName} in the ${hitArea}
-    ${defendAction}`;
+  const description = `${attackerName} hits ${defenderName} in the ${hitArea}. 
+  ${defendAction}`;
+
+  const title = turn ? "Smash them!" : "Time to defend!";
+
+  const getSuccess = () => {
+    if (turn) {
+      return botChoice !== userChoice;
+    } else {
+      return botChoice === userChoice;
+    }
+  };
+
+  return { time, description, success: getSuccess(), userSide: turn, title };
 };

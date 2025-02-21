@@ -6,7 +6,7 @@ import SingleEvent from "./singleEvent/SingleEvent";
 import { motion, AnimatePresence } from "framer-motion";
 import { randomizer } from "utils/Randomizer";
 import { getNextNumber } from "helpers/getNextNumberFromWinnerArray";
-import { getRandomBotName } from "helpers/getRandomBotName";
+import { getRandomBotData } from "helpers/getRandomBotName";
 import { getDefaultWinner } from "helpers/getDefaultWinners";
 import settings from "../../../../settings/settings.json";
 
@@ -30,7 +30,7 @@ const FightEvents: FC<FightEventsProps> = ({ quantity = 5 }) => {
             setWinners((prev) => [
               {
                 number: getNextNumber(winners),
-                name: getRandomBotName(),
+                name: getRandomBotData().name,
                 title: "Won flawless victory!",
                 payout: settings.fightPrice,
                 roundsQuantity: 3,

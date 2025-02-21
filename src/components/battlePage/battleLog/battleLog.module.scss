@@ -1,0 +1,11 @@
+@import "../../../styles/variables/variables";
+
+.log-container {
+  margin-bottom: 5%;
+  width: 100%;
+  backdrop-filter: $blur;
+  overflow-y: scroll;
+  height: 100%;
+  position: relative;
+  border: 1px solid rgba($accent-second, 0.5);
+}

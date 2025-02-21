@@ -38,6 +38,14 @@ export function useNavigation() {
     navigate("/register");
   };
 
+  const goDefeat = () => {
+    navigate("/defeat");
+  };
+
+  const goVictory = () => {
+    navigate("/victory");
+  };
+
   return {
     goDeposit,
     goIndex,
@@ -46,5 +54,7 @@ export function useNavigation() {
     goRules,
     goLoading,
     goRegister,
+    goDefeat,
+    goVictory,
   };
 }

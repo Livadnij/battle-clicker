@@ -18,7 +18,7 @@
 
   &__title {
     color: $primary-color!important;
-    font-size: 0.7rem!important;
+    font-size: 0.6rem!important;
     margin-bottom: 4px;
   }
 
@@ -26,17 +26,18 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
+    position: relative;
 
     &:before {
       content: url("../../../../assets/layout/fight/log-arrow.svg");
       position: absolute;
-      left: 10%;
+      left: 5%;
     }
 
     &:after {
       content: url("../../../../assets/layout/fight/log-arrow-2.svg");
       position: absolute;
-      right: 10%;
+      right: 5%;
     }
   }
 }

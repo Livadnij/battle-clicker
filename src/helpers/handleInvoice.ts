@@ -1,5 +1,4 @@
 import axios from "axios";
-import { useTelegram } from "hooks/useTelegram";
 
 type Invoice = {
   tg: any;

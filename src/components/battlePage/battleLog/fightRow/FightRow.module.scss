@@ -1,6 +1,7 @@
 @import "../../../../styles/variables/variables";
 
 .fight-row {
+  text-transform: uppercase;
   padding-top: 10px;
   position: relative;
 
@@ -32,12 +33,14 @@
     margin-left: 12px;
     color: $accent-second;
     font-weight: bold;
+    font-family: "Orbitron";
   }
 
   &__row-title {
     max-width: 200px;
     color: $accent-second;
     font-weight: bold;
+    font-family: "Orbitron";
   }
 
   &__row-icon {
@@ -46,6 +49,7 @@
   }
 
   &__row-description {
+    font-family: "Chakra Petch";
     max-width: 200px;
     font-size: 0.7rem;
     color: rgba(white, 0.3);
@@ -58,5 +62,6 @@
     bottom: 10px;
     right: 8%;
     font-size: 0.8rem;
+    font-family: "Orbitron";
   }
 }
