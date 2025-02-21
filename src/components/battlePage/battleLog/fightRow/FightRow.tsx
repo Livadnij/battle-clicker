@@ -26,9 +26,7 @@ const FightRow: FC<FightRowProps> = ({ log }) => {
         />
         <div className={style["fight-row__row-description"]}>{description}</div>
       </div>
-      <div className={style["fight-row__status"]}>
-        {success ? "you won" : "you lost"}
-      </div>
+      <div className={style["fight-row__status"]}>{success}</div>
       <div className={style["fight-row__underline"]} />
     </div>
   );

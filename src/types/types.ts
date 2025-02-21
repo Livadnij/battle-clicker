@@ -11,7 +11,7 @@ export type BattleLogType = {
   title: string;
   time: string;
   description: string;
-  success: boolean;
+  success: string;
   userSide: boolean;
 };
 

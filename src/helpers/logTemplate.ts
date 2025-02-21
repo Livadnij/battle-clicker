@@ -36,10 +36,15 @@ export const logTemplate = ({
   const title = turn ? "Smash them!" : "Time to defend!";
 
   const getSuccess = () => {
-    if (turn) {
-      return botChoice !== userChoice;
+    if (botChoice === userChoice) {
+      return "draw";
+    }
+    if (turn && botChoice !== userChoice) {
+      return "you won";
+    } else if (!turn && botChoice !== userChoice) {
+      return "you lost";
     } else {
-      return botChoice === userChoice;
+      return "";
     }
   };
 

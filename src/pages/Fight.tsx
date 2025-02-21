@@ -23,6 +23,7 @@ import { ReactComponent as HeaderAttack } from "../assets/layout/fight/attack.sv
 import { ReactComponent as HeaderDefeat } from "../assets/layout/fight/defeat.svg";
 import BattleHeader from "components/battlePage/battleHeader/BattleHeader";
 import BattleLog from "components/battlePage/battleLog/BattleLog";
+import OldBattleInterface from "components/battlePage/battleInterface/OldBattleInterface";
 
 showConsoleArt();
 
@@ -157,7 +158,12 @@ const FightPage: React.FC = () => {
             isWinner={isWinner}
           />
           {/* </div> */}
-          <BattleInterface
+          {/* <BattleInterface
+            useChoice={userChoice}
+            setUserChoice={setUserChoice}
+            areas={areas}
+          /> */}
+          <OldBattleInterface
             useChoice={userChoice}
             setUserChoice={setUserChoice}
             areas={areas}
