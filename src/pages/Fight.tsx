@@ -111,11 +111,14 @@ const FightPage: React.FC = () => {
   };
 
   useEffect(() => {
-    if (!userBided && user!.balance >= fightPrice) {
+    console.log(user);
+    if (!user) {
+      goHome();
+      return;
+    }
+    if (!userBided && user.balance >= fightPrice) {
       handleChangeBalance({ state: "bid", user, fightPrice });
       setUserBided((prev) => !prev);
-    } else if (!userBided && user!.balance < fightPrice) {
-      goHome();
     }
   }, []);
 
