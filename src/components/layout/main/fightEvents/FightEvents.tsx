@@ -32,7 +32,7 @@ const FightEvents: FC<FightEventsProps> = ({ quantity = 5 }) => {
                 number: getNextNumber(winners),
                 name: getRandomBotData().name,
                 title: "Won flawless victory!",
-                payout: settings.fightPrice,
+                payout: randomizer(1, 10) * 10,
                 roundsQuantity: 3,
                 duration: `${randomizer(1, 5)}.${randomizer(0, 5)}0 min`,
                 howLongAgo: new Date().getTime(),
