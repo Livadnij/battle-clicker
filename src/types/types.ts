@@ -18,9 +18,14 @@ export type BattleLogType = {
 export type UserType = {
   id: string;
   balance: number;
-  fights_quantity: number;
   username: string;
   avatar: number;
+  fights_quantity: number;
+  fights_won: number;
+  fights_lost: number;
+  session_quantity: number;
+  deposit_quantity: number;
+  deposit_sum: number;
 };
 
 export type Winner = {

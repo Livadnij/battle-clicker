@@ -53,6 +53,7 @@ const HomePage: React.FC = () => {
         goIndex();
       }
     } catch (error) {
+      trackEvent.ERROR({ error: `Failed to fetch user data. ${error}` });
       console.log("Failed to fetch user data");
     } finally {
       setTimeout(() => setLoading(false), 1000);

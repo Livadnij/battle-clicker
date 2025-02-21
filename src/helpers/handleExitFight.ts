@@ -19,12 +19,12 @@ export const handleExitFight = ({
 }: ExitFight) => {
   if (!user) return;
   if (score.botScore === 3) {
-    handleChangeFightQuantity(user);
+    handleChangeFightQuantity(user, "defeat");
     exitCallback();
   }
   if (userBided && score.userScore === 3) {
     handleChangeBalance({ state: "win", user, fightPrice });
-    handleChangeFightQuantity(user);
+    handleChangeFightQuantity(user, "victory");
     exitCallback();
   }
 };

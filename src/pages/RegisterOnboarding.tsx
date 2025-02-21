@@ -58,6 +58,7 @@ const RegisterOnboardingPage: FC<RegisterPageType> = () => {
     try {
       await updateUser(user.id, "users", { ...user, username: value });
     } catch (error) {
+      trackEvent.ERROR({ error: `Failed to update username. ${error}` });
       console.log("Failed to fetch user data");
     }
     setUser({ ...user, username: value });

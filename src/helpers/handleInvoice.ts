@@ -1,4 +1,5 @@
 import axios from "axios";
+import { trackEvent } from "utils/analytics";
 
 type Invoice = {
   tg: any;
@@ -13,7 +14,6 @@ export const handleInvoice = async ({
   amount,
   handleCallback,
 }: Invoice) => {
-  console.log(tg, apiUrl, amount, handleCallback);
   try {
     const response = await axios.post(apiUrl! + "/get-invoice", {
       amount: amount,
@@ -24,6 +24,7 @@ export const handleInvoice = async ({
     if (response.data.invoiceLink) {
       // Open the payment link inside Telegram WebApp
       tg.openInvoice(response.data.invoiceLink, (invoiceStatus: string) => {
+        console.log(invoiceStatus);
         if (invoiceStatus === "paid") {
           handleCallback();
           //   setUser({ ...user!, balance: fightPrice });
@@ -35,6 +36,7 @@ export const handleInvoice = async ({
       // });
     }
   } catch (error) {
+    trackEvent.ERROR({ error: `Failed to create invoice. ${error}` });
     console.error("Failed to create invoice:", error);
   }
 };

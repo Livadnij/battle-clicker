@@ -11,6 +11,7 @@ import {
 import { getFirestore } from "firebase/firestore";
 import firebaseApp from "./firebaseConfig";
 import { UserType } from "types/types";
+import { trackEvent } from "utils/analytics";
 
 const db: Firestore = getFirestore(firebaseApp);
 
@@ -25,6 +26,7 @@ export const addUser = async (
   try {
     await setDoc(doc(db, collectionName, userID), user);
   } catch (error) {
+    trackEvent.ERROR({ error: `Error adding document: ${error}` });
     console.error("Error adding document:", error);
     throw error;
   }
@@ -38,6 +40,9 @@ export const getUsers = async (collectionName: string) => {
     const querySnapshot = await getDocs(collection(db, collectionName));
     return querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
   } catch (error) {
+    trackEvent.ERROR({
+      error: `Error fetching documents from collection. ${error}`,
+    });
     console.error("Error fetching documents:", error);
     throw error;
   }
@@ -55,6 +60,7 @@ export const updateUser = async (
     const docRef = doc(db, collectionName, userID);
     await updateDoc(docRef, updatedUser);
   } catch (error) {
+    trackEvent.ERROR({ error: `Error updating document. ${error}` });
     console.error("Error updating document:", error);
     throw error;
   }
@@ -68,6 +74,7 @@ export const deleteUser = async (collectionName: string, userID: string) => {
     const docRef = doc(db, collectionName, userID);
     await deleteDoc(docRef);
   } catch (error) {
+    trackEvent.ERROR({ error: `Error deleting document. ${error}` });
     console.error("Error deleting document:", error);
     throw error;
   }
@@ -87,7 +94,8 @@ export const getUserById = async (collectionName: string, userID: string) => {
       return null;
     }
   } catch (error) {
-    console.error("Error fetching document:", error);
+    trackEvent.ERROR({ error: `Error fetching document: ${error}` });
+    console.error("Error fetching document by ID:", error);
     throw error;
   }
 };
@@ -109,6 +117,7 @@ export const updateField = async (
     });
     console.log("Document updated successfully!");
   } catch (error) {
+    trackEvent.ERROR({ error: `Error updating document: ${error}` });
     console.error("Error updating document:", error);
   }
 };

@@ -1,3 +1,4 @@
+import { trackEvent } from "utils/analytics";
 import { updateField } from "../firebase/firebaseFirestore";
 import { UserType } from "types/types";
 
@@ -27,6 +28,7 @@ export const handleChangeBalance = async ({
   try {
     await updateField("users", user?.id.toString()!, "balance", newBalance);
   } catch (error) {
+    trackEvent.ERROR({ error: `Error updating user's balance: ${error}` });
     console.log("Failed to fetch user data");
   }
 };

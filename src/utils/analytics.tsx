@@ -39,6 +39,17 @@ type MoveMadeProps = {
   fightid: number | string;
 };
 
+type AppLaunchProps = {
+  session_quantity: number;
+  deposit_quantity: number;
+  deposit_sum: number;
+  isPremium: boolean;
+  userId: string;
+  fights_quantity: number;
+  balance: number;
+  fights_won: number;
+};
+
 export const initAnalytics = () => {
   posthog.init("phc_NeIVHg6btas9Y92CAQa7i2H0lbnBqphY75KjpmkS0P0", {
     api_host: "https://us.i.posthog.com",
@@ -47,7 +58,29 @@ export const initAnalytics = () => {
   });
 };
 
-const trackAppLaunch = () => {};
+const trackAppLaunch = ({
+  session_quantity,
+  deposit_quantity,
+  deposit_sum,
+  isPremium,
+  userId,
+  fights_quantity,
+  balance,
+  fights_won,
+}: AppLaunchProps) => {
+  posthog.capture("APP_LAUNCH", {
+    params: {
+      session_quantity,
+      deposit_quantity,
+      deposit_sum,
+      isPremium,
+      userId,
+      fights_quantity,
+      balance,
+      fights_won,
+    },
+  });
+};
 const trackDepositSuccess = ({ purchase_amount }: DepositSuccessProps) => {
   posthog.capture("DEPOSIT_SUCCESS", { params: { purchase_amount } });
 };

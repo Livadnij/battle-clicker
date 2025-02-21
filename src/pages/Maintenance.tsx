@@ -1,11 +1,19 @@
 import Layout from "components/layout/Layout";
 import HeaderOnboarding from "components/layout/onboarding/header/HeaderOnboarding";
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import backgroundImage from "../assets/layout/results/defeat-backgound.png";
+import { useTelegram } from "hooks/useTelegram";
 
 type MaintenanceProps = {};
 
 const MaintenancePage: FC<MaintenanceProps> = () => {
+  const { tg } = useTelegram();
+
+  useEffect(() => {
+    tg.ready();
+    tg.expand();
+  }, []);
+
   return (
     <Layout backgroundImage={backgroundImage}>
       <HeaderOnboarding />
