@@ -17,6 +17,8 @@ const root = ReactDOM.createRoot(
 );
 
 initAnalytics();
+// Use trackEvent to send analytic
+trackEvent.APP_LAUNCH()
 
 root.render(
   <React.StrictMode>
