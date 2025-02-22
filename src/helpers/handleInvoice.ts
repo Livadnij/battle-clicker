@@ -26,9 +26,10 @@ export const handleInvoice = async ({
       tg.openInvoice(response.data.invoiceLink, (invoiceStatus: string) => {
         if (invoiceStatus === "paid") {
           handleCallback();
-        }
-        if (invoiceStatus === "cancelled") {
-          trackEvent.DEPOSIT_ERROR({ error: `Deposit was cancelled` });
+        } else {
+          trackEvent.DEPOSIT_ERROR({
+            error: `Deposit was cancelled. Invoice status: ${invoiceStatus}`,
+          });
         }
       });
     }
