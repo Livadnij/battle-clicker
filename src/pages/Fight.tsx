@@ -16,7 +16,6 @@ import fightBackground from "../assets/layout/fight/fight-background.png";
 import { ReactComponent as Head } from "../assets/layout/fight/head.svg";
 import { ReactComponent as Body } from "../assets/layout/fight/body.svg";
 import { ReactComponent as Legs } from "../assets/layout/fight/legs.svg";
-import BattleInterface from "../components/battlePage/battleInterface/BattleInterface";
 import { ReactComponent as FightHeader } from "../assets/layout/fight/header-line.svg";
 import { ReactComponent as HeaderAttack } from "../assets/layout/fight/attack.svg";
 import { ReactComponent as HeaderDefeat } from "../assets/layout/fight/defeat.svg";
@@ -167,19 +166,12 @@ const FightPage: React.FC = () => {
             botName={botData.name}
             score={score}
           />
-          {/* <div className={styles["body__log"]}> */}
           <BattleLog
             userName={userName}
             botName={botData.name}
             logArray={log}
             isWinner={isWinner}
           />
-          {/* </div> */}
-          {/* <BattleInterface
-            useChoice={userChoice}
-            setUserChoice={setUserChoice}
-            areas={areas}
-          /> */}
           <OldBattleInterface
             useChoice={userChoice}
             setUserChoice={setUserChoice}

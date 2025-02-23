@@ -5,8 +5,8 @@ type BotChoice = {
   score: ScoreType;
   turn: boolean;
   areas: BodyAreaType[];
-  maxScore?: number;
-  botSurrender?: boolean;
+  maxScore: number;
+  botSurrender: boolean;
 };
 
 export function getBotChoice({
@@ -14,8 +14,8 @@ export function getBotChoice({
   score,
   turn,
   areas,
-  maxScore = 3,
-  botSurrender = true,
+  maxScore,
+  botSurrender,
 }: BotChoice) {
   const numberOfBodyParts = areas.length;
 
@@ -27,12 +27,11 @@ export function getBotChoice({
   };
 
   const isBotSurrender = score.botScore === maxScore - 1 && botSurrender;
+  console.log(isBotSurrender);
 
   if (isBotSurrender) {
     return turn ? getRandomFromRemaining() : userChoice;
+  } else {
+    return Math.floor(Math.random() * numberOfBodyParts);
   }
-
-  const botChoice = Math.floor(Math.random() * numberOfBodyParts);
-
-  return botChoice;
 }
