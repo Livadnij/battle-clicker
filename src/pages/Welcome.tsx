@@ -19,7 +19,7 @@ import { showConsoleArt } from "utils/ConsoleArt";
 const WelcomePage: React.FC = () => {
   const { tg, tg_user } = useTelegram();
   const { goHome, goRegister, goRules, goDeposit } = useNavigation();
-  const { setUser } = useUser();
+  const { user, setUser } = useUser();
 
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -34,6 +34,7 @@ const WelcomePage: React.FC = () => {
     } finally {
       setLoading(false);
     }
+    console.log(fetchedUser, user);
     if (fetchedUser && fetchedUser.username) {
       // user already registerd => redirect to main
       updateField(

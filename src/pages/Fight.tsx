@@ -107,6 +107,7 @@ const FightPage: React.FC = () => {
   };
 
   useEffect(() => {
+    console.log(user);
     if (!user) {
       goHome();
       return;
