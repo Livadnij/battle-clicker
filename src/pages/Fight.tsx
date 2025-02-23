@@ -73,6 +73,7 @@ const FightPage: React.FC = () => {
   }, [score]);
 
   const attackHandler = () => {
+    console.log(botSurrender, user?.fights_quantity!, maxBotSurrenderCount);
     if (isWinner) return;
     trackEvent.MOVE_MADE({ fightid: fightUID });
 
