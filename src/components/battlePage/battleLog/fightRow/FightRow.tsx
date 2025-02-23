@@ -18,15 +18,19 @@ const FightRow: FC<FightRowProps> = ({ log }) => {
         <div className={style["fight-row__row-time"]}>{time}</div>
         <div className={style["fight-row__row-title"]}>{title}</div>
       </div>
-      <div className={style["fight-row__row"]}>
-        <img
-          alt="side arrow"
-          src={userSide ? ArrowUser : ArrowBot}
-          className={style["fight-row__row-icon"]}
-        />
-        <div className={style["fight-row__row-description"]}>{description}</div>
+      <div className={style["fight-row__second-row"]}>
+        <div className={style["fight-row__column"]}>
+          <img
+            alt="side arrow"
+            src={userSide ? ArrowUser : ArrowBot}
+            className={style["fight-row__row-icon"]}
+          />
+          <div className={style["fight-row__row-description"]}>
+            {description}
+          </div>
+        </div>
+        <div className={style["fight-row__status"]}>{success}</div>
       </div>
-      <div className={style["fight-row__status"]}>{success}</div>
       <div className={style["fight-row__underline"]} />
     </div>
   );

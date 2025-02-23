@@ -44,7 +44,7 @@ const FightPage: React.FC = () => {
   const fightPrice = settings.fightPrice;
   const maxScore = settings.maxScore;
   const maxBotSurrenderCount = settings.maxBotSurrenderCount;
-  const botSurrender = user?.fights_quantity! > maxBotSurrenderCount;
+  const botSurrender = user?.fights_quantity! < maxBotSurrenderCount;
   const fightUID = `${user?.id!}-${Date.now()}`;
 
   areas.forEach((area: any) => {
@@ -73,7 +73,6 @@ const FightPage: React.FC = () => {
   }, [score]);
 
   const attackHandler = () => {
-    console.log(botSurrender, user?.fights_quantity!, maxBotSurrenderCount);
     if (isWinner) return;
     trackEvent.MOVE_MADE({ fightid: fightUID });
 
@@ -107,18 +106,17 @@ const FightPage: React.FC = () => {
     });
   };
 
-  useEffect(() => {
-    console.log(user);
-    if (!user) {
-      goHome();
-      return;
-    }
-    if (!userBided && user.balance >= fightPrice) {
-      trackEvent.FIGHT_SCREEN({ fightid: fightUID });
-      handleChangeBalance({ state: "bid", user, fightPrice });
-      setUserBided((prev) => !prev);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (!user) {
+  //     goHome();
+  //     return;
+  //   }
+  //   if (!userBided && user.balance >= fightPrice) {
+  //     trackEvent.FIGHT_SCREEN({ fightid: fightUID });
+  //     handleChangeBalance({ state: "bid", user, fightPrice });
+  //     setUserBided((prev) => !prev);
+  //   }
+  // }, []);
 
   const exitCallback = () => {
     trackEvent.FIGHT_FINISHED({ fightid: fightUID });
@@ -135,7 +133,7 @@ const FightPage: React.FC = () => {
   return (
     <Layout
       backgroundImage={fightBackground}
-      buttonTitle={isWinner ? "next" : turn ? "Attack" : "Block"}
+      buttonTitle={isWinner ? "next" : turn ? "Attack" : "defend"}
       onClick={
         isWinner
           ? () =>
@@ -175,6 +173,7 @@ const FightPage: React.FC = () => {
             isWinner={isWinner}
           />
           <OldBattleInterface
+            turn={turn}
             useChoice={userChoice}
             setUserChoice={setUserChoice}
             areas={areas}

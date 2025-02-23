@@ -3,12 +3,14 @@ import pickSection from "../../../assets/layout/fight/pick-section.svg";
 import styles from "./OldInterface.module.scss";
 
 type BattleInterfaceProps = {
+  turn: boolean;
   areas: any;
   useChoice: number | null;
   setUserChoice: React.Dispatch<React.SetStateAction<number | null>>;
 };
 
 const OldBattleInterface: FC<BattleInterfaceProps> = ({
+  turn,
   areas,
   useChoice,
   setUserChoice,
@@ -19,6 +21,11 @@ const OldBattleInterface: FC<BattleInterfaceProps> = ({
 
   return (
     <div className={styles["battle__main"]}>
+      <div className={styles["battle__header"]}>
+        <div className={styles["battle__header-line"]}>
+          {`pick ${turn ? "attack" : "defend"} area`}
+        </div>
+      </div>
       <img className={styles["battle__main-pick"]} src={pickSection} />
       <div className={styles["battle__main-items"]}>
         {areas.map((area: any, index: number) => (

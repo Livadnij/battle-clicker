@@ -34,7 +34,6 @@ const WelcomePage: React.FC = () => {
     } finally {
       setLoading(false);
     }
-    console.log(fetchedUser, user);
     if (fetchedUser && fetchedUser.username) {
       // user already registerd => redirect to main
       updateField(

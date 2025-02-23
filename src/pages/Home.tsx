@@ -48,7 +48,6 @@ const HomePage: React.FC = () => {
   const fetchUser = async () => {
     try {
       const fetchedUser = await getUserById("users", user?.id.toString()!);
-      console.log(fetchedUser, user);
       if (fetchedUser) {
         setUser(fetchedUser);
       } else {

@@ -27,7 +27,6 @@ export function getBotChoice({
   };
 
   const isBotSurrender = score.botScore === maxScore - 1 && botSurrender;
-  console.log(isBotSurrender);
 
   if (isBotSurrender) {
     return turn ? getRandomFromRemaining() : userChoice;
