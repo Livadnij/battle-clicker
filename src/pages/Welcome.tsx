@@ -26,14 +26,8 @@ const WelcomePage: React.FC = () => {
   const fetchUser = async () => {
     if (!tg_user) return;
     setLoading(true);
-    let fetchedUser;
-    try {
-      fetchedUser = await getUserById("users", tg_user.id.toString());
-    } catch (error) {
-      trackEvent.ERROR({ error: `Failed to fetch user data. ${error}` });
-    } finally {
-      setLoading(false);
-    }
+    const fetchedUser = await getUserById("users", tg_user.id.toString());
+
     if (fetchedUser && fetchedUser.username) {
       // user already registerd => redirect to main
       updateField(
@@ -54,6 +48,7 @@ const WelcomePage: React.FC = () => {
         fights_won: fetchedUser.fights_won,
       });
       setUser(fetchedUser);
+      setLoading(false);
       goHome();
     } else if (
       fetchedUser &&
@@ -79,6 +74,7 @@ const WelcomePage: React.FC = () => {
         fights_won: fetchedUser.fights_won,
       });
       setUser(fetchedUser);
+      setLoading(false);
       goDeposit();
     } else if (
       fetchedUser &&
@@ -104,6 +100,7 @@ const WelcomePage: React.FC = () => {
         fights_won: fetchedUser.fights_won,
       });
       setUser(fetchedUser);
+      setLoading(false);
       goRegister();
     } else {
       // user isn't registered => create user and redirect to rules
@@ -133,6 +130,7 @@ const WelcomePage: React.FC = () => {
 
       await addUser("users", user, user.id);
       setUser(user);
+      setLoading(false);
       goRules();
     }
   };
