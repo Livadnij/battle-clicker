@@ -5,6 +5,7 @@ import App from "./App";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "./api/client";
 import { initAnalytics } from "./utils/analytics";
+import { initAdvertisers } from "utils/advertisers";
 
 declare global {
   interface Window {
@@ -17,6 +18,7 @@ const root = ReactDOM.createRoot(
 );
 
 initAnalytics();
+initAdvertisers();
 
 root.render(
   <React.StrictMode>

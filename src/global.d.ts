@@ -16,3 +16,11 @@ declare module "*.png" {
   const value: string;
   export default value;
 }
+
+interface Window {
+  TappAdsAdvSdk?: {
+    init: (appId: string, debug: { debug: boolean }) => Promise<void>;
+    showAd: (containerId: string) => void;
+    event: (eventData: { isOld: boolean }) => Promise<void>;
+  };
+}
