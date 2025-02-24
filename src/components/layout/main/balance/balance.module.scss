@@ -7,8 +7,6 @@
   flex-direction: column;
   justify-content: space-between;
   &__banner {
-    width: 100%;
-    height: auto;
     align-self: center;
   }
 
@@ -64,8 +62,6 @@
   color: $accent-color;
 
   &__svg-image {
-    width: 100%;
-    height: auto;
   }
 
   &__title {
