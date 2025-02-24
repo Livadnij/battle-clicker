@@ -3,6 +3,7 @@ import pickSection from "../../../assets/layout/fight/pick-section.svg";
 import styles from "./OldInterface.module.scss";
 
 type BattleInterfaceProps = {
+  isWinner: string;
   turn: boolean;
   areas: any;
   useChoice: number | null;
@@ -10,6 +11,7 @@ type BattleInterfaceProps = {
 };
 
 const OldBattleInterface: FC<BattleInterfaceProps> = ({
+  isWinner,
   turn,
   areas,
   useChoice,
@@ -30,10 +32,11 @@ const OldBattleInterface: FC<BattleInterfaceProps> = ({
       <div className={styles["battle__main-items"]}>
         {areas.map((area: any, index: number) => (
           <button
+            disabled={isWinner !== ""}
             onClick={() => handleClick(index)}
             className={`${styles["battle__main-item"]} ${
               index === useChoice ? styles["battle__main-item__selected"] : ""
-            }`}
+            } ${isWinner ? styles["battle__main-item__disabled"] : ""}`}
           >
             <div className={styles["battle__item-header"]}>{area.image}</div>
             <div className={styles["battle__item-footer"]}>

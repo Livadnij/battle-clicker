@@ -66,9 +66,25 @@
     }
   }
 
-  &__status {
+  &__status-won {
     text-align: end;
     color: $primary-color;
+    font-weight: bold;
+    font-size: 0.8rem;
+    font-family: "Orbitron";
+  }
+
+  &__status-lost {
+    text-align: end;
+    color: $danger;
+    font-weight: bold;
+    font-size: 0.8rem;
+    font-family: "Orbitron";
+  }
+
+  &__status-draw {
+    text-align: end;
+    color: grey;
     font-weight: bold;
     font-size: 0.8rem;
     font-family: "Orbitron";

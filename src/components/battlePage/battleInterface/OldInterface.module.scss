@@ -71,6 +71,22 @@
     background: transparent;
     position: relative;
 
+    &__disabled {
+      .battle__item-footer {
+        position: relative;
+      }
+
+      background: rgba(grey, 0.2);
+
+      path {
+        fill: grey;
+      }
+
+      div {
+        color: grey;
+      }
+    }
+
     &__selected {
       .battle__item-footer {
         position: relative;

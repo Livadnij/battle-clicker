@@ -130,6 +130,18 @@ const FightPage: React.FC = () => {
     }
   };
 
+  const getHeader = () => {
+    if (isWinner === user?.username) {
+      return "you won";
+    } else if (isWinner === botData.name) {
+      return "you lost";
+    } else if (turn) {
+      return <HeaderAttack className={styles["container__header-attack"]} />;
+    } else if (!turn) {
+      return <HeaderDefeat className={styles["container__header-defend"]} />;
+    }
+  };
+
   return (
     <Layout
       backgroundImage={fightBackground}
@@ -152,11 +164,7 @@ const FightPage: React.FC = () => {
       <div className={styles["container"]}>
         <div className={styles["container__header"]}>
           <FightHeader className={styles["container__header-line"]} />
-          {turn ? (
-            <HeaderAttack className={styles["container__header-state"]} />
-          ) : (
-            <HeaderDefeat className={styles["container__header-state"]} />
-          )}
+          {getHeader()}
         </div>
         <div className={styles["body"]}>
           <BattleHeader
@@ -173,6 +181,7 @@ const FightPage: React.FC = () => {
             isWinner={isWinner}
           />
           <OldBattleInterface
+            isWinner={isWinner}
             turn={turn}
             useChoice={userChoice}
             setUserChoice={setUserChoice}

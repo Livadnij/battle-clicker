@@ -18,9 +18,22 @@
     height: auto;
   }
 
-  &__header-state {
+  &__header-attack {
     width: 100%;
     height: 5vh;
+
+    path {
+      fill: $danger;
+    }
+  }
+
+  &__header-defend {
+    width: 100%;
+    height: 5vh;
+
+    path {
+      fill: $accent-color;
+    }
   }
 }
 

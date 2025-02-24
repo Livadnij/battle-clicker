@@ -5,6 +5,7 @@ import FightRow from "./fightRow/FightRow";
 import FinishRow from "./finishRow/FinishRow";
 import { BattleLogType } from "types/types";
 import { useUser } from "context/UserContext";
+import { AnimatePresence } from "framer-motion";
 
 type BattleLogProps = {
   userName: string;
@@ -28,20 +29,22 @@ const BattleLog: FC<BattleLogProps> = ({
     }
   }, [logArray]);
   return (
-    <div className={styles["log-container"]} ref={logContainerRef}>
-      <WelcomeRow userName={userName} botName={botName} />
-      {logArray.map((log, index) => (
-        <FightRow key={index} log={log} />
-      ))}
-      {isWinner ? (
-        <FinishRow
-          winnerName={isWinner ? isWinner : ""}
-          winnerTurn={isWinner !== user?.username}
-        />
-      ) : (
-        <></>
-      )}
-    </div>
+    <AnimatePresence initial={false}>
+      <div className={styles["log-container"]} ref={logContainerRef}>
+        <WelcomeRow userName={userName} botName={botName} />
+        {logArray.map((log, index) => (
+          <FightRow key={index} log={log} />
+        ))}
+        {isWinner ? (
+          <FinishRow
+            winnerName={isWinner ? isWinner : ""}
+            winnerTurn={isWinner !== user?.username}
+          />
+        ) : (
+          <></>
+        )}
+      </div>
+    </AnimatePresence>
   );
 };
 
