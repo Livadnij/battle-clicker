@@ -7,19 +7,22 @@
   flex-direction: column;
   justify-content: space-between;
   &__banner {
+    width: 100%;
+    height: auto;
     align-self: center;
   }
 
   &__enough {
     color: grey;
     text-transform: lowercase;
-    font-size: 0.5rem;
+    font-size: 0.8rem;
   }
 
   &__not-enough {
+    font-weight: 900;
     color: $danger;
     text-transform: lowercase;
-    font-size: 0.5rem;
+    font-size: 0.8rem;
   }
 }
 
@@ -31,12 +34,23 @@
   align-items: center;
   color: $primary-color;
   font-size: 4vh;
+
   &__add {
+    font-weight: 900;
     text-transform: lowercase;
     top: 15%;
     left: 58%;
     position: absolute;
-    font-size: 0.7rem;
+    font-size: 0.8rem;
+    color: $danger;
+  }
+
+  &__balance {
+    font-weight: 900;
+  }
+
+  &__balance-danger {
+    font-weight: 900;
     color: $danger;
   }
 }
@@ -50,6 +64,8 @@
   color: $accent-color;
 
   &__svg-image {
+    width: 100%;
+    height: auto;
   }
 
   &__title {

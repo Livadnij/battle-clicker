@@ -17,6 +17,8 @@ import Balance from "components/layout/main/balance/Balance";
 import FightEvents from "components/layout/main/fightEvents/FightEvents";
 import { trackEvent } from "utils/analytics";
 import { e } from "react-router/dist/development/route-data-Cq_b5feC";
+import { handleInvoice } from "helpers/handleInvoice";
+import { useTelegram } from "hooks/useTelegram";
 
 const cyberManArray = [
   {
@@ -37,9 +39,11 @@ const HomePage: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const { goIndex, goLoading } = useNavigation();
   const { user, setUser } = useUser();
+  const { tg } = useTelegram();
 
   const fightPrice = settings.fightPrice;
   const enoughForFight = user?.balance! >= fightPrice;
+  const apiUrl = process.env.REACT_APP_API_URL;
 
   // if (!user?.id) {
   //   goIndex();
@@ -60,16 +64,38 @@ const HomePage: React.FC = () => {
     }
   };
 
+  const handleInvoicePaid = () => {
+    if (!user) return;
+    trackEvent.DEPOSIT_SUCCESS({ purchase_amount: fightPrice });
+    setUser({ ...user!, balance: user.balance + fightPrice });
+  };
+
+  const createInvoice = () => {
+    trackEvent.DEPOSIT_START({ screen: "main" });
+    if (apiUrl && fightPrice && tg) {
+      handleInvoice({
+        tg,
+        apiUrl,
+        amount: fightPrice,
+        handleCallback: handleInvoicePaid,
+      });
+    }
+  };
+
   const handleClick = () => {
     if (!loading && enoughForFight) {
       trackEvent.FIGHT_START({ fightid: user?.id! });
       goLoading();
+    } else if (!loading && !enoughForFight) {
+      createInvoice();
     }
   };
 
   const buttonTitle = useMemo(() => {
-    if (!loading) {
+    if (!loading && enoughForFight) {
       return "start fight";
+    } else if (!loading && !enoughForFight) {
+      return "deposit";
     }
     return "Loading";
   }, [loading, enoughForFight]);
@@ -94,6 +120,7 @@ const HomePage: React.FC = () => {
           <div className={styles["body"]}>
             <div className={styles["body__balance"]}>
               <Balance
+                createInvoice={createInvoice}
                 title="ADD EXTRA STARS"
                 value={user ? user.balance : 50}
               />

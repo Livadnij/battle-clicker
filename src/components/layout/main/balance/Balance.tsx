@@ -9,40 +9,32 @@ import { useUser } from "context/UserContext";
 import { trackEvent } from "utils/analytics";
 
 type BalanceProps = {
+  createInvoice: () => void;
   title: string;
   value: number;
 };
 
-const Balance: FC<BalanceProps> = ({ title = "add extra stars", value }) => {
-  const { tg } = useTelegram();
-  const { user, setUser } = useUser();
+const Balance: FC<BalanceProps> = ({
+  title = "add extra stars",
+  value,
+  createInvoice,
+}) => {
   const fightPrice = settings.fightPrice;
-  const apiUrl = process.env.REACT_APP_API_URL;
-  const notEnoughForFight = fightPrice > value;
-
-  const handleInvoicePaid = () => {
-    if (!user) return;
-    trackEvent.DEPOSIT_SUCCESS({ purchase_amount: fightPrice });
-    setUser({ ...user!, balance: user.balance + fightPrice });
-  };
-
-  const createInvoice = () => {
-    trackEvent.DEPOSIT_START({ screen: "main" });
-    if (apiUrl && fightPrice && tg) {
-      handleInvoice({
-        tg,
-        apiUrl,
-        amount: fightPrice,
-        handleCallback: handleInvoicePaid,
-      });
-    }
-  };
+  const notEnoughForFight = fightPrice < value;
 
   return (
     <div className={styles["container"]}>
       <Banner className={styles["container__banner"]} />
       <div className={styles["container-balance"]}>
-        <span>{value}</span>
+        <span
+          className={
+            notEnoughForFight
+              ? styles["container-balance__balance-danger"]
+              : styles["container-balance__balance"]
+          }
+        >
+          {value}
+        </span>
         {notEnoughForFight ? (
           <span className={styles["container-balance__add"]}>
             {" "}
