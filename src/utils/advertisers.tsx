@@ -1,3 +1,5 @@
+import { trackEvent } from "utils/analytics";
+
 export const initAdvertisers = () => {
   const apiKey = process.env.REACT_APP_TAPPADS_API_KEY;
 
@@ -5,15 +7,21 @@ export const initAdvertisers = () => {
     window.TappAdsAdvSdk.init(apiKey, { debug: true })
       .then(() => {
         console.log("TappAdsAdvSdk initialized successfully");
-        // trackEvent(); // Now it will be accessible
+        trackTappAdsSdkEvent();
       })
       .catch((err: any) => {
+        trackEvent.ERROR({
+          error: `TappAdsAdvSdk initialized successfully : ${err}`,
+        });
         console.error("Error initializing TappAdsAdvSdk:", err);
       });
   }
 
-  const trackEvent = () => {
+  const trackTappAdsSdkEvent = () => {
     if (!window.TappAdsAdvSdk) {
+      trackEvent.ERROR({
+        error: `TappAdsAdvSdk is not available`,
+      });
       console.error("TappAdsAdvSdk is not available");
       return;
     }
@@ -23,6 +31,9 @@ export const initAdvertisers = () => {
         console.log("Event sent successfully");
       })
       .catch((err) => {
+        trackEvent.ERROR({
+          error: `Error sending event : ${err}`,
+        });
         console.error("Error sending event:", err);
       });
   };
