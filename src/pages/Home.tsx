@@ -120,9 +120,10 @@ const HomePage: React.FC = () => {
           <div className={styles["body"]}>
             <div className={styles["body__balance"]}>
               <Balance
+                enoughForFight={enoughForFight}
                 createInvoice={createInvoice}
                 title="ADD EXTRA STARS"
-                value={user ? user.balance : 50}
+                value={user ? user.balance : 0}
               />
             </div>
             <div className={styles["body__events"]}>

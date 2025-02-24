@@ -9,33 +9,32 @@ import { useUser } from "context/UserContext";
 import { trackEvent } from "utils/analytics";
 
 type BalanceProps = {
+  enoughForFight: boolean;
   createInvoice: () => void;
   title: string;
   value: number;
 };
 
 const Balance: FC<BalanceProps> = ({
+  enoughForFight,
   title = "add extra stars",
   value,
   createInvoice,
 }) => {
-  const fightPrice = settings.fightPrice;
-  const notEnoughForFight = fightPrice < value;
-
   return (
     <div className={styles["container"]}>
       <Banner className={styles["container__banner"]} />
       <div className={styles["container-balance"]}>
         <span
           className={
-            notEnoughForFight
+            !enoughForFight
               ? styles["container-balance__balance-danger"]
               : styles["container-balance__balance"]
           }
         >
           {value}
         </span>
-        {notEnoughForFight ? (
+        {!enoughForFight ? (
           <span className={styles["container-balance__add"]}>
             {" "}
             + {settings.fightPrice - value} min stars
@@ -52,11 +51,11 @@ const Balance: FC<BalanceProps> = ({
       <span
         className={
           styles[
-            notEnoughForFight ? "container__not-enough" : "container__enough"
+            !enoughForFight ? "container__not-enough" : "container__enough"
           ]
         }
       >
-        it is {notEnoughForFight ? "not" : ""} enough to start fight
+        it is {!enoughForFight ? "not" : ""} enough to start fight
       </span>
     </div>
   );
