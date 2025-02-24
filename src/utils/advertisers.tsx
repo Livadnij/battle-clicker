@@ -11,7 +11,7 @@ export const initAdvertisers = () => {
       })
       .catch((err: any) => {
         trackEvent.ERROR({
-          error: `TappAdsAdvSdk initialized successfully : ${err}`,
+          error: `Error initializing TappAdsAdvSdk : ${err}`,
         });
         console.error("Error initializing TappAdsAdvSdk:", err);
       });
