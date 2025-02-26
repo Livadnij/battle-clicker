@@ -16,7 +16,7 @@ const MainButton: FC<MainButtonType> = ({ children, onClick }) => {
       <TopContainerBorder className={styles["button-container__top-border"]} />
       <button className={styles["main-button"]} onClick={onClick}>
         <GlitchEffect className={styles["main-button__glitch"]} />
-        {/* <ButtonImage className={styles["main-button__image"]} /> */}
+        <ButtonImage className={styles["main-button__image"]} />
         {children && <p className={styles["main-button__text"]}>{children}</p>}
       </button>
     </div>

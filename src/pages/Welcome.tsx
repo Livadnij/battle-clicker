@@ -21,11 +21,8 @@ const WelcomePage: React.FC = () => {
   const { goHome, goRegister, goRules, goDeposit } = useNavigation();
   const { user, setUser } = useUser();
 
-  const [loading, setLoading] = useState<boolean>(false);
-
   const fetchUser = async () => {
     if (!tg_user) return;
-    setLoading(true);
     const fetchedUser = await getUserById("users", tg_user.id.toString());
 
     if (fetchedUser && fetchedUser.username) {
@@ -48,7 +45,6 @@ const WelcomePage: React.FC = () => {
         fights_won: fetchedUser.fights_won,
       });
       setUser(fetchedUser);
-      setLoading(false);
       goHome();
     } else if (
       fetchedUser &&
@@ -74,7 +70,6 @@ const WelcomePage: React.FC = () => {
         fights_won: fetchedUser.fights_won,
       });
       setUser(fetchedUser);
-      setLoading(false);
       goDeposit();
     } else if (
       fetchedUser &&
@@ -100,7 +95,6 @@ const WelcomePage: React.FC = () => {
         fights_won: fetchedUser.fights_won,
       });
       setUser(fetchedUser);
-      setLoading(false);
       goRegister();
     } else {
       // user isn't registered => create user and redirect to rules
@@ -130,7 +124,6 @@ const WelcomePage: React.FC = () => {
 
       await addUser("users", user, user.id);
       setUser(user);
-      setLoading(false);
       goRules();
     }
   };
@@ -144,7 +137,7 @@ const WelcomePage: React.FC = () => {
 
   return (
     <Layout
-      buttonTitle={loading ? "LOADING" : "join now"}
+      buttonTitle={"join now"}
       onClick={fetchUser}
       backgroundImage={backgroundImage}
     >
