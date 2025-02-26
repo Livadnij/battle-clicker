@@ -1,0 +1,74 @@
+{
+  "win_titles": [
+    "Victory Secured!",
+    "Winner Takes All!",
+    "You Crushed It!",
+    "Champion’s Strike!",
+    "Clear Win!",
+    "Flawless Execution!",
+    "Domination Achieved!",
+    "Unstoppable Force!",
+    "Success Unlocked!",
+    "Mission Complete!"
+  ],
+  "win_battle_log": [
+    "You landed a crushing blow! Opponent couldn’t recover.",
+    "Your attack broke through their defense. Victory is yours!",
+    "Clean strike! They failed to dodge in time.",
+    "Your hit found its mark. They didn’t stand a chance.",
+    "Brutal strike! Opponent was overwhelmed.",
+    "You outplayed them with precision and power!",
+    "Strike successful! They faltered under pressure.",
+    "You controlled the fight and claimed the win!",
+    "Flawless execution! Opponent had no counter.",
+    "Victory secured. Opponent couldn’t hold the line."
+  ],
+  "draw_titles": [
+    "Stalemate Reached!",
+    "Too Close to Call!",
+    "Even Match!",
+    "Fight to a Standstill!",
+    "No Winner Today!",
+    "Locked in Battle!",
+    "Dead Heat!",
+    "Equal Ground!",
+    "Balanced Outcome!",
+    "Draw Achieved!"
+  ],
+  "draw_battle_log": [
+    "Even clash! Neither side gave ground.",
+    "Blows traded, but no victor emerged.",
+    "Stalemate! Both fought to a standstill.",
+    "Equal force. No clear winner this time.",
+    "Locked in combat. Fight ended without result.",
+    "You met each other blow for blow.",
+    "Neither side had the upper hand.",
+    "Deadlock! Victory remains undecided.",
+    "Fury spent, but no winner rose.",
+    "Both sides held firm. The fight was even."
+  ],
+  "loss_titles": [
+    "Defeat Confirmed!",
+    "Game Over!",
+    "Fallen in Battle!",
+    "You Were Outplayed!",
+    "Loss Registered!",
+    "Fight Lost!",
+    "Better Luck Next Time!",
+    "Challenge Failed!",
+    "Opponent Triumphed!",
+    "End of the Line!"
+  ],
+  "loss_battle_log": [
+    "They struck hard, and you couldn’t defend.",
+    "Your guard slipped. Opponent claimed the win.",
+    "Failed block! The hit landed clean.",
+    "You hesitated, and they capitalized.",
+    "Opponent’s precision broke your defense.",
+    "Your counter fell short. Defeat confirmed.",
+    "The strike overwhelmed you. Fight lost.",
+    "You couldn’t block the final blow.",
+    "Opponent outmaneuvered you this time.",
+    "The battle slipped from your grasp."
+  ]
+}

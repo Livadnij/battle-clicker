@@ -36,13 +36,6 @@ const FightRow: FC<FightRowProps> = ({ log }) => {
           </div>
         </div>
         <div className={style[`fight-row__status-won`]}>{success}</div>
-        {/* ${
-                success === "draw"
-                  ? "draw"
-                  : success === "you won"
-                  ? "won"
-                  : "lost"
-              } */}
       </div>
       <div className={style["fight-row__underline"]} />
     </motion.div>

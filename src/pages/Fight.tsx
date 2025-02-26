@@ -106,17 +106,17 @@ const FightPage: React.FC = () => {
     });
   };
 
-  useEffect(() => {
-    if (!user) {
-      goHome();
-      return;
-    }
-    if (!userBided && user.balance >= fightPrice) {
-      trackEvent.FIGHT_SCREEN({ fightid: fightUID });
-      handleChangeBalance({ state: "bid", user, fightPrice });
-      setUserBided((prev) => !prev);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (!user) {
+  //     goHome();
+  //     return;
+  //   }
+  //   if (!userBided && user.balance >= fightPrice) {
+  //     trackEvent.FIGHT_SCREEN({ fightid: fightUID });
+  //     handleChangeBalance({ state: "bid", user, fightPrice });
+  //     setUserBided((prev) => !prev);
+  //   }
+  // }, []);
 
   const exitCallback = () => {
     trackEvent.FIGHT_FINISHED({ fightid: fightUID });

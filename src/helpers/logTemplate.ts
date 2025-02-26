@@ -1,5 +1,6 @@
 import { BodyAreaType } from "types/types";
 import { getCurrentTime } from "./getCurrentTime";
+import { getRandomFromFightData } from "./getRandomFromFightData";
 
 type Log = {
   turn: boolean;
@@ -18,35 +19,54 @@ export const logTemplate = ({
   botChoice,
   userChoice,
 }: Log) => {
-  const time = getCurrentTime();
-  const mappedAreas = areas.map((area) => area.title);
   if (userChoice === null || botChoice === null) return;
+  const time = getCurrentTime();
 
-  const attackerName = turn ? "You" : botName;
-  const defenderName = !turn ? "You" : botName;
-  const hitArea = turn ? mappedAreas[userChoice] : mappedAreas[botChoice];
-  const defendAction =
-    userChoice === botChoice
-      ? `${defenderName} block an attack`
-      : `${defenderName} couldnt block an attack`;
-
-  const description = `${attackerName} hits ${defenderName} in the ${hitArea}. 
-  ${defendAction}`;
-
-  const title = turn ? "Smash them!" : "Time to defend!";
-
-  const getSuccess = () => {
-    if (botChoice === userChoice) {
-      return "draw";
-    }
-    if (turn && botChoice !== userChoice) {
-      return "you won";
-    } else if (!turn && botChoice !== userChoice) {
-      return "you lost";
+  const getLogDescription = () => {
+    if (turn && userChoice !== botChoice) {
+      // users turn and user passes bots block and hits him
+      return {
+        success: "You Won",
+        description: getRandomFromFightData({ settingTitle: "win_battle_log" }),
+        title: getRandomFromFightData({ settingTitle: "win_titles" }),
+      };
+    } else if (turn && userChoice === botChoice) {
+      // users turn and user couldnt pass bots block
+      return {
+        success: "Draw",
+        description: getRandomFromFightData({
+          settingTitle: "draw_battle_log",
+        }),
+        title: getRandomFromFightData({ settingTitle: "draw_titles" }),
+      };
+    } else if (!turn && userChoice !== botChoice) {
+      // bots turn and bot passes users block and hits him
+      return {
+        success: "You Lost",
+        description: getRandomFromFightData({
+          settingTitle: "loss_battle_log",
+        }),
+        title: getRandomFromFightData({ settingTitle: "loss_titles" }),
+      };
+    } else if (!turn && userChoice === botChoice) {
+      // bots turn and bot couldnt pass bots block
+      return {
+        success: "Draw",
+        description: getRandomFromFightData({
+          settingTitle: "draw_battle_log",
+        }),
+        title: getRandomFromFightData({ settingTitle: "draw_titles" }),
+      };
     } else {
-      return "";
+      return {
+        success: "Failed",
+        description: getRandomFromFightData({
+          settingTitle: "loss_battle_log",
+        }),
+        title: getRandomFromFightData({ settingTitle: "loss_titles" }),
+      };
     }
   };
 
-  return { time, description, success: getSuccess(), userSide: turn, title };
+  return { time, userSide: turn, ...getLogDescription() };
 };

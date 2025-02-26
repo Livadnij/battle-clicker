@@ -9,6 +9,7 @@ import { getNextNumber } from "helpers/getNextNumberFromWinnerArray";
 import { getRandomBotData } from "helpers/getRandomBotName";
 import { getDefaultWinner } from "helpers/getDefaultWinners";
 import settings from "../../../../settings/settings.json";
+import { getRandomFromFightData } from "helpers/getRandomFromFightData";
 
 type FightEventsProps = { quantity?: number };
 
@@ -30,7 +31,7 @@ const FightEvents: FC<FightEventsProps> = ({ quantity = 5 }) => {
               {
                 number: getNextNumber(winners),
                 name: getRandomBotData().name,
-                title: "Won flawless victory!",
+                title: getRandomFromFightData({ settingTitle: "win_titles" }),
                 payout: randomizer(1, 10) * 10,
                 roundsQuantity: 3,
                 duration: `${randomizer(1, 5)}.${randomizer(0, 5)}0 min`,
