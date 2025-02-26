@@ -7,17 +7,13 @@ interface LayoutProps {
   backgroundImage?: string;
   buttonTitle?: string;
   onClick?: () => void;
-  type?: "button" | "submit" | "reset";
-  color?: "yellow" | "blue";
 }
 
 const Layout: React.FC<LayoutProps> = ({
-  color,
   children,
   backgroundImage = "",
   buttonTitle = "",
   onClick = () => {},
-  type,
 }) => {
   return (
     <div
@@ -26,9 +22,7 @@ const Layout: React.FC<LayoutProps> = ({
     >
       <div className={styles["children"]}>{children}</div>
       {buttonTitle ? (
-        <MainButton color={color} onClick={onClick}>
-          {buttonTitle}
-        </MainButton>
+        <MainButton onClick={onClick}>{buttonTitle}</MainButton>
       ) : (
         ""
       )}

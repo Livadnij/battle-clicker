@@ -20,7 +20,6 @@ const RulesPage: FC<RulesProps> = () => {
 
   return (
     <Layout
-      color="blue"
       buttonTitle="I`m in"
       onClick={goDeposit}
       backgroundImage={backgroundImage}

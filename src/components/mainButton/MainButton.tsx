@@ -8,26 +8,13 @@ import { ReactComponent as GlitchEffect } from "../../assets/buttons/glitch-effe
 type MainButtonType = {
   children?: React.ReactNode;
   onClick?: () => void;
-  type?: "button" | "submit" | "reset";
-  color?: "yellow" | "blue";
 };
 
-const MainButton: FC<MainButtonType> = ({
-  children,
-  onClick,
-  color = "yellow",
-  type,
-  ...rest
-}) => {
+const MainButton: FC<MainButtonType> = ({ children, onClick }) => {
   return (
     <div className={styles["button-container"]}>
       <TopContainerBorder className={styles["button-container__top-border"]} />
-      <button
-        className={styles["main-button"]}
-        onClick={onClick}
-        type={type}
-        {...rest}
-      >
+      <button className={styles["main-button"]} onClick={onClick}>
         <GlitchEffect className={styles["main-button__glitch"]} />
         <ButtonImage className={styles["main-button__image"]} />
         {children && <p className={styles["main-button__text"]}>{children}</p>}
