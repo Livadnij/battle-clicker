@@ -12,6 +12,7 @@
   position: relative;
 
   &__top-border {
+    visibility: visible;
     top: 0;
     left: 0;
     position: absolute;
@@ -31,6 +32,7 @@
   cursor: pointer;
 
   &__image {
+    visibility: visible;
     width: 100%;
     height: auto;
   }
@@ -49,6 +51,7 @@
   }
 
   &__glitch {
+    visibility: visible;
     z-index: 100;
     width: 100%;
     top: 30%;
