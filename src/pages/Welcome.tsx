@@ -130,9 +130,7 @@ const WelcomePage: React.FC = () => {
 
   useEffect(() => {
     tg.expand();
-    setTimeout(() => {
-      tg.ready();
-    }, 500);
+    tg.ready();
   }, []);
 
   showConsoleArt();
