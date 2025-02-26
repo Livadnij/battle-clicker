@@ -136,8 +136,8 @@ const WelcomePage: React.FC = () => {
   };
 
   useEffect(() => {
-    tg.ready();
     tg.expand();
+    tg.ready();
   }, []);
 
   showConsoleArt();
