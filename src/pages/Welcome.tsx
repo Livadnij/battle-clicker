@@ -35,7 +35,7 @@ const WelcomePage: React.FC = () => {
         fetchedUser.session_quantity + 1
       );
 
-      trackEvent.APP_LAUNCH({
+      await trackEvent.APP_LAUNCH({
         session_quantity: fetchedUser.session_quantity + 1,
         deposit_quantity: fetchedUser.deposit_quantity,
         deposit_sum: fetchedUser.deposit_sum,
@@ -60,7 +60,7 @@ const WelcomePage: React.FC = () => {
         fetchedUser.session_quantity + 1
       );
 
-      trackEvent.APP_LAUNCH({
+      await trackEvent.APP_LAUNCH({
         session_quantity: fetchedUser.session_quantity + 1,
         deposit_quantity: fetchedUser.deposit_quantity,
         deposit_sum: fetchedUser.deposit_sum,
@@ -85,7 +85,7 @@ const WelcomePage: React.FC = () => {
         fetchedUser.session_quantity + 1
       );
 
-      trackEvent.APP_LAUNCH({
+      await trackEvent.APP_LAUNCH({
         session_quantity: fetchedUser.session_quantity + 1,
         deposit_quantity: fetchedUser.deposit_quantity,
         deposit_sum: fetchedUser.deposit_sum,
@@ -112,7 +112,7 @@ const WelcomePage: React.FC = () => {
         deposit_sum: 0,
       };
 
-      trackEvent.APP_LAUNCH({
+      await trackEvent.APP_LAUNCH({
         session_quantity: user.session_quantity,
         deposit_quantity: user.deposit_quantity,
         deposit_sum: user.deposit_sum,
