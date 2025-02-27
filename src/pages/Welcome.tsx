@@ -19,9 +19,10 @@ import { showConsoleArt } from "utils/ConsoleArt";
 const WelcomePage: React.FC = () => {
   const { tg, tg_user } = useTelegram();
   const { goHome, goRegister, goRules, goDeposit } = useNavigation();
-  const { user, setUser } = useUser();
+  const { setUser } = useUser();
 
   const fetchUser = async () => {
+    console.log(tg_user, tg_user?.is_premium);
     if (!tg_user) return;
     const fetchedUser = await getUserById("users", tg_user.id.toString());
 
@@ -38,7 +39,7 @@ const WelcomePage: React.FC = () => {
         session_quantity: fetchedUser.session_quantity + 1,
         deposit_quantity: fetchedUser.deposit_quantity,
         deposit_sum: fetchedUser.deposit_sum,
-        isPremium: tg_user.is_premium!,
+        isPremium: tg_user.is_premium ? tg_user.is_premium : false,
         userId: fetchedUser.id,
         fights_quantity: fetchedUser.fights_quantity,
         balance: fetchedUser.balance,
@@ -63,7 +64,7 @@ const WelcomePage: React.FC = () => {
         session_quantity: fetchedUser.session_quantity + 1,
         deposit_quantity: fetchedUser.deposit_quantity,
         deposit_sum: fetchedUser.deposit_sum,
-        isPremium: tg_user.is_premium!,
+        isPremium: tg_user.is_premium ? tg_user.is_premium : false,
         userId: fetchedUser.id,
         fights_quantity: fetchedUser.fights_quantity,
         balance: fetchedUser.balance,
@@ -88,7 +89,7 @@ const WelcomePage: React.FC = () => {
         session_quantity: fetchedUser.session_quantity + 1,
         deposit_quantity: fetchedUser.deposit_quantity,
         deposit_sum: fetchedUser.deposit_sum,
-        isPremium: tg_user.is_premium!,
+        isPremium: tg_user.is_premium ? tg_user.is_premium : false,
         userId: fetchedUser.id,
         fights_quantity: fetchedUser.fights_quantity,
         balance: fetchedUser.balance,
@@ -115,7 +116,7 @@ const WelcomePage: React.FC = () => {
         session_quantity: user.session_quantity,
         deposit_quantity: user.deposit_quantity,
         deposit_sum: user.deposit_sum,
-        isPremium: tg_user.is_premium!,
+        isPremium: tg_user.is_premium ? tg_user.is_premium : false,
         userId: user.id,
         fights_quantity: user.fights_quantity,
         balance: user.balance,
