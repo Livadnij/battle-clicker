@@ -69,16 +69,14 @@ const trackAppLaunch = ({
   fights_won,
 }: AppLaunchProps) => {
   posthog.capture("APP_LAUNCH", {
-    params: {
-      session_quantity,
-      deposit_quantity,
-      deposit_sum,
-      isPremium,
-      userId,
-      fights_quantity,
-      balance,
-      fights_won,
-    },
+    session_quantity,
+    deposit_quantity,
+    deposit_sum,
+    isPremium,
+    userId,
+    fights_quantity,
+    balance,
+    fights_won,
   });
 };
 const trackDepositSuccess = ({ purchase_amount }: DepositSuccessProps) => {
