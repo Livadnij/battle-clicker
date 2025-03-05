@@ -14,14 +14,14 @@ import { trackEvent } from "utils/analytics";
 type RulesProps = {};
 
 const RulesPage: FC<RulesProps> = () => {
-  const { goDeposit } = useNavigation();
+  const { goRegister } = useNavigation();
 
   trackEvent.ONBOARDING_SCREEN({ screen: "rules" });
 
   return (
     <Layout
       buttonTitle="I`m in"
-      onClick={goDeposit}
+      onClick={goRegister}
       backgroundImage={backgroundImage}
     >
       <div className={styles["container"]}>

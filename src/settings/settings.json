@@ -17,6 +17,7 @@
     }
   ],
   "fightPrice": 10,
+  "startBalance": 10,
   "maxScore": 3,
   "maxBotSurrenderCount": 3,
   "version": "v1.0.0",

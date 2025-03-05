@@ -15,6 +15,7 @@ import { useNavigation } from "hooks/useNavigation";
 import { randomizer } from "utils/Randomizer";
 import { trackEvent } from "utils/analytics";
 import { showConsoleArt } from "utils/ConsoleArt";
+import settings from "../settings/settings.json"
 
 const WelcomePage: React.FC = () => {
   const { tg, tg_user } = useTelegram();
@@ -47,32 +48,34 @@ const WelcomePage: React.FC = () => {
       });
       setUser(fetchedUser);
       goHome();
-    } else if (
-      fetchedUser &&
-      !fetchedUser.username &&
-      fetchedUser.balance === 0
-    ) {
-      // user already registered but didnt pass deposit stage of onboarding => redirect to deposit
-      updateField(
-        "users",
-        fetchedUser.id,
-        "session_quantity",
-        fetchedUser.session_quantity + 1
-      );
+    } 
+    // else if (
+    //   fetchedUser &&
+    //   !fetchedUser.username &&
+    //   fetchedUser.balance === 0
+    // ) {
+    //   // user already registered but didnt pass deposit stage of onboarding => redirect to deposit
+    //   updateField(
+    //     "users",
+    //     fetchedUser.id,
+    //     "session_quantity",
+    //     fetchedUser.session_quantity + 1
+    //   );
 
-      await trackEvent.APP_LAUNCH({
-        session_quantity: fetchedUser.session_quantity + 1,
-        deposit_quantity: fetchedUser.deposit_quantity,
-        deposit_sum: fetchedUser.deposit_sum,
-        isPremium: tg_user.is_premium ? tg_user.is_premium : false,
-        userId: fetchedUser.id,
-        fights_quantity: fetchedUser.fights_quantity,
-        balance: fetchedUser.balance,
-        fights_won: fetchedUser.fights_won,
-      });
-      setUser(fetchedUser);
-      goDeposit();
-    } else if (
+    //   await trackEvent.APP_LAUNCH({
+    //     session_quantity: fetchedUser.session_quantity + 1,
+    //     deposit_quantity: fetchedUser.deposit_quantity,
+    //     deposit_sum: fetchedUser.deposit_sum,
+    //     isPremium: tg_user.is_premium ? tg_user.is_premium : false,
+    //     userId: fetchedUser.id,
+    //     fights_quantity: fetchedUser.fights_quantity,
+    //     balance: fetchedUser.balance,
+    //     fights_won: fetchedUser.fights_won,
+    //   });
+    //   setUser(fetchedUser);
+    //   goDeposit();
+    // } 
+    else if (
       fetchedUser &&
       !fetchedUser.username &&
       fetchedUser.balance !== 0
@@ -101,7 +104,7 @@ const WelcomePage: React.FC = () => {
       // user isn't registered => create user and redirect to rules
       const user = {
         id: tg_user.id.toString(),
-        balance: 0,
+        balance: settings.startBalance,
         username: "",
         avatar: randomizer(0, 3),
         fights_quantity: 0,
